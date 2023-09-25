@@ -47,4 +47,3 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-{{-- BY: DIEGO ALBUQUERQUE DE CARVALHO --}}
