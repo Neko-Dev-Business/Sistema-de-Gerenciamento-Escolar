@@ -30,7 +30,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Vendas (Mensal)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ {{ $totalMes->totalMes }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ #</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -47,7 +47,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Vendas (Anual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ {{ $totalAno->totalAno }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ #</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -62,30 +62,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Últimas Vendas Realizadas</h6>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Nome do Comprador</th>
-                        <th>Data da Venda</th>
-                        <th>Valor</th>
-                        <th>Qtd. Produtos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($vendasDashboard as $vendaDashboard)
-                        <tr>
-                            <td>{{ $vendaDashboard->nomePessoa }}</td>
-                            <td>{{ $vendaDashboard->created_at }}</td>
-                            <td>{{ $vendaDashboard->valorVenda }}</td>
-                            <td>{{ $vendaDashboard->qtd_produtos }}</td>
-                        </tr> 
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
+
 </div>
 
 </div>

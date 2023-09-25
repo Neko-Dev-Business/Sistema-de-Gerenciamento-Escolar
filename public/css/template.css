@@ -57,10 +57,13 @@
 
   /* ------------ LOGIN ------------ */
   #login {
-    background-image: url("/images/layout/bg_arpanet_preto.png");
+    background-image: url("/imagens/bg_login.jpg");
     height: 100vh;
     margin: 0;
     padding: 0;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
 }
 @media (min-width: 992px) {
   #login {
