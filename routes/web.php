@@ -27,6 +27,9 @@ Route::get('/', [LoginController::class, 'index'])->name('login.index');
 Route::post('login/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('login/logout', [LoginController::class, 'logout'])->name('login.logout');
 
+//ROTA DO DASHBOARD
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
 //ROTAS USUARIOS
 //INDEX
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
@@ -54,3 +57,4 @@ Route::put('/usuarios/updatepass/{id}', [UsuarioController::class, 'updatepass']
 // Route::put('/usuarios/modifypass/{id}', [UsuarioController::class, 'modifypass'])->name('usuarios.modifypass'); //trocar senha
 // function ($id) {return 'User '.$id;} , -> TESTE VARIÁVEL
 // array_merge(\Illuminate\Support\Facades\Route::current()->parameters(), ['locale' => 'en'])
+

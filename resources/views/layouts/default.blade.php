@@ -28,32 +28,32 @@
                 <ul class="dropdown-menu">
                     {{-- <li><a href="{{route('pessoas.create')}}" class="dropdown-item">Cadastrar Novo</a></li>
                     <option value="asssociado">-----------------------</option> --}}
-                    <li><a href="{{route('pessoas.index')}}" class="dropdown-item">Pessoas</a></li>
-                    <li><a href="{{ route('associados.index') }}" class="dropdown-item">Associados</a></li>
-                    <li><a href="{{ route('contratados.index') }}" class="dropdown-item">Contratados</a></li>
+                    <li><a href="#" class="dropdown-item">Pessoas</a></li>
+                    <li><a href="#" class="dropdown-item">Associados</a></li>
+                    <li><a href="#" class="dropdown-item">Contratados</a></li>
                 </ul>
               </li>
               <li class="nav-item px-3">
                 {{--Produtos não salvam no banco :D--}}
-                <a class="nav-link text-white" href="{{route('produtos.index')}}"><i id="main" class="bi bi-box-seam color-white"></i>Produtos</a> {{-- Rever a estrutura dos produtos --}}
+                <a class="nav-link text-white" href="#"><i id="main" class="bi bi-box-seam color-white"></i>Produtos</a> {{-- Rever a estrutura dos produtos --}}
               </li>
               <li class="nav-item px-3">
                 {{--Vendas Incompleto, faltam as ligações com o banco--}}
-                <a class="nav-link text-white" href="{{route('vendas.index')}}"><i id="main" class="bi bi-cash-coin color-white"></i>Vendas</a>
+                <a class="nav-link text-white" href="#"><i id="main" class="bi bi-cash-coin color-white"></i>Vendas</a>
               </li>
 
               @can('acessar-usuarios')
                 <li class="nav-item px-3">
-                  <a class="nav-link text-white" href="{{route('usuarios.index')}}"><i id="main" class="bi bi-key color-white"></i>Usuários</a>
+                  <a class="nav-link text-white" href="#"><i id="main" class="bi bi-key color-white"></i>Usuários</a>
                 </li>
               @endcan
               <li class="nav-item px-3 dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"><img class="template-user" src="/storage/usuarios/{{ auth()->user()->foto}}" alt="{{ auth()->user()->name }}" />{{ auth()->user()->name }}</a>
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">{{--  --}}<img class="template-user" src="/storage/usuarios/{{ auth()->user()->foto}}" alt="{{ auth()->user()->name }}" />{{ auth()->user()->name }}</a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ route('usuarios.alt', auth()->user()->id) }}" class="dropdown-item" title="Alterar Dados, Senha, Foto de Perfil"><i class="bi bi-gear"></i> Configurações</a></li>
+                    <li><a href="#" class="dropdown-item" title="Alterar Dados, Senha, Foto de Perfil"><i class="bi bi-gear"></i> Configurações</a></li>
                     <li><a href="#" class="dropdown-item" title="Ajuda e Suporte"><i class="bi bi-question-circle"></i> Ajuda e Suporte</a></li>
-                    <li><a href="{{ route('login.logout') }}" class="dropdown-item" title="Sair da aplicação"><i class="bi bi-box-arrow-in-right"></i> Sair</a></li>
+                    <li><a href="#" class="dropdown-item" title="Sair da aplicação"><i class="bi bi-box-arrow-in-right"></i> Sair</a></li>
                 </ul>
               </li>
 
