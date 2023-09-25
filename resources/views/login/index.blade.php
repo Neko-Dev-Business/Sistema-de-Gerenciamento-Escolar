@@ -40,11 +40,10 @@
                 </div>
             </form>
             <div class="text-center fixed-bottom mb-2 template-fnt-alt" style="font-size: 1em;">
-                &copy; Copyright - ARPAnet by <br /> Centro Universitário UniRios.
+                &copy; Copyright - SysEdu by <br /> Gabriel e Daniel.
             </div>
         </div>
     {{-- </div> --}}
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-{{-- BY: DIEGO ALBUQUERQUE DE CARVALHO --}}
