@@ -1,0 +1,82 @@
+:root {
+    /* VARIÁVEIS */
+    --bg: #1F49AD; /* rgb(31, 73, 173); */
+    --fnt: #ffffff;
+    --bg-alt: #1C429C;
+    /* endVARIÁVEIS */
+}
+
+/* form input {
+  text-transform: uppercase;
+} */
+
+.pagination {
+  justify-content: center;
+}
+
+#main {
+    font-size:18px;
+    padding-right: 10px;
+  }
+
+  .template-bg {
+    background-color: var(--bg);
+  }
+
+  .template-fnt-alt {
+    color: var(--bg);
+    opacity: 0.4;
+  }
+
+  .template-user {
+    border-radius: 15px;
+    width: 33px;
+    height: 33px;
+    margin-right: 5px;
+
+  }
+
+  .template-txt {
+    /* color: var(--fnt); */
+    font-size: 1.5em;
+  }
+
+  .template-footer {
+    background-color: var(--bg-alt);
+  }
+
+  /* .template-copy {
+    color: var(--bg);
+  } */
+  /* .template-footer-fixed {
+      bottom: 0;
+      left: 0;
+      position: relative;
+      width: 100%;
+  } */
+
+  /* ------------ LOGIN ------------ */
+  #login {
+    background-image: url("/images/layout/bg_arpanet_preto.png");
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+@media (min-width: 992px) {
+  #login {
+    margin-top: -58.59px;
+  }
+  }
+  /* .template-btn {
+    background-color: var(--bg);
+    color: var(--fnt);
+  }
+
+  .template-btn:focus,
+  .template-btn:hover {
+    filter: brightness(10%) !important;
+  } */
+
+    /* ------------ endLOGIN ------------ */
+
+
