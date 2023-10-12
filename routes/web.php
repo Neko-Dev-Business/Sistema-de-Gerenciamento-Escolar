@@ -53,8 +53,4 @@ Route::put('/usuarios/atualizar/{id}', [UsuarioController::class, 'update_alt'])
 //TROCAR SENHA USUÁRIO LOGADO
 // Route::get('/usuarios/pass/{id}', [UsuarioController::class, 'pass'])->name('usuarios.pass');
 Route::put('/usuarios/updatepass/{id}', [UsuarioController::class, 'updatepass'])->name('usuarios.updatepass'); //trocar senha
-/* CEMITÉRIO ✞ */
-// Route::put('/usuarios/modifypass/{id}', [UsuarioController::class, 'modifypass'])->name('usuarios.modifypass'); //trocar senha
-// function ($id) {return 'User '.$id;} , -> TESTE VARIÁVEL
-// array_merge(\Illuminate\Support\Facades\Route::current()->parameters(), ['locale' => 'en'])
 

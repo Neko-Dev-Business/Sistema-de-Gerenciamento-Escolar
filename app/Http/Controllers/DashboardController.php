@@ -12,10 +12,10 @@ class DashboardController extends Controller
         $userDashboard = DB::table('users')
         ->get();
 
-        $totalMes = 1721.67;
+        $totalProfessores = 1721.67;
         
-        $totalAno = 1721.67;
+        $totalAlunos = 1721.67;
 
-        return view('dashboard.index', compact('totalMes', 'totalAno', 'userDashboard'));
+        return view('dashboard.index', compact('totalProfessores', 'totalAlunos', 'userDashboard'));
     }
 }
