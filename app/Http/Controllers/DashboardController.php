@@ -13,9 +13,14 @@ class DashboardController extends Controller
         ->get();
 
         $totalProfessores = 1721.67;
-        
+
         $totalAlunos = 1721.67;
 
         return view('dashboard.index', compact('totalProfessores', 'totalAlunos', 'userDashboard'));
+    }
+
+    public function cadastro()
+    {
+        return view('cadastro.index'); // Supondo que o nome da view do cadastro seja 'cadastro.index'
     }
 }

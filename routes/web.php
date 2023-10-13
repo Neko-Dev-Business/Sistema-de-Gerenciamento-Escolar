@@ -30,6 +30,9 @@ Route::get('login/logout', [LoginController::class, 'logout'])->name('login.logo
 //ROTA DO DASHBOARD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+//ROTA DO CADASTRO
+Route::get('/cadastro', [DashboardController::class, 'cadastro'])->name('cadastro.index');
+
 //ROTAS USUARIOS
 //INDEX
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
