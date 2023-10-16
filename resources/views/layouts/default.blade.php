@@ -10,75 +10,73 @@
     <link rel="stylesheet" href="/css/template.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/custom.css">
-    </head>
+</head>
 <body>
-
-
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-      <div class="position-sticky">
-
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-          </a>
-          <a href="{{ route('cadastro.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
-            <i class="fas fa-chart-area fa-fw me-3"></i> <span>Cadastro Alunos</span>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-lock fa-fw me-3"></i><span>Avaliações</span></a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-chart-line fa-fw me-3"></i><span>Horário</span></a>
-
-        </div>
-      </div>
-    </nav>
-    <!-- Sidebar -->
-
-    <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-      <!-- Container wrapper -->
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-
-        </button>
-        <a class="navbar-brand " href="{{ route('dashboard.index') }}">
-          <img src="imagens/logo.png" height="50" alt="SysEdu"
-            loading="lazy" />
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a href="{{ route('dashboard.index') }}" class="navbar-brand">
+            <h4 class="text-bold text-white">#</h4>
         </a>
-
-          @can('acessar-usuarios')
-                <li class="nav-item px-3">
-                  <a class="nav-link text-white" href="#"><i id="main" class="bi bi-key color-white"></i>Usuários</a>
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="#" alt="User Photo" class="rounded-circle" width="38" height="38">
+                        Daniel
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-person"></i> Meu Perfil
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-gear"></i> Configurações da Conta
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-right"></i> Sair
+                        </a>
+                        <form id="logout-form" action="#" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                 </li>
-              @endcan
-              <li class="nav-item px-3 dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">{{--  --}}<img class="template-user" src="/storage/usuarios/{{ auth()->user()->foto}}" alt="{{ auth()->user()->name }}" />{{ auth()->user()->name }}</a>
-
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#" class="dropdown-item" title="Alterar Dados, Senha, Foto de Perfil"><i class="bi bi-gear"></i> Configurações</a></li>
-                    <li><a href="#" class="dropdown-item" title="Ajuda e Suporte"><i class="bi bi-question-circle"></i> Ajuda e Suporte</a></li>
-                    <li><a href="#" class="dropdown-item" title="Sair da aplicação"><i class="bi bi-box-arrow-in-right"></i> Sair</a></li>
-                </ul>
-
-          </li>
-        </ul>
-      </div>
-      <!-- Container wrapper -->
+            </ul>
+        </div>
     </nav>
-  <main style="margin-top: 58px;">
-    <div class="container pt-4"></div>
-  </main>
-  <!--Main layout-->
+<!-- Sidebar -->
+<div>
+    <nav id="sidebarMenu" class="bg-dark sidebar">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4">
+                <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
+                </a>
+                <a href="{{ route('cadastro.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro Alunos</span>
+                </a>
+                <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-lock fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>
+                </a>
+                <a href="{{ route('pesquisa.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-line fa-fw me-3 text-white"></i><span class="text-white">Acadêmico</span>
+                </a>
+                @can('acessar-usuarios')
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-users fa-fw me-3 text-white"></i><span class="text-white">Usuários</span>
+                </a>
+                @endcan
+            </div>
+        </div>
+    </nav>
+</div>
 
-      <div class="container mb-3 p-4 bg-white shadow h-100 position-relative">
-        @yield('conteudo')
+    <main class="ml-1">
+        <main style="margin-top: 0;">
+            <div class="container-fluid mt-4 ml-3">
+                @yield('conteudo')
+            </div>
+        </main>
+    </main>
 
-      </div>
-
-      </div>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/template.js"></script>
     {{-- <script scr="{{ asset('js/template.js') }}"></script> --}}

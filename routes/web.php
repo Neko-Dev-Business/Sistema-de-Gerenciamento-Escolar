@@ -10,6 +10,9 @@ use App\Http\Controllers\VendaController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\PesquisaAlunosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +33,16 @@ Route::get('login/logout', [LoginController::class, 'logout'])->name('login.logo
 //ROTA DO DASHBOARD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-//ROTA DO CADASTRO
+//ROTA DE PESQUISA
+Route::get('/pesquisa', [PesquisaAlunosController::class, 'index'])->name('pesquisa.index');
+
+// ROTA DO CADASTRO
 Route::get('/cadastro', [DashboardController::class, 'cadastro'])->name('cadastro.index');
+
+// ROTAS RELATORIO
+Route::get('/relatorios', function () {
+    return view('relatorios.index');
+})->name('relatorios.index');
 
 //ROTAS USUARIOS
 //INDEX

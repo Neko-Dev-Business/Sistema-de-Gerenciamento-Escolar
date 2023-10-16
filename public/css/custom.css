@@ -1,9 +1,9 @@
 body {
-    background-color: #fbfbfb;
+    background-color: #fafafa;
     }
     @media (min-width: 991.98px) {
     main {
-    padding-left: 240px;
+    padding-left: 150px;
     }
     }
 
@@ -39,6 +39,5 @@ body {
     }
 
  .divConteudo{
-
     margin-top: 5%;
  }
