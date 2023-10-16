@@ -2,15 +2,9 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\ProdutoController;
-use App\Http\Controllers\PessoaController;
-use App\Http\Controllers\ContratadoController;
-use App\Http\Controllers\AssociadoController;
-use App\Http\Controllers\VendaController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\PesquisaAlunosController;
 
 

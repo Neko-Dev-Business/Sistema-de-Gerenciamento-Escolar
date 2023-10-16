@@ -15,7 +15,8 @@
         <div class="col-xl-3 bg-white p-5 rounded-3 shadow position-absolute top-50 start-50 translate-middle">
             <img src="/imagens/logo.png" alt="sysedu" height="150" class="d-block mx-auto mb-4">
 
-            @if (Session::get('erro'))
+            {{-- ERRO NA SESSION! --}}
+            {{-- @if (Session::get('erro'))
             <div class="alert alert-danger text-center p-2">{{ Session::get('erro') }}</div>
             @endif
 
@@ -23,7 +24,7 @@
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-warning text-center p-2">{{ $error }}</div>
                 @endforeach
-            @endif
+            @endif --}}
 
             <form class="row g-4 mb-3" action="{{ route('login.auth') }}" method="POST">
                 @csrf

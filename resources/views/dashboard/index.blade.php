@@ -144,7 +144,7 @@
                 allDaySlot: false,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    var title = prompt('Event Title:');
+                    var title = prompt('Título do Evento:');
                     if (title) {
                         calendar.fullCalendar('renderEvent', {
                             title: title,
