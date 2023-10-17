@@ -16,7 +16,7 @@
             <img src="/imagens/logo.png" alt="sysedu" height="150" class="d-block mx-auto mb-4">
 
             {{-- ERRO NA SESSION! --}}
-            {{-- @if (Session::get('erro'))
+           {{-- @if (Session::get('erro'))
             <div class="alert alert-danger text-center p-2">{{ Session::get('erro') }}</div>
             @endif
 
