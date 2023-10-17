@@ -3,6 +3,9 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
@@ -61,4 +64,31 @@ Route::put('/usuarios/atualizar/{id}', [UsuarioController::class, 'update_alt'])
 //TROCAR SENHA USUÁRIO LOGADO
 // Route::get('/usuarios/pass/{id}', [UsuarioController::class, 'pass'])->name('usuarios.pass');
 Route::put('/usuarios/updatepass/{id}', [UsuarioController::class, 'updatepass'])->name('usuarios.updatepass'); //trocar senha
+
+
+
+
+//ROTA DE PESSOA
+Route::get('/pessoa', [PessoaController::class, 'index'])->name('pessoa.index');
+Route::get('/pessoa/create', [PessoaController::class, 'create'])->name('pessoa.create');
+Route::post('/pessoa', [PessoaController::class, 'store'])->name('pessoa.store');
+Route::delete('/pessoa/{idPessoa}', [PessoaController::class, 'destroy'])->name('pessoa.destroy');
+Route::get('/pessoa/edit/{idPessoa}', [PessoaController::class, 'edit'])->name('pessoa.edit');
+Route::put('/pessoa/{idPessoa}', [PessoaController::class, 'update'])->name('pessoa.update');
+
+//ROTA DE PROFESSOR
+Route::get('/professor', [ProfessorController::class, 'index'])->name('professor.index');
+Route::get('/professor/create', [ProfessorController::class, 'create'])->name('professor.create');
+Route::post('/professor', [ProfessorController::class, 'store'])->name('professor.store');
+Route::delete('/professor/{idProfessor}', [ProfessorController::class, 'destroy'])->name('professor.destroy'); 
+Route::get('/professor/edit/{idProfessor}', [ProfessorController::class, 'edit'])->name('professor.edit');
+Route::put('/professor/{idProfessor}', [ProfessorController::class, 'update'])->name('professor.update');
+
+//ROTA DE ALUNO
+Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno.index');
+Route::get('/aluno/create', [AlunoController::class, 'create'])->name('aluno.create');
+Route::delete('/aluno/{idAluno}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
+Route::get('/aluno/edit/{idAluno}', [AlunoController::class, 'edit'])->name('aluno.edit');
+Route::put('/aluno/{idAluno}', [AlunoController::class, 'update'])->name('aluno.update');
+Route::post('/aluno', [AlunoController::class, 'store'])->name('aluno.store');
 
