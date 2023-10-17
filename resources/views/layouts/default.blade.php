@@ -51,13 +51,13 @@
                     <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                 </a>
                 <a href="{{ route('pessoas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro Pessoas</span>
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Usuários</span>
                 </a>
                 <a href="{{ route('alunos.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Matrícula de Alunos</span>
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Notas</span>
                 </a>
                 <a href="{{ route('professores.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Contratação de Professores</span>
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Turmas</span>
                 </a>
                 <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-lock fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>

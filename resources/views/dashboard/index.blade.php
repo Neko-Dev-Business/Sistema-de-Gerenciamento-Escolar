@@ -49,7 +49,7 @@
                         Alunos
                         <i class="bi bi-person bi-2x card-icon text-white"></i>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">#</div>
+                    <div class="h5 mb-0 font-weight-bold text-white">{{ $totalAlunos->totalAlunos }}</div>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                         Professores
                         <i class="bi bi-people bi-2x card-icon text-white"></i>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">#</div>
+                    <div class="h5 mb-0 font-weight-bold text-white">{{ $totalProfessores->totalProfessores }}</div>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                         Funcionários
                         <i class="bi bi-people bi-2x card-icon text-white"></i>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-white">#</div>
+                    <div class="h5 mb-0 font-weight-bold text-white">{{ $totalFuncionarios->totalFuncionarios }}</div>
                 </div>
             </div>
         </div>

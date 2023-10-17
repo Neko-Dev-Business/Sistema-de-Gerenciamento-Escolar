@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Venda;
+use App\Models\Aluno;
+use App\Models\Pessoa;
+use App\Models\Professor;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $userDashboard = DB::table('users')
-        ->get();
+        $totalProfessores = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalProfessores'))->where(DB::raw('tipoUsuario'), '=', DB::raw('4'))->first();
 
-        $totalProfessores = 1721.67;
+        $totalAlunos = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalAlunos'))->where(DB::raw('tipoUsuario'), '=', DB::raw('1'))->first();
 
-        $totalAlunos = 1721.67;
+        $totalFuncionarios = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalFuncionarios'))->where(DB::raw('tipoUsuario'), '=', DB::raw('5'))->first();
 
-        return view('dashboard.index', compact('totalProfessores', 'totalAlunos', 'userDashboard'));
+        return view('dashboard.index', compact('totalProfessores', 'totalAlunos', 'totalFuncionarios'));
     }
 
     public function cadastro()

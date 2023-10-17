@@ -4,7 +4,6 @@
 
 @section('conteudo')
     <h1 class="mb-3">Cadastro de Usuário</h1>
-    <h2>Pessoa</h2><br/>
     <div class="alert alert-danger text-center p-2" style="display: none" id="div-alert-2"></div>
     <form class="row g-4" method="POST" action="{{ route('pessoas.store') }}" enctype="multipart/form-data">
         @csrf
@@ -75,51 +74,52 @@
                             <label for="tipoPessoa" class="form-label fs-5 fs-5">Tipo da Pessoa</label>
                             <select name="tipoPessoa" id="tipoPessoa" class="form-select form-select-lg bg-light" onchange="controleTipo()"
                                 required>
-                                <option value="F" selected="selected">Física</option>
+                                <option value="" selected="selected">Selecione</option>
+                                <option value="F">Física</option>
                                 <option value="J">Jurídica</option>
                             </select>
                         </div>
                     </div>
                     <!-- Pessoa Física -->
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" id="div-cpfPessoa">
                             <label for="cpfPessoa">CPF:</label>
                             <input type="text" class="form-control" id="cpfPessoa" name="cpfPessoa" placeholder="Apenas Números" pattern="\d*" 
                                 maxlength="14" minlength="11">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="div-rgPessoa">
                             <label for="rgPessoa">RG:</label>
                             <input type="text" class="form-control" id="rgPessoa" name="rgPessoa">
                         </div>
-                        <div class="form-group">
-                            <label for="dataNascimento">Data de Nascimento:</label>
-                            <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
+                        <div class="form-group" id="div-dataNascimentoPessoa">
+                            <label for="dataNascimentoPessoa">Data de Nascimento:</label>
+                            <input type="date" class="form-control" id="dataNascimentoPessoa" name="dataNascimentoPessoa">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="div-generoPessoa">
                             <label for="generoPessoa">Gênero:</label>
                             <select class="form-select" id="generoPessoa" name="generoPessoa">
-                                <option value="">Selecione</option>
+                                <option value="" selected="selected">Selecione</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                             </select>
                         </div>  
-                        <div class="form-group">
+                        <div class="form-group" id="div-nacionalidadePessoa">
                             <label for="nacionalidadePessoa">Nacionalidade:</label>
                             <input type="text" class="form-control" id="nacionalidadePessoa" name="nacionalidadePessoa">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="div-nomePaiPessoa">
                             <label for="nomePaiPessoa">Filiação (Pai):</label>
                             <input type="text" class="form-control" id="nomePaiPessoa" name="nomePaiPessoa">
                         </div>
-                        <div class="form-group">
-                            <label for="nomeMaePessoa">Filiação (Mãe):</label>
+                        <div class="form-group" id="div-nomeMaePessoa">
+                            <label for="nomeMaePessoa" >Filiação (Mãe):</label>
                             <input type="text" class="form-control" id="nomeMaePessoa" name="nomeMaePessoa">
                         </div>
                         <!-- Pessoa Jurídica -->
-                        <div class="form-group">
+                        <div class="form-group" id="div-cnpjPessoa">
                             <label for="cnpjPessoa">CNPJ:</label>
-                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa" placeholder="Apenas Números" pattern="\d*" 
-                                   maxlength="18" minlength="14" onblur="pesquisaCNPJ(this.value);">
+                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa" placeholder="Apenas Números" 
+                                   maxlength="20" minlength="14" onblur="pesquisaCNPJ(this.value);">
                         </div>
                     </div>
                     <!-- Outras Informações Pessoais -->
@@ -147,13 +147,14 @@
                             <input type="text" class="form-control" id="usuarioPessoa" name="usuarioPessoa">
                         </div>
                         <div class="form-group">
-                            <label for="user_type">Tipo de Usuário:</label>
-                            <select class="form-select" id="user_type" name="user_type">
-                                <option value="A">Aluno</option>
-                                <option value="P">Professor</option>
-                                <option value="R">Responsável</option>
-                                <option value="E">Empresa Parceira</option>
-                                <option value="F">Funcionário</option>
+                            <label for="tipoUsuario">Tipo de Usuário:</label>
+                            <select class="form-select" id="tipoUsuario" name="tipoUsuario">
+                                <option value="" selected="selected">Selecione</option>
+                                <option value="1">Aluno</option>
+                                <option value="2">Professor</option>
+                                <option value="3">Responsável</option>
+                                <option value="4">Empresa Parceira</option>
+                                <option value="5">Funcionário</option>
                             </select>
                         </div>
                         <div class="form-group">

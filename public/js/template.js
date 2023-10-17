@@ -2,13 +2,39 @@
 function controleTipo() {
     let cpf = document.getElementById("div-cpfPessoa")
     let cnpj = document.getElementById('div-cnpjPessoa')
+    let rg = document.getElementById('div-rgPessoa')
+    let dataNascimento = document.getElementById('div-dataNascimentoPessoa')
+    let genero = document.getElementById('div-generoPessoa')
+    let nacionalidade = document.getElementById('div-nacionalidadePessoa')
+    let nomeMae = document.getElementById('div-nomeMaePessoa')
+    let nomePai = document.getElementById('div-nomePaiPessoa')
+
     var tipoPessoa = document.getElementById("tipoPessoa").value;
-    // document.getElementById("demo").innerHTML = "You selected: " + tipoPessoa;
+    
+    
     if (tipoPessoa == "J") {
         cpf.style.display = "none";
-        cpf.required = false;
+        rg.style.display = "none";
+        dataNascimento.style.display = "none";
+        genero.style.display = "none";
+        nacionalidade.style.display = "none";
+        nomeMae.style.display = "none";
+        nomePai.style.display = "none";
+        //cpf.required = false;
         cnpj.style.display = "block";
-        cnpj.required = true;
+        //cnpj.required = true;
+        
+
+
+        cnpj.querySelector('input').required = true;
+        
+        cpf.querySelector('input').required = false;
+        rg.querySelector('input').required = false;
+        dataNascimento.querySelector('input').required = false;
+        genero.querySelector('input').required = false;
+        nacionalidade.querySelector('input').required = false;
+        nomeMae.querySelector('input').required = false;
+        nomePai.querySelector('input').required = false;
 
         //APAGAR CONTEÚDO DOS CAMPOS
         cpf.value=("");
@@ -25,9 +51,25 @@ function controleTipo() {
     }
     else {
         cpf.style.display = "block";
-        cpf.required = true;
+        rg.style.display = "block";
+        dataNascimento.style.display = "block";
+        genero.style.display = "block";
+        nacionalidade.style.display = "block";
+        nomeMae.style.display = "block";
+        nomePai.style.display = "block";
+        //cpf.required = true;
         cnpj.style.display = "none";
-        cnpj.required = false;
+        //cnpj.required = false;
+
+        cnpj.querySelector('input').required = false;
+
+        cpf.querySelector('input').required = true;
+        rg.querySelector('input').required = true;
+        dataNascimento.querySelector('input').required = true;
+        genero.querySelector('input').required = true;
+        nacionalidade.querySelector('input').required = true;
+        nomeMae.querySelector('input').required = true;
+        nomePai.querySelector('input').required = true;
 
         //APAGAR CONTEÚDO DOS CAMPOS
         cnpj.value=("");

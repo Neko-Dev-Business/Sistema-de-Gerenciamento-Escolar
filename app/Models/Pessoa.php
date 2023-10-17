@@ -15,8 +15,30 @@ class Pessoa extends Model
         'nomePessoa',
         'tipoPessoa',
         'cpfPessoa',
+        'rgPessoa',
+        'dataNascimentoPessoa',
+        'generoPessoa',
+        'nacionalidadePessoa',
+        'nomePaiPessoa',
+        'nomeMaePessoa',
         'cnpjPessoa',
+        'emailPessoa',
         'telefonePessoa',
+        'tipoUsuario',
+        'usuarioPessoa',
+        'foto',
+        'password',
+
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     public function endereco()
