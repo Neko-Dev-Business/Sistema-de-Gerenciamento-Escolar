@@ -5,7 +5,7 @@
 @section('conteudo')
     <h1 class="mb-5">Editar Pessoa</h1>
     <h2>Pessoa</h2><br/>
-    <form class="row g-4" method="POST" action="{{ route('pessoa.update', $pessoas->idPessoa) }}">
+    <form class="row g-4" method="POST" action="{{ route('pessoas.update', $pessoas->idPessoa) }}">
         @csrf
         @method('PUT')
         <div class="col-md-2">
@@ -83,7 +83,7 @@
         </div>
         <div>
             <button type="submit" class="btn btn-primary btn-lg">Salvar Alteração</button>
-            <a href="{{ route('pessoa.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
+            <a href="{{ route('pessoas.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
         </div>
     </form>
     <script>

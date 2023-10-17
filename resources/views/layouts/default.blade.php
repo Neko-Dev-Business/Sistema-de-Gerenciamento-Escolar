@@ -50,8 +50,14 @@
                 <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                 </a>
-                <a href="{{ route('pessoa.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro Alunos</span>
+                <a href="{{ route('pessoas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro Pessoas</span>
+                </a>
+                <a href="{{ route('alunos.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Matrícula de Alunos</span>
+                </a>
+                <a href="{{ route('professores.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Contratação de Professores</span>
                 </a>
                 <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-lock fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>

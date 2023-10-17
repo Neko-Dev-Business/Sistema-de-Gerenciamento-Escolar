@@ -16,21 +16,21 @@ class ProfessorController extends Controller
 
     public function index(Request $request)
     {
-        $pessoa = Pessoa::all();
+        $pessoas = Pessoa::all();
         
-        $professor = DB::table('professor')
-        ->join('pessoa', 'pessoa.idPessoa', '=', 'professor.idPessoa')
+        $professores = DB::table('professores')
+        ->join('pessoas', 'pessoas.idPessoa', '=', 'professores.idPessoa')
         ->where('idProfessor', 'like', '%'.$request->buscaProfessor.'%')->orderBy('idProfessor','asc')->get();
        
         $totalProfessores = Professor::all()->count();
-        return view('professor.index', compact('professor', 'totalProfessores'));
+        return view('professores.index', compact('professores', 'totalProfessores'));
     }
 
     public function create()
     {
-        $pessoa = Pessoa::all();
-        $professor = Professor::all();
-        return view('professor.create', compact('professor', 'pessoa'));
+        $pessoas = Pessoa::all();
+        $professores = Professor::all();
+        return view('professores.create', compact('professores', 'pessoas'));
     }
 
     public function store(Request $request)
@@ -38,32 +38,32 @@ class ProfessorController extends Controller
         $input = $request->toArray();
         Professor::create($input);
 
-        return redirect()->route('professor.index')->with('Sucesso', 'Professor cadastrado com sucesso!');
+        return redirect()->route('professores.index')->with('Sucesso', 'Professor cadastrado com sucesso!');
     }
 
     public function destroy($idProfessor)
     {
-        $professor = Professor::find($idProfessor);
-        $professor->delete();
+        $professores = Professor::find($idProfessor);
+        $professores->delete();
 
-        return redirect()->route('professor.index')->with('Sucesso', 'Professor deletado com sucesso!');
+        return redirect()->route('professores.index')->with('Sucesso', 'Professor deletado com sucesso!');
     }
 
     public function edit($idProfessor)
     {
-        $professor = Professor::find($idProfessor);
-        return view('professor.edit', compact('professor'));
+        $professores = Professor::find($idProfessor);
+        return view('professores.edit', compact('professores'));
     }
 
     public function update(Request $request, $idProfessor)
     {
         $input = $request->toArray();
-        $professor = Professor::find($idProfessor);
+        $professores = Professor::find($idProfessor);
 
-        $professor->fill($input);
-        $professor->save();
+        $professores->fill($input);
+        $professores->save();
 
-        return redirect()->route('professor.index')->with('Sucesso', 'Professor alterado com sucesso!');
+        return redirect()->route('professores.index')->with('Sucesso', 'Professor alterado com sucesso!');
 
     }
 }

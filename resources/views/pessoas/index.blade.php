@@ -3,28 +3,28 @@
 @section('title', 'Pessoas')
 
 @section('conteudo')
-
-    @if (Session::get('Sucesso'))
+    {{-- ERRO NA SESSION! --}}
+    {{-- @if (Session::get('Sucesso'))
     <div class="alert alert-success text-center">{{ Session::get('Sucesso') }}</div>
     @endif
 
     @if (Session::get('Erro'))
     <div class="alert alert-danger text-center">{{ Session::get('Erro') }}</div>
-    @endif
+    @endif --}}
 
     <h1 class="mb-4">Pessoas</h1>
 
-    <a href="{{ route('pessoa.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
+    <a href="{{ route('pessoas.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
     rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
 
-    <p>Total de Pessoas: {{ $totalPessoas }}</p>
+    <p>Total de Pessoa: {{ $totalPessoas }}</p>
 
 <form action="" method="get" class="mb-3 d-flex justify-content-end">
     <div class="input-group me-3">
         <input type="text" name="buscaPessoa" class="form-control form-control-lg" placeholder="Nome da Pessoa">
         <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
     </div>
-    <a href="{{ route('pessoa.index') }}" class="btn btn-light border btn-lg">Limpar</a>
+    <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg">Limpar</a>
 </form>
     <table class="table table-striped">
         <thead class="table-dark">

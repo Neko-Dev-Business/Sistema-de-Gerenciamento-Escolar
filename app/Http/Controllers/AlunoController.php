@@ -16,19 +16,19 @@ class AlunoController extends Controller
 
     public function index(Request $request)
     {
-        $aluno = DB::table('aluno')
-        ->join('pessoa', 'pessoa.idPessoa', '=', 'aluno.idPessoa')
+        $alunos = DB::table('alunos')
+        ->join('pessoas', 'pessoas.idPessoa', '=', 'alunos.idPessoa')
         ->where('idAluno', 'like', '%'.$request->buscaAluno.'%')->orderBy('idAluno','asc')->get();
 
         $totalAlunos= Aluno::all()->count();
-        return view('aluno.index', compact('aluno', 'totalAlunos'));
+        return view('alunos.index', compact('alunos', 'totalAlunos'));
     }
 
     public function create()
     {
-        $pessoa = Pessoa::all();
-        $aluno = Aluno::all();
-        return view('aluno.create', compact('aluno', 'pessoa'));
+        $pessoas = Pessoa::all();
+        $alunos = Aluno::all();
+        return view('alunos.create', compact('alunos', 'pessoas'));
     }
 
     public function store(Request $request)
@@ -36,32 +36,32 @@ class AlunoController extends Controller
         $input = $request->toArray();
         Aluno::create($input);
 
-        return redirect()->route('aluno.index')->with('Sucesso', 'Aluno cadastrado com sucesso!');
+        return redirect()->route('alunos.index')->with('Sucesso', 'Aluno cadastrado com sucesso!');
     }
 
     public function destroy($idAluno)
     {
-        $aluno = Aluno::find($idAluno);
-        $aluno->delete();
+        $alunos = Aluno::find($idAluno);
+        $alunos->delete();
 
-        return redirect()->route('aluno.index')->with('Sucesso', 'Aluno deletado com sucesso!');
+        return redirect()->route('alunos.index')->with('Sucesso', 'Aluno deletado com sucesso!');
     }
 
     public function edit($idAluno)
     {
-        $aluno = Aluno::find($idAluno);
-        return view('aluno.edit', compact('aluno'));
+        $alunos = Aluno::find($idAluno);
+        return view('alunos.edit', compact('alunos'));
     }
 
     public function update(Request $request, $idAluno)
     {
         $input = $request->toArray();
-        $aluno = Aluno::find($idAluno);
+        $alunos = Aluno::find($idAluno);
 
-        $aluno->fill($input);
-        $aluno->save();
+        $alunos->fill($input);
+        $alunos->save();
 
-        return redirect()->route('aluno.index')->with('Sucesso', 'Aluno alterado com sucesso!');
+        return redirect()->route('alunos.index')->with('Sucesso', 'Aluno alterado com sucesso!');
 
     }
 }

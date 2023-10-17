@@ -9,6 +9,7 @@ use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
+use Illuminate\Contracts\Session\Session;
 
 
 /*
@@ -69,26 +70,26 @@ Route::put('/usuarios/updatepass/{id}', [UsuarioController::class, 'updatepass']
 
 
 //ROTA DE PESSOA
-Route::get('/pessoa', [PessoaController::class, 'index'])->name('pessoa.index');
-Route::get('/pessoa/create', [PessoaController::class, 'create'])->name('pessoa.create');
-Route::post('/pessoa', [PessoaController::class, 'store'])->name('pessoa.store');
-Route::delete('/pessoa/{idPessoa}', [PessoaController::class, 'destroy'])->name('pessoa.destroy');
-Route::get('/pessoa/edit/{idPessoa}', [PessoaController::class, 'edit'])->name('pessoa.edit');
-Route::put('/pessoa/{idPessoa}', [PessoaController::class, 'update'])->name('pessoa.update');
+Route::get('/pessoas', [PessoaController::class, 'index'])->name('pessoas.index');
+Route::get('/pessoas/create', [PessoaController::class, 'create'])->name('pessoas.create');
+Route::post('/pessoas', [PessoaController::class, 'store'])->name('pessoas.store');
+Route::delete('/pessoas/{idPessoa}', [PessoaController::class, 'destroy'])->name('pessoas.destroy');
+Route::get('/pessoas/edit/{idPessoa}', [PessoaController::class, 'edit'])->name('pessoas.edit');
+Route::put('/pessoas/{idPessoa}', [PessoaController::class, 'update'])->name('pessoas.update');
 
 //ROTA DE PROFESSOR
-Route::get('/professor', [ProfessorController::class, 'index'])->name('professor.index');
-Route::get('/professor/create', [ProfessorController::class, 'create'])->name('professor.create');
-Route::post('/professor', [ProfessorController::class, 'store'])->name('professor.store');
-Route::delete('/professor/{idProfessor}', [ProfessorController::class, 'destroy'])->name('professor.destroy'); 
-Route::get('/professor/edit/{idProfessor}', [ProfessorController::class, 'edit'])->name('professor.edit');
-Route::put('/professor/{idProfessor}', [ProfessorController::class, 'update'])->name('professor.update');
+Route::get('/professores', [ProfessorController::class, 'index'])->name('professores.index');
+Route::get('/professores/create', [ProfessorController::class, 'create'])->name('professores.create');
+Route::post('/professores', [ProfessorController::class, 'store'])->name('professores.store');
+Route::delete('/professores/{idProfessor}', [ProfessorController::class, 'destroy'])->name('professores.destroy'); 
+Route::get('/professores/edit/{idProfessor}', [ProfessorController::class, 'edit'])->name('professores.edit');
+Route::put('/professores/{idProfessor}', [ProfessorController::class, 'update'])->name('professores.update');
 
 //ROTA DE ALUNO
-Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno.index');
-Route::get('/aluno/create', [AlunoController::class, 'create'])->name('aluno.create');
-Route::delete('/aluno/{idAluno}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
-Route::get('/aluno/edit/{idAluno}', [AlunoController::class, 'edit'])->name('aluno.edit');
-Route::put('/aluno/{idAluno}', [AlunoController::class, 'update'])->name('aluno.update');
-Route::post('/aluno', [AlunoController::class, 'store'])->name('aluno.store');
+Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos.index');
+Route::get('/alunos/create', [AlunoController::class, 'create'])->name('alunos.create');
+Route::delete('/alunos/{idAluno}', [AlunoController::class, 'destroy'])->name('alunos.destroy');
+Route::get('/alunos/edit/{idAluno}', [AlunoController::class, 'edit'])->name('alunos.edit');
+Route::put('/alunos/{idAluno}', [AlunoController::class, 'update'])->name('alunos.update');
+Route::post('/alunos', [AlunoController::class, 'store'])->name('alunos.store');
 

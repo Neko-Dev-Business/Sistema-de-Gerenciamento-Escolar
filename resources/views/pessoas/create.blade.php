@@ -6,7 +6,7 @@
     <h1 class="mb-5">Cadastrar Pessoa</h1>
     <h2>Pessoa</h2><br/>
     <div class="alert alert-danger text-center p-2" style="display: none" id="div-alert-2"></div>
-    <form class="row g-4" method="POST" action="{{ route('pessoa.store') }}">
+    <form class="row g-4" method="POST" action="{{ route('pessoas.store') }}">
         @csrf
         <div class="col-md-2">
             <label for="tipoPessoa" class="form-label fs-5 fs-5">Tipo da Pessoa</label>
@@ -82,7 +82,7 @@
         </div>
         <div>
             <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
-            <a href="{{ route('pessoa.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
+            <a href="{{ route('pessoas.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
         </div>
     </form>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
 use App\Models\Endereco;
@@ -17,19 +18,19 @@ class PessoaController extends Controller
 
     public function index(Request $request)
     {
-        // $pessoas = Pessoa::where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')->paginate(10);
-        $pessoa = DB::table('pessoa')
-        ->join('endereco', 'endereco.idPessoa', '=', 'pessoa.idPessoa', 'inner')
+        // $pessoa = Pessoa::where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')->paginate(10);
+        $pessoas = DB::table('pessoas')
+        ->join('enderecos', 'enderecos.idPessoa', '=', 'pessoas.idPessoa', 'inner')
         ->where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')->paginate(30);
 
-        $totalPessoas = Pessoa::all()->count();
-        return view('pessoa.index', compact('pessoa', 'totalPessoas'));
+        $totalPessoas = Endereco::all()->count();
+        return view('pessoas.index', compact('pessoas', 'totalPessoas'));
     }
 
     public function create()
     {
         $UFs = DB::table('uf')->get();
-        return view('pessoa.create', compact('UFs'));
+        return view('pessoas.create', compact('UFs'));
     }
 
 
@@ -48,51 +49,51 @@ class PessoaController extends Controller
 
         Endereco::create($input);
 
-        return redirect()->route('pessoa.index')->with('Sucesso', 'Pessoa cadastrada com sucesso!');
+        return redirect()->route('pessoas.index')->with('Sucesso', 'Pessoa cadastrada com sucesso!');
     }
 
     public function destroy($idPessoa)
     {   
-        $idAluno = DB::table('aluno')->select('idProfessor')->where('idPessoa', '=', $idPessoa)->first();
-        $idProfessor = DB::table('professor')->select('idAluno')->where('idPessoa', '=', $idPessoa)->first();
+        $idAluno = DB::table('alunos')->select('idAluno')->where('idPessoa', '=', $idPessoa)->first();
+        $idProfessor = DB::table('professores')->select('idProfessor')->where('idPessoa', '=', $idPessoa)->first();
 
         if (!empty($idAluno) || !empty($idProfessor)) {
             return redirect()->route('pessoas.index')->
             with('Erro', 'Antes de excluir a pessoa, é necessário excluir o seu cadastro de '.(!empty($idAluno)?'aluno':'professor').'.');
         }
 
-        $idEndereco = DB::table('endereco')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
+        $idEndereco = DB::table('enderecos')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
         $endereco = Endereco::find($idEndereco->idEndereco);
         $endereco->delete();
 
         $pessoa = Pessoa::find($idPessoa);
         $pessoa->delete();
 
-        return redirect()->route('pessoa.index')->with('Sucesso', 'Pessoa deletada com sucesso!');
+        return redirect()->route('pessoas.index')->with('Sucesso', 'Pessoa deletada com sucesso!');
     }
 
     public function edit($idPessoa)
     {
-        $pessoa = Pessoa::find($idPessoa);
-        $idEndereco = DB::table('endereco')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
-        $endereco = Endereco::find($idEndereco->idEndereco);
+        $pessoas = Pessoa::find($idPessoa);
+        $idEndereco = DB::table('enderecos')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
+        $enderecos = Endereco::find($idEndereco->idEndereco);
         $UFs = DB::table('uf')->get();
-        return view('pessoa.edit', compact('pessoa', 'endereco', 'UFs'));
+        return view('pessoas.edit', compact('pessoas', 'enderecos', 'UFs'));
     }
 
     public function update(Request $request, $idPessoa)
     {
         $input = $request->toArray();
-        $pessoa = Pessoa::find($idPessoa);
-        $idEndereco = DB::table('endereco')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
-        $endereco = Endereco::find($idEndereco->idEndereco);
+        $pessoas = Pessoa::find($idPessoa);
+        $idEndereco = DB::table('enderecos')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
+        $enderecos = Endereco::find($idEndereco->idEndereco);
 
-        $pessoa->fill($input);
-        $pessoa->save();
+        $pessoas->fill($input);
+        $pessoas->save();
 
-        $endereco->fill($input);
-        $endereco->save();
+        $enderecos->fill($input);
+        $enderecos->save();
 
-        return redirect()->route('pessoa.index')->with('Sucesso', 'Pessoa alterada com sucesso!');
+        return redirect()->route('pessoas.index')->with('Sucesso', 'Pessoa alterada com sucesso!');
     }
 }
