@@ -12,6 +12,6 @@ class Aluno extends Model
     protected $primaryKey = 'idAluno';
 
     protected $fillable = [
-        'dtMatriculaAluno', 'dtSaídaAluno', 'idPessoa'
+        'dtMatriculaAluno', 'dtDesligamentoAluno', 'idPessoa'
     ];
 }

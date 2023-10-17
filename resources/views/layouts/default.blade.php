@@ -50,7 +50,7 @@
                 <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                 </a>
-                <a href="{{ route('cadastro.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                <a href="{{ route('pessoa.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro Alunos</span>
                 </a>
                 <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
