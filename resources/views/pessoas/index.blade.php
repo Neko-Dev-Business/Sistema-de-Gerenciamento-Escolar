@@ -12,7 +12,7 @@
     <div class="alert alert-danger text-center">{{ Session::get('Erro') }}</div>
     @endif --}}
 
-    <h1 class="mb-4">Pessoas</h1>
+    <h1 class="mb-4">Usuários</h1>
 
     <a href="{{ route('pessoas.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
     rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>

@@ -3,13 +3,13 @@
 @section('title', 'Editar Pessoa')
 
 @section('conteudo')
-    <h1 class="mb-5">Editar Pessoa</h1>
+    <h1 class="mb-5">Editar Usuário</h1>
     <h2>Pessoa</h2><br/>
     <form class="row g-4" method="POST" action="{{ route('pessoas.update', $pessoas->idPessoa) }}">
         @csrf
         @method('PUT')
         <div class="col-md-2">
-            <label for="tipoPessoa" class="form-label fs-5 fs-5">Tipo da Pessoa</label>
+            <label for="tipoPessoa" class="form-label fs-5 fs-5">Tipo de Pessoa</label>
             <select name="tipoPessoa" id="tipoPessoa" class="form-select form-select-lg bg-light" onchange="controleTipo()" required>
                 <option value="F" @selected($pessoas->tipoPessoa == 'F')>Física</option>
                 <option value="J" @selected($pessoas->tipoPessoa == 'J')>Jurídica</option>

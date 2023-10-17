@@ -46,7 +46,7 @@
 <div>
     <nav id="sidebarMenu" class="bg-dark sidebar">
         <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4">
+            <div class="list-group list-group-flush mx-3 mt-5">
                 <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                 </a>
