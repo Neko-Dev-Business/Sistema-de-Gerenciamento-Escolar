@@ -71,10 +71,10 @@
             next: "<span class='fc-text-arrow'>›</span>",
             prevYear: "<span class='fc-text-arrow'>«</span>",
             nextYear: "<span class='fc-text-arrow'>»</span>",
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: 'hoje',
+            month: 'mês',
+            week: 'semana',
+            day: 'dia'
         },
 
         // jquery-ui theming
