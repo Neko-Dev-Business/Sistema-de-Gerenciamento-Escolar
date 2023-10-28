@@ -16,26 +16,7 @@
     <link rel="stylesheet" href="/css/template.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <style>
-        .bold-font {
-            font-weight: bold;
-        }
-        .card-icon {
-            font-size: 2rem;
-            float: right;
-            margin-right: 10px;
-            margin-top: -5px;
-        }
-        .fade-in {
-            animation: fadeIn 1s;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+
     </style>
 </head>
 <body>

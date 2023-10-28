@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
 use Illuminate\Contracts\Session\Session;
-
-
+use App\Http\Controllers\AnoLetivoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,3 +100,7 @@ Route::delete('/disciplinas/{idAluno}', [DisciplinaController::class, 'destroy']
 Route::get('/disciplinas/edit/{idAluno}', [DisciplinaController::class, 'edit'])->name('disciplinas.edit');
 Route::put('/disciplinas/{idAluno}', [DisciplinaController::class, 'update'])->name('disciplinas.update');
 Route::post('/disciplinas', [DisciplinaController::class, 'store'])->name('disciplinas.store');
+
+
+
+Route::get('/anoletivo', [AnoLetivoController::class, 'index'])->name('anoletivo.index');

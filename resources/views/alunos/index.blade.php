@@ -45,5 +45,5 @@
         </tbody>
     </table>
 
-    {{-- {{ $cargos->links('paginacao') }} --}}
+    {{-- {{ $alunos->links('paginacao') }} --}}
 @endsection
