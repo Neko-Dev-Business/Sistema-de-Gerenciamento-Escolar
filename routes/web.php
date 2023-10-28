@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\DisciplinaController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
@@ -92,3 +93,11 @@ Route::get('/alunos/edit/{idAluno}', [AlunoController::class, 'edit'])->name('al
 Route::put('/alunos/{idAluno}', [AlunoController::class, 'update'])->name('alunos.update');
 Route::post('/alunos', [AlunoController::class, 'store'])->name('alunos.store');
 
+
+//ROTA DE DISCIPLINA
+Route::get('/disciplinas', [DisciplinaController::class, 'index'])->name('disciplinas.index');
+Route::get('/disciplinas/create', [DisciplinaController::class, 'create'])->name('disciplinas.create');
+Route::delete('/disciplinas/{idAluno}', [DisciplinaController::class, 'destroy'])->name('disciplinas.destroy');
+Route::get('/disciplinas/edit/{idAluno}', [DisciplinaController::class, 'edit'])->name('disciplinas.edit');
+Route::put('/disciplinas/{idAluno}', [DisciplinaController::class, 'update'])->name('disciplinas.update');
+Route::post('/disciplinas', [DisciplinaController::class, 'store'])->name('disciplinas.store');

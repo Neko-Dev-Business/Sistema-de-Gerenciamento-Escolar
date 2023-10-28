@@ -21,7 +21,7 @@
 
 <form action="" method="get" class="mb-3 d-flex justify-content-end">
     <div class="input-group me-3">
-        <input type="text" name="buscaPessoa" class="form-control form-control-lg" placeholder="Nome da Pessoa">
+        <input type="text" name="buscaPessoa" class="form-control form-control-lg" placeholder="Pesquisar por Nome">
         <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
     </div>
     <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg">Limpar</a>
