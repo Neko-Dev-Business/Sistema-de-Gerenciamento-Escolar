@@ -3,63 +3,97 @@
 @section('title', 'Relatórios')
 
 @section('conteudo')
-<div class="container mt-4">
-    <h1>Relatórios</h1>
-    <form action="#" method="post" id="relatorio-form">
-        @csrf
-        <div class="form-group">
-            <label for="tipo">Relatório:</label>
-            <select name="tipo" id="tipo" class="form-control">
-                <option>Selecione</option>
-                <option value="CM">Comprovante de Matrícula</option>
-                <option value="RM">Relação de Alunos Matriculados</option>
-            </select>
+<div class="col-lg-12">
+
+    <div class="row d-flex align-items-center">
+
+        <div class="col-lg-8 p-0">
+            <h5 class='mt-2'>Boletim do aluno</h5>
         </div>
-        <div id="cm-fields" class="form-group" style="display: none;">
-            <label for="nome">Nome do Aluno:</label>
-            <input type="text" name="nome" id="nome" class="form-control">
+
+        <div class="col-lg-4 p-0">
+
+            <div class="row collapse-options-container">
+
+                <a class="font-weight-bold" href="#"><span id="printBuleetin" class="printer-icon"><i class="fas fa-download mr-2"></i> Baixar boletim</span></a>
+
+            </div>
+
         </div>
-        <div id="rm-fields" class="form-group" style="display: none;">
-            <label for="ano">Ano:</label>
-            <select name="ano" id="ano" class="form-control">
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-            </select>
-            <label for="turma">Período:</label>
-            <select name="turma" id="turma" class="form-control">
-                <option value="A">9° Ano</option>
-                <option value="B">8° Ano</option>
-                <option value="C">7° Ano</option>
-                <option value="D">6° Ano</option>
-                <option value="E">5° Ano</option>
-                <option value="F">4° Ano</option>
-                <option value="G">3° Ano</option>
-                <option value="H">2° Ano</option>
-                <option value="I">1° Ano</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary mt-4">Gerar Relatório</button>
-    </form>
+
+    </div>
 </div>
 
-<script>
-    const tipoSelect = document.getElementById('tipo');
-    const cmFields = document.getElementById('cm-fields');
-    const rmFields = document.getElementById('rm-fields');
 
-    tipoSelect.addEventListener('change', function () {
-        const selectedTipo = tipoSelect.value;
+<div class="col-lg-12 table-responsive p-0" id="table-bulletin-print">
 
-        if (selectedTipo === 'CM') {
-            cmFields.style.display = 'block';
-            rmFields.style.display = 'none';
-        } else if (selectedTipo === 'RM') {
-            rmFields.style.display = 'block';
-            cmFields.style.display = 'none';
-        } else {
-            cmFields.style.display = 'none';
-            rmFields.style.display = 'none';
-        }
-    });
-</script>
+    <table id="table-bulletin" class="table table-bordered mt-3">
+
+        <thead class="text-center">
+
+            <tr>
+                <th rowspan="2" scope="col" style="vertical-align : middle;text-align:center;">Disciplinas</th>
+                <th colspan="2" scope="col">UNIDADE I</th>
+                <th colspan="2" scope="col">UNIDADE II</th>
+                <th colspan="2" scope="col">UNIDADE III</th>
+                <th colspan="2" scope="col">UNIDADE IV</th>
+                <th rowspan="2" scope="col" style="vertical-align : middle;text-align:center;">Média final</th>
+                <th rowspan="2" scope="col" style="vertical-align : middle;text-align:center;">Resultado final</th>
+            </tr>
+
+            <tr>
+                <th class="" scope="col">Nota</th>
+                <th class="" scope="col">Faltas</th>
+                <th class="" scope="col">Nota</th>
+                <th class="" scope="col">Faltas</th>
+                <th class="" scope="col">Nota</th>
+                <th class="" scope="col">Faltas</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+  <tr class="text-center">
+                    <td>PORTUGUES</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+ <tbody>
+  <tr class="text-center">
+                    <td>PORTUGUES</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+
+
+        </tbody>
+
+        <tfoot>
+
+            <tr>
+                <td colspan="9" class="text-center">Situação do aluno(a): APROVADO</td>
+
+            </tr>
+
+        </tfoot>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+troque esses campos por
 @endsection
