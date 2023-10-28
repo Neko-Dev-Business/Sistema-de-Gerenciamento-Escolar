@@ -15,6 +15,6 @@ class Turma extends Model
         'anoTurma',
         'nomeTurma',
         'turnoTurma',
-        'salaTurma',
+        'anoLetivoTurma',
     ];
 }
