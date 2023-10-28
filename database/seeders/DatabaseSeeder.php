@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(UFTableSeeder::class);
         $this->call(DisciplinaSeeder::class);
+        $this->call(TurmaTableSeeder::class);
     }
 }
