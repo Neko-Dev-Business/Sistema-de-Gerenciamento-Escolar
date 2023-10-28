@@ -20,7 +20,7 @@ class UsuarioController extends Controller
 
         // Busca usuários com base no parâmetro de busca (nome)
         $usuarios = User::where('name', 'like', '%' . $request->buscaUsuario . '%')->orderBy('name', 'asc')->get();
-        
+
         // Contagem total de usuários
         $totalUsuarios = User::all()->count();
 
@@ -34,7 +34,7 @@ class UsuarioController extends Controller
     {
         // Autorização de acesso usando Gates
         Gate::authorize('acessar-usuarios');
-        
+
         // Retorna a view de criação de usuário
         return view('usuarios.create');
     }
@@ -43,7 +43,7 @@ class UsuarioController extends Controller
     {
         // Autorização de acesso usando Gates
         Gate::authorize('acessar-usuarios');
-        
+
         // Converte a requisição para um array associativo
         $input = $request->toArray();
 
@@ -51,10 +51,10 @@ class UsuarioController extends Controller
         if (!empty($input['foto'] && $input['foto']->isValid())) {
             // Obtém o nome hash da foto
             $nomeArquivo = $input['foto']->hashName();
-            
+
             // Faz o upload da foto para a pasta 'public/usuarios'
             $input['foto']->store('public/usuarios');
-            
+
             // Define o nome do arquivo no campo 'foto'
             $input['foto'] = $nomeArquivo;
         } else {
@@ -63,7 +63,7 @@ class UsuarioController extends Controller
 
         // Criptografa a senha usando bcrypt
         $input['password'] = bcrypt($input['password']);
-        
+
         // Cria um novo usuário no banco de dados
         User::create($input);
 
@@ -75,12 +75,12 @@ class UsuarioController extends Controller
     /* DELETAR USUÁRIOS */
     public function destroy($id)
     {
-        // Encontra o usuário pelo ID
+        // Encontra o usuárioa pelo ID
         $usuario = User::find($id);
-        
+
         // Exclui a foto associada ao usuário da pasta 'public/usuarios'
         Storage::delete('public/usuarios/' . $usuario['foto']);
-        
+
         // Deleta o usuário
         $usuario->delete();
 
@@ -103,7 +103,7 @@ class UsuarioController extends Controller
     {
         // Encontra o usuário pelo ID
         $usuario = User::find($id);
-        
+
         // Converte a requisição para um array associativo
         $input = $request->toArray();
 
@@ -111,17 +111,17 @@ class UsuarioController extends Controller
         if (!empty($input['foto']) && $input['foto']->isValid()) {
             // Exclui a foto anterior associada ao usuário da pasta 'public/usuarios'
             Storage::delete('public/usuarios/' . $usuario['foto']);
-            
+
             // Obtém o nome hash da nova foto
             $nomeArquivo = $input['foto']->hashName();
-            
+
             // Faz o upload da nova foto para a pasta 'public/usuarios'
             $input['foto']->store('public/usuarios');
-            
+
             // Define o nome do arquivo no campo 'foto'
             $input['foto'] = $nomeArquivo;
         }
-        
+
         // Verifica se a senha está sendo alterada
         if ($input['password'] != null) {
             // Criptografa a nova senha usando bcrypt
@@ -154,7 +154,7 @@ class UsuarioController extends Controller
     {
         // Converte a requisição para um array associativo
         $input = $request->toArray();
-        
+
         // Encontra o usuário pelo ID
         $usuario = User::find($id);
 
@@ -162,17 +162,17 @@ class UsuarioController extends Controller
         if (!empty($input['foto']) && $input['foto']->isValid()) {
             // Exclui a foto anterior associada ao usuário da pasta 'public/usuarios'
             Storage::delete('public/usuarios/' . $usuario['foto']);
-            
+
             // Obtém o nome hash da nova foto
             $nomeArquivo = $input['foto']->hashName();
-            
+
             // Faz o upload da nova foto para a pasta 'public/usuarios'
             $input['foto']->store('public/usuarios');
-            
+
             // Define o nome do arquivo no campo 'foto'
             $input['foto'] = $nomeArquivo;
         }
-        
+
         // Preenche o modelo do usuário com os dados atualizados e salva
         $usuario->fill($input);
         $usuario->save();
@@ -186,7 +186,7 @@ public function updatepass(Request $request, $id)
 {
     // Encontra o usuário pelo ID
     $usuario = User::find($id);
-    
+
     // Converte a requisição para um array associativo
     $input = $request->toArray();
 
