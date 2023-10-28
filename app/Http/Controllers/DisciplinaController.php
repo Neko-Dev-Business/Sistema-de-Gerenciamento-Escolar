@@ -19,10 +19,10 @@ class DisciplinaController extends Controller
 
     public function index(Request $request)
     {
-        $disciplinas = DB::table('disciplina')
+        $disciplinas = DB::table('disciplinas')
         ->where('nomeDisciplina', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomeDisciplina','asc')->paginate(30);
 
-        $totalDisciplinas = Endereco::all()->count();
+        $totalDisciplinas = Disciplina::all()->count();
         return view('disciplinas.index', compact('disciplinas', 'totalDisciplinas'));
     }
 
