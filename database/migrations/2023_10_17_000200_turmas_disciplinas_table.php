@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('disciplinas', function (Blueprint $table) {
+        Schema::create('turmas_disciplinas', function (Blueprint $table) {
+            $table->unsignedBigInteger('idTurma');
+            $table->unsignedBigInteger('idDisciplina');
             $table->foreign('idTurma')->references('idTurma')->on('turmas')
             ->onUpdate('restrict')->onDelete('restrict');
             $table->foreign('idDisciplina')->references('idDisciplina')->on('disciplinas')
