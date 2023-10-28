@@ -1,14 +1,80 @@
-:root {
-    /* VARIÁVEIS */
-    --bg: #1F49AD; /* rgb(31, 73, 173); */
-    --fnt: #ffffff;
-    --bg-alt: #1C429C;
-    /* endVARIÁVEIS */
+
+
+.bold-font {
+    font-weight: bold;
+}
+.card-icon {
+    font-size: 2rem;
+    float: right;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+.fade-in {
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-/* form input {
+form input {
   text-transform: uppercase;
-} */
+}
+
+body {
+    background-color: #fafafa;
+}
+
+@media (min-width: 991.98px) {
+    main {
+        padding-left: 150px;
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Inicialmente, oculte o menu lateral */
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transition: all 0.3s;
+}
+
+.sidebar.active {
+    left: 0; /* Quando ativo, mostre o menu lateral */
+}
+
+.content {
+    margin-left: 0; /* Adicione margem à direita para acomodar o menu lateral visível */
+    transition: margin 0.3s;
+}
+
+.content.active {
+    margin-left: 250px; /* Quando ativo, ajuste a margem para exibir o menu lateral */
+}
+
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.divConteudo {
+    margin-top: 5%;
+}
 
 .pagination {
   justify-content: center;
@@ -53,19 +119,52 @@
 
   /* ------------ LOGIN ------------ */
   #login {
-    background-image: url("/imagens/bg_login.jpg");
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
+    background-image: url("/images/layout/bg_login.jpg");
+    background-size: 4/6;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-@media (min-width: 992px) {
-  #login {
-    margin-top: -58.59px;
-  }
-  }
+
+.login-container {
+    background: white;
+    width: 2/6;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+}
+
+.form-label {
+    font-size: 1.25rem;
+}
+
+.form-control {
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.template-fnt-alt {
+    font-size: 0.9rem;
+}
+
   /* .template-btn {
     background-color: var(--bg);
     color: var(--fnt);

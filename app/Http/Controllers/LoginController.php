@@ -10,6 +10,11 @@ class LoginController extends Controller
     {
         return view('login.index');
     }
+    public function landing()
+    {
+        return view('login.landing');
+    }
+
 
     public function auth(Request $request)
     {

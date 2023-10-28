@@ -24,9 +24,11 @@ use Illuminate\Contracts\Session\Session;
 */
 
 //ROTA DE LOGIN
-Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/', [LoginController::class, 'landing'])->name('login.landing');
 Route::post('login/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('login/logout', [LoginController::class, 'logout'])->name('login.logout');
+Route::get('login/landing', [LoginController::class, 'landing'])->name('login.landing');
+Route::get('login/index', [LoginController::class, 'index'])->name('login.index');
 
 //ROTA DO DASHBOARD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -66,9 +68,6 @@ Route::put('/usuarios/atualizar/{id}', [UsuarioController::class, 'update_alt'])
 // Route::get('/usuarios/pass/{id}', [UsuarioController::class, 'pass'])->name('usuarios.pass');
 Route::put('/usuarios/updatepass/{id}', [UsuarioController::class, 'updatepass'])->name('usuarios.updatepass'); //trocar senha
 
-
-
-
 //ROTA DE PESSOA
 Route::get('/pessoas', [PessoaController::class, 'index'])->name('pessoas.index');
 Route::get('/pessoas/create', [PessoaController::class, 'create'])->name('pessoas.create');
@@ -81,7 +80,7 @@ Route::put('/pessoas/{idPessoa}', [PessoaController::class, 'update'])->name('pe
 Route::get('/professores', [ProfessorController::class, 'index'])->name('professores.index');
 Route::get('/professores/create', [ProfessorController::class, 'create'])->name('professores.create');
 Route::post('/professores', [ProfessorController::class, 'store'])->name('professores.store');
-Route::delete('/professores/{idProfessor}', [ProfessorController::class, 'destroy'])->name('professores.destroy'); 
+Route::delete('/professores/{idProfessor}', [ProfessorController::class, 'destroy'])->name('professores.destroy');
 Route::get('/professores/edit/{idProfessor}', [ProfessorController::class, 'edit'])->name('professores.edit');
 Route::put('/professores/{idProfessor}', [ProfessorController::class, 'update'])->name('professores.update');
 
