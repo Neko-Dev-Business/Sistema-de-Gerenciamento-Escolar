@@ -9,7 +9,7 @@ use App\Models\Pessoa;
 use App\Models\Endereco;
 use Illuminate\Support\Facades\DB;
 
-class PessoaController extends Controller
+class DisciplinaController extends Controller
 {
     public function __construct()
     {
