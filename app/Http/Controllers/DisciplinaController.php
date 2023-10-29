@@ -17,6 +17,7 @@ class DisciplinaController extends Controller
 
     }
 
+
     public function index(Request $request)
     {
         $disciplinas = DB::table('disciplinas')
@@ -36,7 +37,7 @@ class DisciplinaController extends Controller
     {
         $input = $request->toArray();
         Disciplina::create($input);
-    
+
         return redirect()->route('disciplinas.index')->with('Sucesso', 'Disciplina cadastrada com sucesso!');
     }
 

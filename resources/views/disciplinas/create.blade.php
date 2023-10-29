@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-@section('title', 'Ano Letivo')
+@section('title', 'Disciplinas')
 
 @section('conteudo')
 <div class="container">
-    <h1>Cadastro de Ano Letivo</h1>
+    <h1>Cadastro de Disciplinas</h1>
 
     <!-- Botão para adicionar Turma -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTurma">Adicionar Turma</button>
@@ -29,7 +29,7 @@
     </ul>
 </div>
 
-@include('turma.modal') <!-- Modal de Turma -->
+@include('turma.modal') <!-- Modal de Disciplinas -->
 @include('disciplina.modal') <!-- Modal de Disciplina -->
 
 @endsection

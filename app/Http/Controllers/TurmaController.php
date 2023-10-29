@@ -16,12 +16,18 @@ class TurmaController extends Controller
 
     public function index(Request $request)
     {
-        $turmas = DB::table('turmas')
-        ->where('nomeTurma', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomeTurma','asc')->paginate(30);
+        $filtro = $request->input('filtro', 'nomeTurma');
+        $busca = $request->input('busca');
 
-        $totalTurmas = Turma::all()->count();
+        $turmas = Turma::where($filtro, 'like', '%' . $busca . '%')
+            ->orderBy('nomeTurma', 'asc')
+            ->paginate(15);
+
+        $totalTurmas = Turma::count();
+
         return view('turmas.index', compact('turmas', 'totalTurmas'));
     }
+
 
     public function create()
     {
@@ -33,7 +39,7 @@ class TurmaController extends Controller
     {
         $input = $request->toArray();
         Turma::create($input);
-    
+
         return redirect()->route('turmas.index')->with('Sucesso', 'Turma cadastrada com sucesso!');
     }
 
