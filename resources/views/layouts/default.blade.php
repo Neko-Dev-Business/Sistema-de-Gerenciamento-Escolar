@@ -47,7 +47,7 @@
                 <a href="{{ route('turmas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Turmas</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                <a href="{{ route('disciplinas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadast. de Disciplinas</span>
                 </a>
                 <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">

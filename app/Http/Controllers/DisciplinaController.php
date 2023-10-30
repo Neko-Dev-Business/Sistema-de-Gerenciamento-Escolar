@@ -17,20 +17,25 @@ class DisciplinaController extends Controller
 
     }
 
-
     public function index(Request $request)
     {
-        $disciplinas = DB::table('disciplinas')
-        ->where('nomeDisciplina', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomeDisciplina','asc')->paginate(30);
+        $filtro = $request->input('filtro', 'nomeDisciplina');
+        $busca = $request->input('busca');
 
-        $totalDisciplinas = Disciplina::all()->count();
+        $disciplinas = Disciplina::where($filtro, 'like', '%' . $busca . '%')
+            ->orderBy('nomeDisciplina', 'asc')
+            ->simplePaginate(10);
+
+        $totalDisciplinas = Disciplina::count();
+
         return view('disciplinas.index', compact('disciplinas', 'totalDisciplinas'));
     }
+
 
     public function create()
     {
         $disciplinas = Disciplina::all();
-        return view('alunos.create', compact('disciplinas'));
+        return view('disciplinas.create', compact('disciplinas'));
     }
 
     public function store(Request $request)
