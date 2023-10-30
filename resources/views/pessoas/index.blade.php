@@ -21,7 +21,7 @@
         <input type="text" name="buscaPessoa" class="form-control form-control-lg" placeholder="Pesquisar por Nome">
         <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
     </div>
-    <div class="btn-group" role="group" aria-label="Turma actions">
+    <div class="btn-group" role="group" aria-label="Usuarios actions">
         <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
         <a href="{{ route('pessoas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
     </div>

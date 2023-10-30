@@ -5,6 +5,7 @@
 @section('conteudo')
 <div class="container">
         <h1>Turmas</h1>
+        <p>Total de Turmas: {{ $totalTurmas }}</p>
         <div class="container ">
             <form action="{{ route('turmas.index') }}" method="get" class="mb-3 d-flex justify-content-end">
                 <div class="input-group me-3">
@@ -19,7 +20,7 @@
                 </div>
                 <div class="btn-group" role="group" aria-label="Turma actions">
                     <a href="{{ route('turmas.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
-                    <a href="{{ route('turmas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
+                    <a href="{{ route('turmas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-plus-lg"></i></a>
                 </div>
             </form>
 
@@ -48,6 +49,7 @@
                         {{-- <a href="#" class="btn btn-primary" title="Editar" data-toggle="modal" data-target="#editarDisciplinaModal">
                             <i class="bi bi-pen" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
                         </a> --}}
+                        <a href="#" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $turma->idTurma }}"><i class="bi bi-trash"></i></a>
                         @include('turmas.delete')
                 </td>

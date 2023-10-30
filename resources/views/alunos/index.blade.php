@@ -9,8 +9,6 @@
     @endif--}}
 
     <h1 class="mb-4">Alunos</h1>
-    <a href="{{ route('alunos.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
-    rounded-circle fs-4"><i class="bi bi-plus-lg"></i></a>
     <p>Total de Alunos: {{ $totalAlunos }}</p>
 
 <form action="" method="get" class="mb-3 d-flex justify-content-end">
@@ -18,7 +16,13 @@
         <input type="text" name="buscaAlunos" class="form-control form-control-lg" placeholder="Nome do Aluno">
         <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
     </div>
-    <a href="{{ route('alunos.index') }}" class="btn btn-light border btn-lg">Limpar</a>
+    <div>
+
+    </div>
+    <div class="btn-group" role="group" aria-label="Alunos actions">
+        <a href="{{ route('alunos.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
+        <a href="{{ route('alunos.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-plus-lg"></i></a>
+    </div>
 </form>
     <table class="table table-striped ">
         <thead class="table-dark">
