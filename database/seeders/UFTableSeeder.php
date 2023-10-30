@@ -17,7 +17,7 @@ class UFTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('uf')->delete();
+        DB::table('ufs')->delete();
 
         $this->createNewUsers();
     }
@@ -56,6 +56,6 @@ class UFTableSeeder extends Seeder
             ['ufSigla' => 'TO', 'ufDescricao' => 'Tocantins'],
             ['ufSigla' => 'EX', 'ufDescricao' => 'Estrangeiro'],
         ];
-        DB::table('uf')->insert($d);
+        DB::table('ufs')->insert($d);
     }
 }

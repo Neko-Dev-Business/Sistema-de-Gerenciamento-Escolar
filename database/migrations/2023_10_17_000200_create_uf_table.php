@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('uf', function (Blueprint $table) {
+        Schema::create('ufs', function (Blueprint $table) {
             $table->id();
             $table->char('ufSigla', 2);
             $table->string('ufDescricao', 50);
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uf');
+        Schema::dropIfExists('ufs');
     }
 };
