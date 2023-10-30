@@ -24,7 +24,7 @@ class PessoaController extends Controller
         ->where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')
         ->simplePaginate(10);
 
-        $totalPessoas = Endereco::all()->count();
+        $totalPessoas = Pessoa::all()->count();
         return view('pessoas.index', compact('pessoas', 'totalPessoas'));
     }
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
 use Illuminate\Contracts\Session\Session;
 use App\Http\Controllers\TurmaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

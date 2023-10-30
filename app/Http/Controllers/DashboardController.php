@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalProfessores = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalProfessores'))->where(DB::raw('tipoUsuario'), '=', DB::raw('4'))->first();
+        $totalProfessores = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalProfessores'))->where(DB::raw('tipoUsuario'), '=', DB::raw('3'))->first();
 
         $totalAlunos = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalAlunos'))->where(DB::raw('tipoUsuario'), '=', DB::raw('1'))->first();
 
