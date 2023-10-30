@@ -26,7 +26,9 @@
         <thead class="table-dark">
             <tr class="text-center">
                 <th width="60">ID</th>
-                <th>Nome</th>
+                <th>Código</th>
+                <th>Nome da Disciplina</th>
+                <th>Carga Horária</th>
                 <th width="160">Ação</th>
             </tr>
         </thead>
@@ -34,7 +36,9 @@
           @foreach ($disciplinas as $disciplina)
             <tr>
                 <td class="align-middle text-center">{{ $disciplina->idDisciplina }}</td>
+                <td class="align-middle text-center">EFI01</td>
                 <td class="align-middle text-center">{{ $disciplina->nomeDisciplina }}</td>
+                <td class="align-middle text-center">60 Horas</td>
                     <td class="align-middle text-center">
                         <a href="#" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $disciplina->idDisciplina }}"><i class="bi bi-trash"></i></a>

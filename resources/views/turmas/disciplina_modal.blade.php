@@ -14,13 +14,52 @@
             <div class="modal-body">
                 <!-- Formulário para adicionar disciplina -->
                 <form>
-                    <!-- Campos do formulário para adicionar disciplina -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault" >
-                            Teste
-                        </label>
-                    </div>
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr class="text-center">
+                                <th width="60">Escolha</th>
+                                <th>Código</th>
+                                <th>Nome da Disciplina</th>
+                                <th>Carga Horária</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($turmas as $turma)
+                            <tr>
+                                <td class="align-middle text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault" ></label>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">EFI01</td>
+                                <td class="align-middle text-center">#</td>
+                                <td class="align-middle text-center">60 Horas</td>
+                            </tr>
+                           @endforeach
+                        </tbody>
+                    </table>
+                    <!-- Exibir os botões de navegação das páginas -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            @if($turmas->previousPageUrl())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $turmas->previousPageUrl() }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span> Anterior
+                                    </a>
+                                </li>
+                            @endif
+                    
+                            @if($turmas->nextPageUrl())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $turmas->nextPageUrl() }}" aria-label="Next">
+                                        Próximo <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
+                    
                 </form>
 
             </div>

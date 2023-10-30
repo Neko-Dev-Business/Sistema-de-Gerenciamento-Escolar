@@ -12,6 +12,8 @@ class Disciplina extends Model
     protected $primaryKey = 'idDisciplina';
 
     protected $fillable = [
+        'codigoDisciplina',
         'nomeDisciplina',
+        'cargaHorariaDisciplina',
     ];
 }
