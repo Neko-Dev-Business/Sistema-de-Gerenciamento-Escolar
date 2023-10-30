@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
 use Illuminate\Contracts\Session\Session;
 use App\Http\Controllers\TurmaController;
-
+use App\Http\Controllers\RelatorioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -110,4 +110,5 @@ Route::get('/turmas/edit/{idTurma}', [TurmaController::class, 'edit'])->name('tu
 Route::put('/turmas/{idTurma}', [TurmaController::class, 'update'])->name('turmas.update');
 Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
 
-
+//ROTA DE RELATORIO
+Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');

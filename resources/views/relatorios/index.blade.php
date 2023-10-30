@@ -10,7 +10,9 @@
         </div>
         <div class="col-lg-4 p-0">
             <div class="row collapse-options-container">
-                <a class="font-weight-bold" href="#"><span id="printBuleetin" class="printer-icon"><i class="fas fa-download mr-2"></i> Baixar boletim</span></a>
+                <a href="{{ route('gerarRelatorioTurmas') }}" class="btn btn-primary">
+                    <i class="fas fa-download mr-2"></i> Baixar Relatório de Turmas
+                </a>
             </div>
         </div>
     </div>
@@ -84,7 +86,7 @@
         </tbody>
 
         <tbody>
-            
+
         </tbody>
 
         <tfoot>
