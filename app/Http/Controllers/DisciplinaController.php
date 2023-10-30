@@ -19,6 +19,7 @@ class DisciplinaController extends Controller
 
     public function index(Request $request)
     {
+
         $filtro = $request->input('filtro', 'nomeDisciplina');
         $busca = $request->input('busca');
 
@@ -56,8 +57,8 @@ class DisciplinaController extends Controller
 
     public function edit($idDisciplina)
     {
-        $disciplinas = Disciplina::find($idDisciplina);
-        return view('disciplinas.edit', compact('disciplinas'));
+        $disciplina = Disciplina::find($idDisciplina);
+        return view('disciplinas.edit', compact('disciplina'));
     }
 
     public function update(Request $request, $idDisciplina)

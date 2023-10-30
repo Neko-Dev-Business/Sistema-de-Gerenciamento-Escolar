@@ -40,7 +40,7 @@
                 <td class="align-middle text-center">{{ $disciplina->nomeDisciplina }}</td>
                 <td class="align-middle text-center">{{ $disciplina->cargaHorariaDisciplina }}</td>
                     <td class="align-middle text-center">
-                        <a href="#" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
+                        <a href="{{ route('disciplinas.edit', $disciplina->idDisciplina) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $disciplina->idDisciplina }}"><i class="bi bi-trash"></i></a>
                         @include('disciplinas.delete')
                 </td>
@@ -58,7 +58,7 @@
                     </a>
                 </li>
             @endif
-    
+
             @if($disciplinas->nextPageUrl())
                 <li class="page-item">
                     <a class="page-link" href="{{ $disciplinas->nextPageUrl() }}" aria-label="Next">
