@@ -22,7 +22,7 @@
         <div class="col-md-4">
             <label for="cargaHorariaDisciplina" class="form-label fs-5">Carga Horária (Horas)</label>
             <input type="number" class="form-control form-control-lg bg-light" id="cargaHorariaDisciplina" name="cargaHorariaDisciplina"
-            value="{{ $disciplina->cargaHorariaDisciplina }} " required>
+            value="{{ $disciplina->cargaHorariaDisciplina }}" required>
         </div>
         <div class="mt-5">
             <button type="submit" class="btn btn-primary btn-lg">Alterar</button>
