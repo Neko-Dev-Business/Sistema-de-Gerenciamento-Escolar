@@ -61,7 +61,25 @@
             @endforeach
         </tbody>
     </table>
+    <!-- Exibir os botões de navegação das páginas -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if($pessoas->previousPageUrl())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $pessoas->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span> Anterior
+                    </a>
+                </li>
+            @endif
 
-    {{ $pessoas->links() }}
+            @if($pessoas->nextPageUrl())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $pessoas->nextPageUrl() }}" aria-label="Next">
+                        Próximo <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            @endif
+        </ul>
+    </nav>
 @endsection
 
