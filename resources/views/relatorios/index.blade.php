@@ -64,9 +64,6 @@
                 <td>7,8</td>
                 <td>APROVADO</td>
             </tr>
-        </tbody>
-
-        <tbody>
             <tr class="text-center">
                 <td>MATEMÁTICA</td>
                 <td>9,0</td>
@@ -84,6 +81,10 @@
                 <td>7,5</td>
                 <td>APROVADO</td>
             </tr>
+        </tbody>
+
+        <tbody>
+            
         </tbody>
 
         <tfoot>
