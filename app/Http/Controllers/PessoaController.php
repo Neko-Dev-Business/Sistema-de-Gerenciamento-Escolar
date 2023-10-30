@@ -21,7 +21,8 @@ class PessoaController extends Controller
         // $pessoa = Pessoa::where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')->paginate(10);
         $pessoas = DB::table('pessoas')
         ->join('enderecos', 'enderecos.idPessoa', '=', 'pessoas.idPessoa', 'inner')
-        ->where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')->paginate(30);
+        ->where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')->orderBy('nomePessoa','asc')
+        ->simplePaginate(10);
 
         $totalPessoas = Endereco::all()->count();
         return view('pessoas.index', compact('pessoas', 'totalPessoas'));
@@ -29,7 +30,7 @@ class PessoaController extends Controller
 
     public function create()
     {
-        $UFs = DB::table('uf')->get();
+        $UFs = DB::table('ufs')->get();
         return view('pessoas.create', compact('UFs'));
     }
 
@@ -77,7 +78,7 @@ class PessoaController extends Controller
         $pessoas = Pessoa::find($idPessoa);
         $idEndereco = DB::table('enderecos')->select('idEndereco')->where('idPessoa', '=', $idPessoa)->first();
         $enderecos = Endereco::find($idEndereco->idEndereco);
-        $UFs = DB::table('uf')->get();
+        $UFs = DB::table('ufs')->get();
         return view('pessoas.edit', compact('pessoas', 'enderecos', 'UFs'));
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('idDisciplina');
             $table->string('codigoDisciplina');
             $table->string('nomeDisciplina');
-            $table->string('cargaHorariaDisciplina');
+            $table->integer('cargaHorariaDisciplina');
             $table->timestamps();
             });
     }

@@ -20,11 +20,10 @@ return new class extends Migration
             $table->string('bairroEndereco');
             $table->string('logradouroEndereco');
             $table->string('numeroEndereco', 20);
-            $table->char('cepEndereco', 8);
+            $table->char('cepEndereco', 9);
             $table->string('complementoEndereco')->nullable(true);
             $table->unsignedBigInteger('idPessoa');
-            $table->foreign('idPessoa')->references('idPessoa')->on('pessoas')
-            ->onUpdate('restrict')->onDelete('restrict');
+            //$table->foreign('idPessoa')->references('idPessoa')->on('pessoas');
             $table->timestamps();
             });
     }
