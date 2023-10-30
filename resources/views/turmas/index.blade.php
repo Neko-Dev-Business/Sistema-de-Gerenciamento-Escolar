@@ -57,6 +57,26 @@
            @endforeach
         </tbody>
     </table>
+    <!-- Exibir os botões de navegação das páginas -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if($turmas->previousPageUrl())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $turmas->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span> Anterior
+                    </a>
+                </li>
+            @endif
+    
+            @if($turmas->nextPageUrl())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $turmas->nextPageUrl() }}" aria-label="Next">
+                        Próximo <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            @endif
+        </ul>
+    </nav>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>

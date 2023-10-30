@@ -21,7 +21,7 @@ class TurmaController extends Controller
 
         $turmas = Turma::where($filtro, 'like', '%' . $busca . '%')
             ->orderBy('nomeTurma', 'asc')
-            ->paginate(15);
+            ->simplePaginate(10);
 
         $totalTurmas = Turma::count();
 
