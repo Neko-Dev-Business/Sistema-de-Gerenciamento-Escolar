@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nomeTurma');
             $table->string('turnoTurma');
             $table->string('anoLetivoTurma');
+            $table->string('salaTurma');
             $table->timestamps();
             });
     }

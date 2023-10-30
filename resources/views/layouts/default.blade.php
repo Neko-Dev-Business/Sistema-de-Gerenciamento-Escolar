@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg  navbar-dark mb-4 bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 bg-dark ">
         <div class="container d-flex flex-row-reverse">
               <li class="nav-item px-3 dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"><img class="template-user" src="/images/usuarios/nekodev.JPG"/>Daniel </a>

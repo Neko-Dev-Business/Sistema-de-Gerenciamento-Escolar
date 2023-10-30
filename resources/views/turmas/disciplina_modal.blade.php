@@ -1,6 +1,6 @@
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDisciplina">
-    <i class="bi bi-pen" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
+<!-- Modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDisciplina">
+    <i class="bi bi-plus" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
 </button>
 
 <!-- Modal de adicionar disciplinas -->
@@ -15,9 +15,11 @@
                 <!-- Formulário para adicionar disciplina -->
                 <form>
                     <!-- Campos do formulário para adicionar disciplina -->
-                    <div class="mb-3">
-                        <label for="nomeDisciplina" class="form-label">Nome da Disciplina</label>
-                        <input type="text" class="form-control" id="nomeDisciplina" name="nomeDisciplina">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault" >
+                            Teste
+                        </label>
                     </div>
                 </form>
 

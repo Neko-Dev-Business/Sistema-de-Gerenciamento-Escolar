@@ -14,9 +14,6 @@
 
     <h1 class="mb-4">Usuários</h1>
 
-    <a href="{{ route('pessoas.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
-    rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
-
     <p>Total de Pessoa: {{ $totalPessoas }}</p>
 
 <form action="" method="get" class="mb-3 d-flex justify-content-end">
@@ -24,7 +21,12 @@
         <input type="text" name="buscaPessoa" class="form-control form-control-lg" placeholder="Pesquisar por Nome">
         <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
     </div>
-    <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg">Limpar</a>
+    <div class="btn-group" role="group" aria-label="Turma actions">
+        <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
+        <a href="{{ route('pessoas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
+    </div>
+    
+    
 </form>
     <table class="table table-striped">
         <thead class="table-dark">

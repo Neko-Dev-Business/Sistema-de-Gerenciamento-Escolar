@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Ano Letivo')
+@section('title', 'Turmas')
 
 @section('conteudo')
 <div class="container">
@@ -12,12 +12,15 @@
                         <option value="anoLetivoTurma">Ano</option>
                         <option value="nomeTurma">Nome</option>
                         <option value="turnoTurma">Turno</option>
+                        <option value="salaTurma">Sala</option>
                     </select>
                     <input type="text" name="busca" class="form-control form-control-lg" placeholder="Pesquisar...">
                     <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
                 </div>
-                <a href="{{ route('turmas.index') }}" class="btn btn-light border btn-lg">Limpar</a>
-                <a href="{{ route('turmas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
+                <div class="btn-group" role="group" aria-label="Turma actions">
+                    <a href="{{ route('turmas.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
+                    <a href="{{ route('turmas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
+                </div>
             </form>
 
         </div>
@@ -39,9 +42,9 @@
                 <td class="align-middle text-center">{{ $turma->nomeTurma }}</td>
                 <td class="align-middle text-center">{{ $turma->turnoTurma }}</td>
                 <td class="align-middle text-center">{{ $turma->anoLetivoTurma }}</td>
-                <td class="align-middle text-center">#</td>
+                <td class="align-middle text-center">{{ $turma->salaTurma }}</td>
                     <td class="align-middle text-center">
-                        @include('disciplina_modal')
+                        @include('turmas.disciplina_modal')
                         {{-- <a href="#" class="btn btn-primary" title="Editar" data-toggle="modal" data-target="#editarDisciplinaModal">
                             <i class="bi bi-pen" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
                         </a> --}}
