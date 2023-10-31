@@ -7,7 +7,7 @@
     <style>
         /* Estilos CSS personalizados aqui */
         body {
-            border: 2cm; /* Adiciona borda de 2cm */
+            border: 1cm;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
