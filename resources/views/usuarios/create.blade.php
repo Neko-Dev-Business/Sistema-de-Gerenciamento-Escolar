@@ -139,13 +139,8 @@
         <button type="submit" class="btn btn-primary mt-5">Cadastrar</button>
     </form>
 
-    <!-- Corrija a URL do arquivo Bootstrap sem o sinal "@" -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/template.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Corrija a URL do arquivo Bootstrap sem o sinal "@" -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/template.js"></script>
     <script>
         function generateEmail() {

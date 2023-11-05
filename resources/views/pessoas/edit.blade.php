@@ -4,59 +4,69 @@
 
 @section('conteudo')
     <h1 class="mb-5">Editar Usuário</h1>
-    <form class="row g-4" method="POST" action="{{ route('pessoas.store') }}" enctype="multipart/form-data">
+    <form class="row g-4" method="POST" action="{{ route('pessoas.update', $pessoas->idPessoa) }}">
         @csrf
-
-         <!-- Abas para alternar entre "Informações Pessoais" e "Endereço" -->
-         <ul class="nav nav-tabs" id="myTabs">
+        @method('PUT')
+        <!-- Abas para alternar entre "Informações Pessoais" e "Endereço" -->
+        <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
-                <a class="nav-link active" id="pessoais-tab" data-bs-toggle="tab" href="#pessoais" role="tab" aria-controls="pessoais" aria-selected="true">Informações Pessoais</a>
+                <a class="nav-link active" id="pessoais-tab" data-bs-toggle="tab" href="#pessoais" role="tab"
+                    aria-controls="pessoais" aria-selected="true">Informações Pessoais</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="endereco-tab" data-bs-toggle="tab" href="#endereco" role="tab" aria-controls="endereco" aria-selected="false">Endereço</a>
+                <a class="nav-link" id="endereco-tab" data-bs-toggle="tab" href="#endereco" role="tab"
+                    aria-controls="endereco" aria-selected="false">Endereço</a>
             </li>
         </ul>
-
-        <!-- Conteúdo das abas -->
         <div class="tab-content" id="myTabContent">
             <!-- Aba "Endereço" -->
             <div class="tab-pane fade mt-3" id="endereco" role="tabpanel" aria-labelledby="endereco-tab">
+                <!-- Aqui você incluirá os campos de endereço, preenchendo-os com os dados do endereço -->
                 <div class="row">
                     <div class="col-md-6">
                         <!-- Campos de Endereço -->
                         <div class="form-group">
                             <label for="cepEndereco">CEP:</label>
-                            <input type="text" class="form-control form-control-lg bg-light" id="cepEndereco" name="cepEndereco"
-                                required onblur="pesquisaCep(this.value);" maxlength="9">
+                            <input type="text" class="form-control form-control-lg bg-light" id="cepEndereco"
+                                name="cepEndereco" required onblur="pesquisaCep(this.value);" maxlength="9"
+                                value="{{ $enderecos->cepEndereco }}" required>
                         </div>
                         <div class="form-group">
                             <label for="logradouroEndereco">Rua:</label>
-                            <input type="text" class="form-control" id="logradouroEndereco" name="logradouroEndereco" required>
+                            <input type="text" class="form-control" id="logradouroEndereco" name="logradouroEndereco"
+                                value="{{ $enderecos->logradouroEndereco }}" required>
                         </div>
                         <div class="form-group">
                             <label for="numeroEndereco">Número:</label>
-                            <input type="text" class="form-control" id="numeroEndereco" name="numeroEndereco" required>
+                            <input type="text" class="form-control" id="numeroEndereco" name="numeroEndereco"
+                                value="{{ $enderecos->numeroEndereco }}" required>
                         </div>
                         <div class="form-group">
                             <label for="complementoEndereco">Complemento:</label>
-                            <input type="text" class="form-control" id="complementoEndereco" name="complementoEndereco">
+                            <input type="text" class="form-control" id="complementoEndereco" name="complementoEndereco"
+                                value="{{ $enderecos->complementoEndereco }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bairroEndereco">Bairro:</label>
-                            <input type="text" class="form-control" id="bairroEndereco" name="bairroEndereco" required>
+                            <input type="text" class="form-control" id="bairroEndereco" name="bairroEndereco"
+                                value="{{ $enderecos->bairroEndereco }}" required>
                         </div>
                         <div class="form-group">
                             <label for="cidadeEndereco">Cidade:</label>
-                            <input type="text" class="form-control" id="cidadeEndereco" name="cidadeEndereco" required>
+                            <input type="text" class="form-control" id="cidadeEndereco" name="cidadeEndereco"
+                                value="{{ $enderecos->cidadeEndereco }}" required>
                         </div>
                         <div class="form-group">
                             <label for="ufEndereco">Estado:</label>
                             <select class="form-select form-select-lg bg-light" id="ufEndereco" name="ufEndereco" required>
-                                <option value=""></option>
+                                <option value="">Selecione</option>
                                 @foreach ($UFs as $uf)
-                                    <option value=" {{ $uf->ufSigla }} "> {{ $uf->ufDescricao }} </option>
+                                    <option value="{{ $uf->ufSigla }}"
+                                        {{ $uf->ufSigla == $enderecos->ufEndereco ? 'selected' : '' }}>
+                                        {{ $uf->ufDescricao }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -70,12 +80,13 @@
                         <!-- Campos de Informações Pessoais -->
                         <!--Tipo da Pessoa-->
                         <div class="form-group">
-                            <label for="tipoPessoa" class="form-label fs-5 fs-5">Tipo da Pessoa</label>
-                            <select name="tipoPessoa" id="tipoPessoa" class="form-select form-select-lg bg-light" onchange="controleTipo()"
-                                required>
-                                <option value="" selected="selected">Selecione</option>
-                                <option value="F">Física</option>
-                                <option value="J">Jurídica</option>
+                            <label for="tipoPessoa" class="form-label fs-5">Tipo da Pessoa</label>
+                            <select name="tipoPessoa" id="tipoPessoa" class="form-select form-select-lg bg-light"
+                                onchange="controleTipo()" required>
+                                <option value="">Selecione</option>
+                                <option value="F" {{ $pessoas->tipoPessoa == 'F' ? 'selected' : '' }}>Física</option>
+                                <option value="J" {{ $pessoas->tipoPessoa == 'J' ? 'selected' : '' }}>Jurídica
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -83,91 +94,99 @@
                     <div class="col-md-6">
                         <div class="form-group" id="div-cpfPessoa">
                             <label for="cpfPessoa">CPF:</label>
-                            <input type="text" class="form-control" id="cpfPessoa" name="cpfPessoa" placeholder="Apenas Números" pattern="\d*" 
-                                maxlength="14" minlength="11">
+                            <input type="text" class="form-control" id="cpfPessoa" name="cpfPessoa"
+                                value="{{ $pessoas->cpfPessoa }}" placeholder="Apenas Números" pattern="\d*"
+                                maxlength="14" minlength="11" required>
                         </div>
                         <div class="form-group" id="div-rgPessoa">
                             <label for="rgPessoa">RG:</label>
-                            <input type="text" class="form-control" id="rgPessoa" name="rgPessoa">
+                            <input type="text" class="form-control" id="rgPessoa" name="rgPessoa"
+                                value="{{ $pessoas->rgPessoa }}" required>
                         </div>
                         <div class="form-group" id="div-dataNascimentoPessoa">
                             <label for="dataNascimentoPessoa">Data de Nascimento:</label>
-                            <input type="date" class="form-control" id="dataNascimentoPessoa" name="dataNascimentoPessoa">
+                            <input type="date" class="form-control" id="dataNascimentoPessoa"
+                                name="dataNascimentoPessoa" value="{{ $pessoas->dataNascimentoPessoa }}" required>
                         </div>
                         <div class="form-group" id="div-generoPessoa">
                             <label for="generoPessoa">Gênero:</label>
-                            <select class="form-select" id="generoPessoa" name="generoPessoa">
+                            <select class="form-select" id="generoPessoa" name="generoPessoa" required>
                                 <option value="">Selecione</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
+                                <option value="M" {{ $pessoas->generoPessoa == 'M' ? 'selected' : '' }}>Masculino
+                                </option>
+                                <option value="F" {{ $pessoas->generoPessoa == 'F' ? 'selected' : '' }}>Feminino
+                                </option>
                             </select>
-                        </div>  
+                        </div>
                         <div class="form-group" id="div-nacionalidadePessoa">
                             <label for="nacionalidadePessoa">Nacionalidade:</label>
-                            <input type="text" class="form-control" id="nacionalidadePessoa" name="nacionalidadePessoa">
+                            <input type="text" class="form-control" id="nacionalidadePessoa"
+                                name="nacionalidadePessoa" value="{{ $pessoas->nacionalidadePessoa }}" required>
                         </div>
                         <div class="form-group" id="div-nomePaiPessoa">
                             <label for="nomePaiPessoa">Filiação (Pai):</label>
-                            <input type="text" class="form-control" id="nomePaiPessoa" name="nomePaiPessoa">
+                            <input type="text" class="form-control" id="nomePaiPessoa" name="nomePaiPessoa"
+                                value="{{ $pessoas->nomePaiPessoa }}" required>
                         </div>
                         <div class="form-group" id="div-nomeMaePessoa">
-                            <label for="nomeMaePessoa" >Filiação (Mãe):</label>
-                            <input type="text" class="form-control" id="nomeMaePessoa" name="nomeMaePessoa">
+                            <label for="nomeMaePessoa">Filiação (Mãe):</label>
+                            <input type="text" class="form-control" id="nomeMaePessoa" name="nomeMaePessoa"
+                                value="{{ $pessoas->nomeMaePessoa }}" required>
                         </div>
-                        <!-- Pessoa Jurídica -->
-                        <div class="form-group" id="div-cnpjPessoa">
+                    </div>
+                    <!-- Pessoa Jurídica -->
+                    <div class="col-md-6" id="div-cnpjPessoa"
+                        style="{{ $pessoas->tipoPessoa == 'F' ? 'display: none;' : '' }}">
+                        <div class="form-group">
                             <label for="cnpjPessoa">CNPJ:</label>
-                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa" placeholder="Apenas Números" 
-                                   maxlength="20" minlength="14" onblur="pesquisaCNPJ(this.value);">
+                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa"
+                                value="{{ $pessoas->cnpjPessoa }}" placeholder="Apenas Números" maxlength="20"
+                                minlength="14">
                         </div>
                     </div>
                     <!-- Outras Informações Pessoais -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nomePessoa">Nome:</label>
-                            <input type="text" class="form-control" id="nomePessoa" name="nomePessoa">
+                            <input type="text" class="form-control" id="nomePessoa" name="nomePessoa"
+                                value="{{ $pessoas->nomePessoa }}" required>
                         </div>
                         <div class="form-group">
                             <label for="emailPessoa">E-mail:</label>
-                            <input type="email" class="form-control" id="emailPessoa" name="emailPessoa">
+                            <input type="email" class="form-control" id="emailPessoa" name="emailPessoa"
+                                value="{{ $pessoas->emailPessoa }}" required>
                         </div>
                         <div class="form-group">
                             <label for="telefonePessoa">Telefone:</label>
-                            <input type="tel" placeholder="(99) 9999-9999" maxlength="18"
-                                title="Número de telefone precisa ser no formato (99) 9999-9999"
-                                class="form-control form-control-lg bg-light" id="telefonePessoa" name="telefonePessoa" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="foto">Foto:</label>
-                            <input type="file" class="form-control" id="foto" name="foto">
+                            <input type="tel" class="form-control form-control-lg bg-light" id="telefonePessoa"
+                                name="telefonePessoa" value="{{ $pessoas->telefonePessoa }}"
+                                placeholder="(99) 9999-9999" maxlength="18"
+                                title="Número de telefone precisa ser no formato (99) 9999-9999" required>
                         </div>
                         <div class="form-group">
                             <label for="usuarioPessoa">Nome de Usuário:</label>
-                            <input type="text" class="form-control" id="usuarioPessoa" name="usuarioPessoa">
+                            <input type="text" class="form-control" id="usuarioPessoa" name="usuarioPessoa"
+                                value="{{ $pessoas->usuarioPessoa }}" required>
                         </div>
                         <div class="form-group">
                             <label for="user_type">Tipo de Usuário:</label>
-                            <select class="form-select" id="user_type" name="user_type">
-                                <option value="A">Aluno</option>
-                                <option value="P">Professor</option>
-                                <option value="R">Responsável</option>
-                                <option value="E">Empresa Parceira</option>
-                                <option value="F">Funcionário</option>
+                            <select class="form-select" id="user_type" name="user_type" required>
+                                <option value="A" {{ $pessoas->tipoUsuario == 'A' ? 'selected' : '' }}>Aluno</option>
+                                <option value="P" {{ $pessoas->tipoUsuario == 'P' ? 'selected' : '' }}>Professor
+                                </option>
+                                <option value="R" {{ $pessoas->tipoUsuario == 'R' ? 'selected' : '' }}>Responsável
+                                </option>
+                                <option value="E" {{ $pessoas->tipoUsuario == 'E' ? 'selected' : '' }}>Empresa
+                                    Parceira</option>
+                                <option value="F" {{ $pessoas->tipoUsuario == 'F' ? 'selected' : '' }}>Funcionário
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="code">Código:</label>
-                            <input type="text" class="form-control" id="code" name="code">
-                        </div>
-                        <!-- Campo de Senha -->
-                        <div class="form-group">
                             <label for="password">Senha:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="password" name="password">
-                                <button type="button" class="btn btn-primary" onclick="generateRandomPassword()">Gerar Senha Aleatória</button>
-                            </div>
+                            <input type="TEXT" class="form-control" id="password" name="password" value="{{ $pessoas->password }}" required>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,8 +196,8 @@
         </div>
     </form>
     <script>
-        window.onload = function () {
+        window.onload = function() {
             controleTipoAoEntrarEdit()
-        } 
+        }
     </script>
 @endsection

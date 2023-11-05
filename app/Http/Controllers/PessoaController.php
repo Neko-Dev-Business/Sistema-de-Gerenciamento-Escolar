@@ -54,7 +54,7 @@ class PessoaController extends Controller
     }
 
     public function destroy($idPessoa)
-    {   
+    {
         $idAluno = DB::table('alunos')->select('idAluno')->where('idPessoa', '=', $idPessoa)->first();
         $idProfessor = DB::table('professores')->select('idProfessor')->where('idPessoa', '=', $idPessoa)->first();
 
@@ -81,6 +81,8 @@ class PessoaController extends Controller
         $UFs = DB::table('ufs')->get();
         return view('pessoas.edit', compact('pessoas', 'enderecos', 'UFs'));
     }
+
+
 
     public function update(Request $request, $idPessoa)
     {

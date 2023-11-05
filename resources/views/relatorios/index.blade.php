@@ -3,99 +3,117 @@
 @section('title', 'Relatórios')
 
 @section('conteudo')
-<div class="col-lg-12">
-    <div class="row d-flex align-items-center">
-        <div class="col-lg-8 p-0">
-            <h5 class='mt-2'>Boletim do aluno</h5>
-        </div>
-        <div class="col-lg-4 p-0">
-            <div class="row collapse-options-container">
-                <a href="{{ route('gerarRelatorioTurmas') }}" class="btn btn-primary">
-                    <i class="fas fa-download mr-2"></i> Baixar Relatório de Turmas
-                </a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <h5>Relatórios</h5>
+            <hr>
+            <div class="form-group">
+                <label for="reportType">Selecione o tipo de relatório:</label>
+                <select class="form-control" id="reportType" onchange="showFilterOptions()">
+                    <option value="">-- Selecione --</option>
+                    <option value="turmas">Relatório de Turmas</option>
+                    <option value="disciplinas">Relatório de Disciplinas</option>
+                    <option value="alunos">Relatório de Alunos</option>
+                    <!-- Outros tipos de relatório -->
+                </select>
+            </div>
+            <div id="filterOptions" style="display: none;">
+                <div class="form-group">
+                    <label for="filterBy">Filtrar por:</label>
+                    <select class="form-control" id="filterBy" onchange="toggleFilterInput()">
+                        <!-- As opções de filtro serão inseridas aqui pelo JavaScript -->
+                    </select>
+                </div>
+                <div id="filterInput" class="form-group" style="display: none;">
+                    <label for="filterValue">Valor do Filtro:</label>
+                    <input type="text" class="form-control" id="filterValue" placeholder="Digite o valor do filtro">
+                </div>
+                <button class="btn btn-primary" onclick="generateReport()">
+                    <i class="fas fa-download mr-2"></i> Baixar Relatório
+                </button>
             </div>
         </div>
     </div>
 </div>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script>
+function showFilterOptions() {
+    var reportType = document.getElementById('reportType').value;
+    var filterOptions = document.getElementById('filterOptions');
+    var filterBy = document.getElementById('filterBy');
+    filterBy.innerHTML = ''; // Limpa as opções anteriores
 
+    if(reportType) {
+        filterOptions.style.display = 'block';
 
-<div class="col-lg-12 table-responsive p-0" id="table-bulletin-print">
-    <table id="table-bulletin" class="table table-bordered mt-3">
-        <thead class="text-center">
-            <tr>
-                <th rowspan="3" scope="col" style="vertical-align : middle;text-align:center;">Disciplinas</th>
-                <th colspan="3" scope="col">UNIDADE I</th>
-                <th colspan="3" scope="col">UNIDADE II</th>
-                <th colspan="3" scope="col">UNIDADE III</th>
-                <th colspan="3" scope="col">UNIDADE IV</th>
-                <th rowspan="3" scope="col" style="vertical-align : middle;text-align:center;">Média final</th>
-                <th rowspan="3" scope="col" style="vertical-align : middle;text-align:center;">Resultado final</th>
-            </tr>
+        // Define as opções de filtro com base no tipo de relatório selecionado
+        var optionsHtml = '';
+        switch(reportType) {
+            case 'turmas':
+                optionsHtml = `
+                    <option value="nomeTurma">Nome da Turma</option>
+                    <option value="anoLetivoTurma">Ano Letivo</option>
+                    <option value="turnoTurma">Turno</option>
+                `;
+                break;
+            case 'disciplinas':
+                optionsHtml = `
+                    <option value="nomeDisciplina">Nome da Disciplina</option>
+                    <option value="codigoDisciplina">Código da Disciplina</option>
+                    <option value="cargaHorariaDisciplina">Carga Horária</option>
+                `;
+                break;
+            case 'alunos':
+                optionsHtml = `
+                    <option value="nomePessoa">Nome do Aluno</option>
+                    <option value="cpfPessoa">CPF do Aluno</option>
+                    <option value="rgPessoa">RG do Aluno</option>
+                `;
+                break;
+            // Adicione mais casos conforme necessário
+        }
+        filterBy.innerHTML = optionsHtml;
+    } else {
+        filterOptions.style.display = 'none';
+    }
+}
 
-            <tr>
-                <th class="" scope="col">Nota</th>
-                <th class="" scope="col">Faltas</th>
-                <th class="" scope="col">R</th>
-                <th class="" scope="col">Nota</th>
-                <th class="" scope="col">Faltas</th>
-                <th class="" scope="col">R</th>
-                <th class="" scope="col">Nota</th>
-                <th class="" scope="col">Faltas</th>
-                <th class="" scope="col">R</th>
-                <th class="" scope="col">Nota</th>
-                <th class="" scope="col">Faltas</th>
-                <th class="" scope="col">R</th>
-            </tr>
-        </thead>
+function toggleFilterInput() {
+    var filterBy = document.getElementById('filterBy').value;
+    var filterInput = document.getElementById('filterInput');
+    filterInput.style.display = filterBy ? 'block' : 'none';
+    // Atualize o placeholder com o nome do filtro selecionado
+    if(filterBy) {
+        document.getElementById('filterValue').placeholder = 'Digite o valor para ' + filterBy;
+    }
+}
 
-        <tbody>
-            <tr class="text-center">
-                <td>PORTUGUES</td>
-                <td>10,0</td>
-                <td>1</td>
-                <td>-</td>
-                <td>8,0</td>
-                <td>3</td>
-                <td>-</td>
-                <td>8,3</td>
-                <td>2</td>
-                <td>-</td>
-                <td>5,0</td>
-                <td>4</td>
-                <td>5,0</td>
-                <td>7,8</td>
-                <td>APROVADO</td>
-            </tr>
-            <tr class="text-center">
-                <td>MATEMÁTICA</td>
-                <td>9,0</td>
-                <td>1</td>
-                <td>-</td>
-                <td>7,5</td>
-                <td>4</td>
-                <td>-</td>
-                <td>7,0</td>
-                <td>1</td>
-                <td>-</td>
-                <td>6,5</td>
-                <td>5</td>
-                <td>-</td>
-                <td>7,5</td>
-                <td>APROVADO</td>
-            </tr>
-        </tbody>
+function generateReport() {
+    var reportType = document.getElementById('reportType').value;
+    var filterBy = document.getElementById('filterBy').value;
+    var filterValue = document.getElementById('filterValue').value;
+    var url = '';
 
-        <tbody>
+    switch(reportType) {
+        case 'turmas':
+            url = "{{ route('gerarRelatorioTurmas') }}";
+            break;
+        case 'disciplinas':
+            url = "{{ route('gerarRelatorioDisciplinas') }}";
+            break;
+        case 'alunos':
+            url = "#"; // Trocar quando fizer o a rota alunos
+            break;
+        // Adicione mais casos conforme necessário
+    }
 
-        </tbody>
-
-        <tfoot>
-            <tr>
-                <td colspan="9" class="text-center">Situação do aluno(a): APROVADO</td>
-                <td colspan="9" class="text-center"> </td>
-            </tr>
-        </tfoot>
-    </table>
-
-</div>
+    if(url && filterBy && filterValue) {
+        window.location.href = `${url}?${filterBy}=${encodeURIComponent(filterValue)}`;
+    } else {
+        alert('Por favor, selecione um tipo de relatório e forneça um valor de filtro.');
+    }
+}
+</script>
 @endsection

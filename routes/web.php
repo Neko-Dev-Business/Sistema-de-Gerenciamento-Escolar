@@ -112,3 +112,4 @@ Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
 
 //ROTA DE RELATORIO
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');
+Route::get('/gerar-relatorio-disciplinas', [RelatorioController::class, 'gerarRelatorioDisciplinas'])->name('gerarRelatorioDisciplinas');
