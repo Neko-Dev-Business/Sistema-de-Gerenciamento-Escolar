@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/template.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark mb-4 bg-dark ">
@@ -81,6 +83,23 @@
         document.getElementById('sidebarCollapse').addEventListener('click', function () {
             document.querySelector('.sidebar').classList.toggle('active');
             document.querySelector('.content').classList.toggle('active');
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Aplicando máscara de CPF
+            $('.cpf-mask').inputmask('999.999.999-99');
+    
+            // Aplicando máscara de CNPJ
+            $('.cnpj-mask').inputmask('99.999.999/9999-99');
+    
+            // Aplicando máscara de telefone
+            $('.telefone-mask').inputmask({
+                mask: ['(99) 9999-9999', '(99) 99999-9999'],
+                keepStatic: true,
+                clearIncomplete: true
+            });
+    
         });
     </script>
 </body>
