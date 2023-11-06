@@ -21,7 +21,7 @@
             <div id="filterOptions" style="display: none;">
                 <div class="form-group">
                     <label for="filterBy">Filtrar por:</label>
-                    <select class="form-control" id="filterBy" onchange="toggleFilterInput()">
+                    <select class="form-control" id="filterBy">
                         <!-- As opções de filtro serão inseridas aqui pelo JavaScript -->
                     </select>
                 </div>
@@ -45,12 +45,12 @@ function showFilterOptions() {
     var filterBy = document.getElementById('filterBy');
     filterBy.innerHTML = ''; // Limpa as opções anteriores
 
-    if(reportType) {
+    if (reportType) {
         filterOptions.style.display = 'block';
 
         // Define as opções de filtro com base no tipo de relatório selecionado
         var optionsHtml = '';
-        switch(reportType) {
+        switch (reportType) {
             case 'turmas':
                 optionsHtml = `
                     <option value="nomeTurma">Nome da Turma</option>
@@ -75,6 +75,7 @@ function showFilterOptions() {
             // Adicione mais casos conforme necessário
         }
         filterBy.innerHTML = optionsHtml;
+        toggleFilterInput(); // Chama a função para exibir o campo de filtro
     } else {
         filterOptions.style.display = 'none';
     }
@@ -85,7 +86,7 @@ function toggleFilterInput() {
     var filterInput = document.getElementById('filterInput');
     filterInput.style.display = filterBy ? 'block' : 'none';
     // Atualize o placeholder com o nome do filtro selecionado
-    if(filterBy) {
+    if (filterBy) {
         document.getElementById('filterValue').placeholder = 'Digite o valor para ' + filterBy;
     }
 }
@@ -96,7 +97,7 @@ function generateReport() {
     var filterValue = document.getElementById('filterValue').value;
     var url = '';
 
-    switch(reportType) {
+    switch (reportType) {
         case 'turmas':
             url = "{{ route('gerarRelatorioTurmas') }}";
             break;
@@ -104,12 +105,12 @@ function generateReport() {
             url = "{{ route('gerarRelatorioDisciplinas') }}";
             break;
         case 'alunos':
-            url = "#"; // Trocar quando fizer o a rota alunos
+            url = "{{ route('gerarRelatorioAlunos') }}"; // Defina a rota correta para alunos
             break;
         // Adicione mais casos conforme necessário
     }
 
-    if(url && filterBy && filterValue) {
+    if (url && filterBy && filterValue) {
         window.location.href = `${url}?${filterBy}=${encodeURIComponent(filterValue)}`;
     } else {
         alert('Por favor, selecione um tipo de relatório e forneça um valor de filtro.');

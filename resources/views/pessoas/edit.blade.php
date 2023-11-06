@@ -176,10 +176,6 @@
                                 </option>
                                 <option value="R" {{ $pessoas->tipoUsuario == 'R' ? 'selected' : '' }}>Responsável
                                 </option>
-                                <option value="E" {{ $pessoas->tipoUsuario == 'E' ? 'selected' : '' }}>Empresa
-                                    Parceira</option>
-                                <option value="F" {{ $pessoas->tipoUsuario == 'F' ? 'selected' : '' }}>Funcionário
-                                </option>
                             </select>
                         </div>
                         <div class="form-group">

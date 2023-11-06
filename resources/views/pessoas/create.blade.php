@@ -84,7 +84,7 @@
                     <div class="col-md-6">
                         <div class="form-group" id="div-cpfPessoa">
                             <label for="cpfPessoa">CPF:</label>
-                            <input type="text" class="form-control" id="cpfPessoa" name="cpfPessoa" placeholder="Apenas Números" pattern="\d*" 
+                            <input type="text" class="form-control" id="cpfPessoa" name="cpfPessoa" placeholder="Apenas Números" pattern="\d*"
                                 maxlength="14" minlength="11">
                         </div>
                         <div class="form-group" id="div-rgPessoa">
@@ -102,7 +102,7 @@
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                             </select>
-                        </div>  
+                        </div>
                         <div class="form-group" id="div-nacionalidadePessoa">
                             <label for="nacionalidadePessoa">Nacionalidade:</label>
                             <input type="text" class="form-control" id="nacionalidadePessoa" name="nacionalidadePessoa">
@@ -118,7 +118,7 @@
                         <!-- Pessoa Jurídica -->
                         <div class="form-group" id="div-cnpjPessoa">
                             <label for="cnpjPessoa">CNPJ:</label>
-                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa" placeholder="Apenas Números" 
+                            <input type="text" class="form-control" id="cnpjPessoa" name="cnpjPessoa" placeholder="Apenas Números"
                                    maxlength="20" minlength="14" onblur="pesquisaCNPJ(this.value);">
                         </div>
                     </div>
@@ -153,8 +153,6 @@
                                 <option value="1">Aluno</option>
                                 <option value="2">Professor</option>
                                 <option value="3">Responsável</option>
-                                <option value="4">Empresa Parceira</option>
-                                <option value="5">Funcionário</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -169,7 +167,7 @@
                                 <button type="button" class="btn btn-primary" onclick="generateRandomPassword()">Gerar Senha Aleatória</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,5 +176,41 @@
             <a href="{{ route('pessoas.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
         </div>
     </form>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/template.js"></script>
+    <script>
+        function generateEmail() {
+            const nameInput = document.getElementById('nomePessoa');
+            const emailInput = document.getElementById('usuarioPessoa');
 
+            // Remove espaços em branco do início e do fim do nome
+            const trimmedName = nameInput.value.trim();
+
+            // Divide o nome em palavras com base nos espaços em branco
+            const nameParts = trimmedName.split(' ');
+
+            // Pega o primeiro e o segundo nome (se existirem)
+            let firstName = '';
+            let lastName = '';
+
+            if (nameParts.length > 0) {
+                firstName = nameParts[0];
+            }
+
+            if (nameParts.length > 1) {
+                lastName = nameParts[1];
+            }
+
+            // Substitui espaços em branco por underscores e converte para minúsculas
+            const sanitizedName = `${firstName}_${lastName}`.toLowerCase();
+
+            // Preenche o campo de e-mail com o formato desejado
+            emailInput.value = sanitizedName + '@sysedu.com';
+        }
+
+        // Adicione um ouvinte de evento de entrada ao campo de nome
+        const nameInput = document.getElementById('nomePessoa');
+        nameInput.addEventListener('input', generateEmail);
+    </script>
 @endsection

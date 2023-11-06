@@ -81,7 +81,7 @@
 
         <!-- Rodapé com informações adicionais -->
         <div class="footer">
-            <p>Hora de Geração: <span class="generation-time">{{ now()->format('H:i:s') }}</span></p>
+            <p>Data de Geração: <span class="generation-time">{{ now()->format('d/m/Y H:i') }}</span></p>
         </div>
     </div>
 </body>
