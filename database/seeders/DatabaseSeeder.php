@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TurmaTableSeeder::class);
         $this->call(UsuariosTableSeeder::class);
         $this->call(EnderecoTableSeeder::class);
+        $this->call(NotaTableSeeder::class);
     }
 }

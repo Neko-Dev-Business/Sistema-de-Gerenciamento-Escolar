@@ -7,6 +7,7 @@ use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\DisciplinaController;
+use App\Http\Controllers\NotaController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
@@ -109,6 +110,14 @@ Route::delete('/turmas/{idTurma}', [TurmaController::class, 'destroy'])->name('t
 Route::get('/turmas/edit/{idTurma}', [TurmaController::class, 'edit'])->name('turmas.edit');
 Route::put('/turmas/{idTurma}', [TurmaController::class, 'update'])->name('turmas.update');
 Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
+
+//ROTA DE NOTA
+Route::get('/notas', [NotaController::class, 'index'])->name('notas.index');
+Route::get('/notas/create', [NotaController::class, 'create'])->name('notas.create');
+Route::delete('/notas/{idTurma}', [NotaController::class, 'destroy'])->name('notas.destroy');
+Route::get('/notas/edit/{idTurma}', [NotaController::class, 'edit'])->name('notas.edit');
+Route::put('/notas/{idTurma}', [NotaController::class, 'update'])->name('notas.update');
+Route::post('/notas', [NotaController::class, 'store'])->name('notas.store');
 
 //ROTA DE RELATORIO
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');

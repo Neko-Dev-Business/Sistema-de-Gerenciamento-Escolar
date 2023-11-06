@@ -43,7 +43,7 @@
                 <a href="{{ route('pessoas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Usuários</span>
                 </a>
-                <a href="{{ route('alunos.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                <a href="{{ route('notas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Notas</span>
                 </a>
                 <a href="{{ route('turmas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
