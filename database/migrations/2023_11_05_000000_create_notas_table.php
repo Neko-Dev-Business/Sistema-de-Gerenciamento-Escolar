@@ -25,6 +25,8 @@ return new class extends Migration
             $table->float('quartaRecuperacao')->nullable();
             $table->unsignedTinyInteger('unidade');
             $table->unsignedBigInteger('idPessoa');
+            $table->unsignedBigInteger('idDisciplina');
+            $table->unsignedBigInteger('idTurma');
             //$table->foreign('idPessoa')->references('idPessoa')->on('pessoas')->where('tipoUsuario', 1);
             $table->timestamps();
             });

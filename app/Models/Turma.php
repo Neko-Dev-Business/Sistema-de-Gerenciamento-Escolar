@@ -18,4 +18,10 @@ class Turma extends Model
         'anoLetivoTurma',
         'salaTurma',
     ];
+
+    public function pessoas()
+    {
+        return $this->belongsToMany(Pessoa::class, 'notas', 'idTurma', 'idPessoa');
+    }
+
 }

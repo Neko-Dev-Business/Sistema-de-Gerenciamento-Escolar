@@ -45,4 +45,10 @@ class Pessoa extends Model
     {
         return $this->hasOne(Endereco::class, 'idPessoa');
     }
+
+    public function turmas()
+    {
+        return $this->belongsToMany(Turma::class, 'notas', 'idPessoa', 'idTurma');
+    }
+
 }

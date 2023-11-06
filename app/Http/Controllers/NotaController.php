@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Nota;
 use App\Models\Pessoa;
+use App\Models\Disciplina;
+use App\Models\Turma;
 use Illuminate\Http\Request;
 
 class NotaController extends Controller
@@ -15,15 +17,26 @@ class NotaController extends Controller
 
     public function index(Request $request)
     {
-        $pessoas = Pessoa::where('tipoUsuario', 1)
-            ->join('notas', 'notas.idPessoa', '=', 'pessoas.idPessoa', 'inner')
-            ->where('nomePessoa', 'like', '%'.$request->buscaPessoa.'%')
-            ->orderBy('nomePessoa', 'asc')
-            ->simplePaginate(10);
+        $pessoas = Pessoa::select('*')
+        ->join('notas as notas_pessoa', 'notas_pessoa.idPessoa', '=', 'pessoas.idPessoa')
+        ->join('disciplinas', 'notas_pessoa.idDisciplina', '=', 'disciplinas.idDisciplina')
+        ->join('turmas', 'notas_pessoa.idTurma', '=', 'turmas.idTurma')
+        ->where('tipoUsuario', '=', 1)
+        ->whereNotNull('nomePessoa')
+        ->orderBy('nomePessoa', 'ASC')
+        ->take(11)
+        ->offset(0)
+        ->get();
+
 
         $totalAlunos = Pessoa::where('tipoUsuario', 1)->count();
+        $turmas = Turma::all(); // Obtém todas as turmas
 
-        return view('notas.index', compact('pessoas', 'totalAlunos'));
+        if ($turmas->isEmpty()) {
+            $turmas = []; // Se não houver turmas, atribui um array vazio para evitar o erro
+        }
+
+        return view('notas.index', compact('pessoas', 'totalAlunos', 'turmas'));
     }
 
     public function edit($idPessoa)
@@ -33,6 +46,32 @@ class NotaController extends Controller
         return view('notas.edit', compact('pessoa', 'notas'));
     }
 
+    public function disciplina($idPessoa)
+    {
+        $pessoa = Pessoa::find($idPessoa);
+        $disciplinas = Disciplina::where('idDisciplina', $idPessoa)->first();
+        return view('notas.disciplina', compact('pessoa', 'disciplinas'));
+    }
+    
+    public function turma($idPessoa)
+    {
+        $pessoa = Pessoa::find($idPessoa);
+    
+        if ($pessoa) {
+            $turmas = $pessoa->turmas()->get();
+    
+            if ($turmas->isNotEmpty()) {
+                return view('notas.turma', compact('pessoa', 'turmas'));
+            } else {
+                // Se não houver turmas associadas à pessoa
+                return "Não há turmas associadas a esta pessoa.";
+            }
+        } else {
+            // Se a pessoa não for encontrada
+            return "Pessoa não encontrada.";
+        }
+    } 
+    
     public function create()
     {
         $notas = Nota::all();

@@ -26,14 +26,6 @@
                 <th width="60">ID</th>
                 <th>Pessoa</th>
                 <th>CPF</th>
-                <th>Unidade I</th>
-                <th>R</th>
-                <th>Unidade II</th>
-                <th>R</th>
-                <th>Unidade III</th>
-                <th>R</th>
-                <th>Unidade IV</th>
-                <th>R</th>
                 <th width="160">Ação</th>
             </tr>
         </thead>
@@ -43,16 +35,10 @@
                 <td class="align-middle text-center">{{ $pessoa->idPessoa}}</td>
                 <td class="align-middle text-center">{{ $pessoa->nomePessoa}}</td>
                 <td class="align-middle text-center"><span class="cpf-mask">{{ $pessoa->cpfPessoa}}</span></td>
-                <td class="align-middle text-center">{{ $pessoa->primeiraNota}}</td>
-                <td class="align-middle text-center">@if ($pessoa->primeiraRecuperacao === null)-@else{{ $pessoa->primeiraRecuperacao }}@endif</td>
-                <td class="align-middle text-center">{{ $pessoa->segundaNota}}</td>
-                <td class="align-middle text-center">@if ($pessoa->segundaRecuperacao === null)-@else{{ $pessoa->segundaRecuperacao }}@endif</td>
-                <td class="align-middle text-center">{{ $pessoa->terceiraNota}}</td>
-                <td class="align-middle text-center">@if ($pessoa->terceiraRecuperacao === null)-@else{{ $pessoa->terceiraRecuperacao }}@endif</td>
-                <td class="align-middle text-center">{{ $pessoa->quartaNota}}</td>
-                <td class="align-middle text-center">@if ($pessoa->quartaRecuperacao === null)-@else{{ $pessoa->quartaRecuperacao }}@endif</td>
                 <td class="align-middle text-center">
-                    <a href="{{ route('pessoas.edit', $pessoa->idPessoa) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
+                    <a href="" class="btn btn-danger" title="Turma" data-bs-toggle="modal" data-bs-target="#modal-turma-{{ $pessoa->idPessoa }}"><i class="bi bi-trash"></i></a>
+                        
+                        @include('notas.turma')
                 </td>
             </tr>
             @endforeach

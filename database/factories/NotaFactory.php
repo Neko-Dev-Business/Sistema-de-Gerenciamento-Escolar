@@ -30,6 +30,8 @@ class NotaFactory extends Factory
             'quartaRecuperacao' => null,
             'unidade' => rand(1,4), // Altere conforme necessário
             'idPessoa' => array_pop($this->uniqueNumbers),
+            'idTurma' => rand(1,20),
+            'idDisciplina' => rand(1,20),
         ];
     }
 }

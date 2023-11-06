@@ -114,10 +114,12 @@ Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
 //ROTA DE NOTA
 Route::get('/notas', [NotaController::class, 'index'])->name('notas.index');
 Route::get('/notas/create', [NotaController::class, 'create'])->name('notas.create');
-Route::delete('/notas/{idTurma}', [NotaController::class, 'destroy'])->name('notas.destroy');
-Route::get('/notas/edit/{idTurma}', [NotaController::class, 'edit'])->name('notas.edit');
-Route::put('/notas/{idTurma}', [NotaController::class, 'update'])->name('notas.update');
+Route::delete('/notas/{idNota}', [NotaController::class, 'destroy'])->name('notas.destroy');
+Route::get('/notas/edit/{idNota}', [NotaController::class, 'edit'])->name('notas.edit');
+Route::put('/notas/{idNota}', [NotaController::class, 'update'])->name('notas.update');
 Route::post('/notas', [NotaController::class, 'store'])->name('notas.store');
+Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'disciplina'])->name('notas.disciplina');
+Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'turma'])->name('notas.turma');
 
 //ROTA DE RELATORIO
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');
