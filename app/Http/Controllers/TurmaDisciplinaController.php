@@ -21,16 +21,16 @@ class TurmaDisciplinaController extends Controller
                 ->simplePaginate(10);
 
             if ($turmasDisciplinas) {
-                return view('turmas.disciplina_modal', compact('turmasDisciplinas'));
+                return view('turmas.turmas_disciplinas.disciplina_modal', compact('turmasDisciplinas'));
             } else {
                 // Lidar com casos em que nenhum dado é encontrado
-                return view('turmas.disciplina_modal')->with('error', 'Nenhum dado encontrado');
+                return view('turmas.turmas_disciplinas.disciplina_modal')->with('error', 'Nenhum dado encontrado');
             }
         } catch (\Exception $e) {
             // Registrar o erro para depuração
             // Log::error($e->getMessage());
 
-            return view('turmas.disciplina_modal')->with('error', $e->getMessage());
+            return view('turmas.turmas_disciplinas.disciplina_modal')->with('error', $e->getMessage());
         }
     }
 }

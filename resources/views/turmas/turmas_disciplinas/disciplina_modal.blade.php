@@ -1,56 +1,42 @@
-<!-- Modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDisciplina">
-    <i class="bi bi-plus" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
-</button>
-
-<!-- Modal de adicionar disciplinas -->
-<div class="modal fade" id="modalDisciplina" tabindex="-1" aria-labelledby="modalDisciplinaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+<!-- Modal para exibir as disciplinas da turma -->
+<div class="modal fade" id="modalTurmaDisciplinas_{{ $turma->idTurma }}" tabindex="-1" role="dialog" aria-labelledby="modalTurmaDisciplinasLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document"> <!-- Utilizando modal-lg para um modal grande -->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalDisciplinaLabel">Adicionar Disciplina</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                <h5 class="modal-title text-center" id="modalTurmaDisciplinasLabel">Disciplinas da Turma: {{ $turma->nomeTurma }} - {{ $turma->anoLetivoTurma }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <table class="table table-striped">
+                <div class="table-responsive"> <!-- Utilizando table-responsive para permitir rolagem na tabela -->
+                    <table class="table table-striped text-center"> <!-- Centralizando o conteúdo -->
                         <thead class="table-dark">
-                            <tr class="text-center">
-                                <th width="60">Escolha</th>
+                            <tr>
+                                <th width="60">#</th>
                                 <th>Código</th>
-                                <th>Nome da Disciplina</th>
+                                <th>Nome</th>
                                 <th>Carga Horária</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($turmasDisciplinas))
-                                @foreach ($turmasDisciplinas as $turmaDisciplina)
-                                    <tr>
-                                        <!-- Use os nomes corretos dos atributos conforme definidos no seu modelo -->
-                                        <td class="align-middle text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault"></label>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">{{ $turmaDisciplina->codigoDisciplina }}</td>
-                                        <td class="align-middle text-center">{{ $turmaDisciplina->nomeDisciplina }}</td>
-                                        <td class="align-middle text-center">{{ $turmaDisciplina->cargaHorariaDisciplina }}</td>
-                                    </tr>
-                                @endforeach
-                            @else
+                            @foreach ($turma->disciplinas as $disciplina)
                                 <tr>
-                                    <td colspan="4">Nenhum dado disponível</td>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault"></label>
+                                        </div>
+                                    </td>
+                                    <td>{{ $disciplina->codigoDisciplina }}</td>
+                                    <td>{{ $disciplina->nomeDisciplina }}</td>
+                                    <td>{{ $disciplina->cargaHorariaDisciplina }}</td>
                                 </tr>
-                            @endif
+                            @endforeach
                         </tbody>
-                        
                     </table>
-                </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar Disciplina</button>
             </div>
         </div>
     </div>

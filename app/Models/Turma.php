@@ -24,4 +24,9 @@ class Turma extends Model
         return $this->belongsToMany(Pessoa::class, 'notas', 'idTurma', 'idPessoa');
     }
 
+    public function disciplinas()
+    {
+        return $this->belongsToMany(Disciplina::class, 'turmas_disciplinas', 'idTurma', 'idDisciplina');
+    }
+
 }

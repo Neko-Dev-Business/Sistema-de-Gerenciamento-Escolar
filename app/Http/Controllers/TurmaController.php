@@ -75,4 +75,12 @@ class TurmaController extends Controller
 
         return response()->json($turmas);
     }
+
+    public function showTurmaDisciplinas($idTurma)
+    {
+        $turma = Turma::with('disciplinas')->find($idTurma);
+
+        return view('turmas.turmas_disciplinas.disciplina_modal', compact('turma'));
+    }
+
 }

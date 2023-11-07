@@ -126,7 +126,7 @@ Route::post('/aluno_turma', [AlunoTurmaController::class, 'store'])->name('aluno
 Route::get('/api/turmas/{anoLetivo}/filter', [TurmaController::class, 'filterByAnoLetivo']);
 
 //ROTA TURMA_DISCIPLINAS
-Route::get('/turmas/turmas_disciplinas', [TurmaDisciplinaController::class, 'index'])->name('turmaDisciplina.index');
+
 
 //ROTA DE NOTA
 Route::get('/notas', [NotaController::class, 'index'])->name('notas.index');
@@ -153,3 +153,4 @@ Route::post('/escola', [EscolaController::class, 'store'])->name('escola.store')
 Route::put('/escola/{id}', [EscolaController::class, 'update'])->name('escola.update');
 
 
+Route::get('/turmas/{idTurma}/disciplinas', [TurmaController::class, 'showDisciplinas'])->name('turmas.showDisciplinas');
