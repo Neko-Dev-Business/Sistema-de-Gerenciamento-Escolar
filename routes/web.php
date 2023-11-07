@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesquisaAlunosController;
 use Illuminate\Contracts\Session\Session;
 use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\TurmaDisciplinaController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\AlunoTurmaController;
 use App\Http\Controllers\EscolaController;
@@ -124,6 +125,8 @@ Route::get('/aluno_turma/create', [AlunoTurmaController::class, 'create'])->name
 Route::post('/aluno_turma', [AlunoTurmaController::class, 'store'])->name('aluno_turma.store');
 Route::get('/api/turmas/{anoLetivo}/filter', [TurmaController::class, 'filterByAnoLetivo']);
 
+//ROTA TURMA_DISCIPLINAS
+Route::get('/turmas/turmas_disciplinas', [TurmaDisciplinaController::class, 'index'])->name('turmaDisciplina.index');
 
 //ROTA DE NOTA
 Route::get('/notas', [NotaController::class, 'index'])->name('notas.index');
@@ -148,3 +151,5 @@ Route::get('/escola', [EscolaController::class, 'index'])->name('escola.index');
 Route::get('/escola/create', [EscolaController::class, 'create'])->name('escola.create');
 Route::post('/escola', [EscolaController::class, 'store'])->name('escola.store');
 Route::put('/escola/{id}', [EscolaController::class, 'update'])->name('escola.update');
+
+

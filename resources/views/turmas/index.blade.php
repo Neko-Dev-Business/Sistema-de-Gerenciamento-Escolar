@@ -39,16 +39,15 @@
         <tbody>
           @foreach ($turmas as $turma)
             <tr>
-                <td class="align-middle text-center">{{ $turma->idTurma }}</td>
+                <td class="align-middle text-center">{{ $turma->idDisciplina }}</td>
                 <td class="align-middle text-center">{{ $turma->nomeTurma }}</td>
                 <td class="align-middle text-center">{{ $turma->turnoTurma }}</td>
                 <td class="align-middle text-center">{{ $turma->anoLetivoTurma }}</td>
                 <td class="align-middle text-center">{{ $turma->salaTurma }}</td>
                     <td class="align-middle text-center">
-                        @include('turmas.disciplina_modal')
-                        {{-- <a href="#" class="btn btn-primary" title="Editar" data-toggle="modal" data-target="#editarDisciplinaModal">
-                            <i class="bi bi-pen" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
-                        </a> --}}
+                        
+                        @include('turmas.turmas_disciplinas.disciplina_modal')
+                        
                         <a href="{{ route('turmas.edit', $turma->idTurma) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $turma->idTurma }}"><i class="bi bi-trash"></i></a>
                         @include('turmas.delete')
