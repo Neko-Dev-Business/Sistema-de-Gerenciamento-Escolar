@@ -14,6 +14,12 @@ use App\Http\Controllers\PesquisaAlunosController;
 use Illuminate\Contracts\Session\Session;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\AlunoTurmaController;
+use App\Http\Controllers\EscolaController;
+
+// ...
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,6 +117,14 @@ Route::get('/turmas/edit/{idTurma}', [TurmaController::class, 'edit'])->name('tu
 Route::put('/turmas/{idTurma}', [TurmaController::class, 'update'])->name('turmas.update');
 Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
 
+
+//ROTA ALUNO_TURMA
+Route::get('/aluno_turma', [AlunoTurmaController::class, 'index'])->name('aluno_turma.index');
+Route::get('/aluno_turma/create', [AlunoTurmaController::class, 'create'])->name('aluno_turma.create');
+Route::post('/aluno_turma', [AlunoTurmaController::class, 'store'])->name('aluno_turma.store');
+Route::get('/api/turmas/{anoLetivo}/filter', [TurmaController::class, 'filterByAnoLetivo']);
+
+
 //ROTA DE NOTA
 Route::get('/notas', [NotaController::class, 'index'])->name('notas.index');
 Route::get('/notas/create', [NotaController::class, 'create'])->name('notas.create');
@@ -125,3 +139,12 @@ Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'turma'])->name
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');
 Route::get('/gerar-relatorio-disciplinas', [RelatorioController::class, 'gerarRelatorioDisciplinas'])->name('gerarRelatorioDisciplinas');
 Route::get('/gerar-relatorio-alunos', [RelatorioController::class, 'gerarRelatorioAlunos'])->name('gerarRelatorioAlunos');
+Route::get('/relatorio/boletim', [RelatorioController::class, 'gerarBoletimAluno'])->name('gerarBoletimAluno');
+
+//ROTA DA ESCOLA
+
+
+Route::get('/escola', [EscolaController::class, 'index'])->name('escola.index');
+Route::get('/escola/create', [EscolaController::class, 'create'])->name('escola.create');
+Route::post('/escola', [EscolaController::class, 'store'])->name('escola.store');
+Route::put('/escola/{id}', [EscolaController::class, 'update'])->name('escola.update');

@@ -12,13 +12,23 @@
     <a href="{{ route('usuarios.create') }}" class="btn btn-primary position-absolute top-0 end-0 m-4
     rounded-circle fs-4" title="Cadastrar Usuário do Sistema"><i class="bi bi-plus-lg"></i></a>
     <p>Total de Usuários: {{ $totalUsuarios}}</p>
-    <form action="" method="get" class="mb-3 d-flex justify-content-end">
+    <form action="{{ route('usuarios.index') }}" method="get" class="mb-3 d-flex justify-content-end">
         <div class="input-group me-3">
-            <input type="text" name="buscaUsuario" class="form-control form-control-lg" placeholder="Nome do Usuário">
+            <select name="filtroTipo" class="form-select form-select-lg col-3">
+                <option value="">Tipo de Usuário</option>
+                <option value="1">Aluno</option>
+                <option value="2">Professor</option>
+                <option value="3">Responsável</option>
+            </select>
+            <input type="text" name="busca" class="form-control form-control-lg" placeholder="Pesquisar...">
             <button class="btn btn-primary btn-lg" type="submit">Procurar</button>
         </div>
-        <a href="{{ route('usuarios.index') }}" class="btn btn-light border btn-lg">Limpar</a>
+        <div class="btn-group" role="group" aria-label="User actions">
+            <a href="{{ route('usuarios.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
+            <a href="{{ route('usuarios.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-plus-lg"></i></a>
+        </div>
     </form>
+
     <table class="table table-striped">
         <thead class="table-dark">
             <tr class="text-center">
@@ -39,7 +49,7 @@
                 <td class="align-middle text-center">
                     <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                     <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $usuario->id }}"><i class="bi bi-trash"></i></a>
-                    
+
                     @include('usuarios.delete')
                 </td>
             </tr>

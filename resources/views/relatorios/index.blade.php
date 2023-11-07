@@ -10,26 +10,25 @@
             <hr>
             <div class="form-group">
                 <label for="reportType">Selecione o tipo de relatório:</label>
-                <select class="form-control" id="reportType" onchange="showFilterOptions()">
+                <select class="form-control  mt-3" id="reportType" onchange="showFilterOptions()">
                     <option value="">-- Selecione --</option>
                     <option value="turmas">Relatório de Turmas</option>
                     <option value="disciplinas">Relatório de Disciplinas</option>
                     <option value="alunos">Relatório de Alunos</option>
-                    <!-- Outros tipos de relatório -->
                 </select>
             </div>
             <div id="filterOptions" style="display: none;">
-                <div class="form-group">
+                <div class="form-group  mt-3">
                     <label for="filterBy">Filtrar por:</label>
                     <select class="form-control" id="filterBy">
                         <!-- As opções de filtro serão inseridas aqui pelo JavaScript -->
                     </select>
                 </div>
-                <div id="filterInput" class="form-group" style="display: none;">
+                <div id="filterInput" class="form-group  mt-3" style="display: none;">
                     <label for="filterValue">Valor do Filtro:</label>
                     <input type="text" class="form-control" id="filterValue" placeholder="Digite o valor do filtro">
                 </div>
-                <button class="btn btn-primary" onclick="generateReport()">
+                <button class="btn btn-primary mt-3" onclick="generateReport()">
                     <i class="fas fa-download mr-2"></i> Baixar Relatório
                 </button>
             </div>
@@ -55,7 +54,6 @@ function showFilterOptions() {
                 optionsHtml = `
                     <option value="nomeTurma">Nome da Turma</option>
                     <option value="anoLetivoTurma">Ano Letivo</option>
-                    <option value="turnoTurma">Turno</option>
                 `;
                 break;
             case 'disciplinas':
@@ -69,10 +67,8 @@ function showFilterOptions() {
                 optionsHtml = `
                     <option value="nomePessoa">Nome do Aluno</option>
                     <option value="cpfPessoa">CPF do Aluno</option>
-                    <option value="rgPessoa">RG do Aluno</option>
                 `;
                 break;
-            // Adicione mais casos conforme necessário
         }
         filterBy.innerHTML = optionsHtml;
         toggleFilterInput(); // Chama a função para exibir o campo de filtro
@@ -105,13 +101,12 @@ function generateReport() {
             url = "{{ route('gerarRelatorioDisciplinas') }}";
             break;
         case 'alunos':
-            url = "{{ route('gerarRelatorioAlunos') }}"; // Defina a rota correta para alunos
+            url = "{{ route('gerarRelatorioAlunos') }}";
             break;
-        // Adicione mais casos conforme necessário
     }
 
     if (url && filterBy && filterValue) {
-        window.location.href = `${url}?${filterBy}=${encodeURIComponent(filterValue)}`;
+        window.location.href = `${url}?filterBy=${filterBy}&filterValue=${encodeURIComponent(filterValue)}`;
     } else {
         alert('Por favor, selecione um tipo de relatório e forneça um valor de filtro.');
     }

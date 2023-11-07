@@ -3,62 +3,76 @@
 
 <head>
     <title>Relatório de Turmas</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-</head>
     <style>
-        /* Estilos CSS personalizados aqui */
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
         }
 
-        .table-container {
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            width: 95%;
-            background-color: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .table {
-            margin-bottom: 0;
         }
 
         .page-header {
             text-align: center;
-            padding: 20px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+            margin: 0 auto;
+        }
+
+        .page-header img {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+        }
+
+        .page-header h1 {
+            font-family: Verdana, sans-serif;
+            font-size: 24px;
+            margin-top: 20px;
         }
 
         .table-container {
-            margin: 0 auto;
-            width: 95%;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .thead-dark th {
+            background-color: #333;
+            color: #fff;
         }
 
         .footer {
+            margin-top: 20px;
             text-align: right;
+            font-size: 14px;
         }
-    </style>
+        </style>
 
+</head>
 
 <body>
-    <div class="container">
+    <div class="container text-center">
         <div class="page-header">
-            <img src="{{ public_path("/images/layout/header.png") }}" alt="" style="width: 600px; height: 150px;">
-            <h1>Relatório de Turmas</h1>
+            <img src="{{ public_path("/images/layout/banner2.png") }}" alt="">
+            <h2 style="font-family: Verdana;">Relatório de Turmas</h2>
         </div>
-
-        <div class="table-container">
-            <table class="table table-sstriped table-bordered">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
                         <th>Nome da Turma</th>
                         <th>Turno</th>
                         <th>Ano Letivo</th>
@@ -68,7 +82,6 @@
                 <tbody>
                     @foreach ($turmas as $turma)
                     <tr>
-                        <td>{{ $turma->id }}</td>
                         <td>{{ $turma->nomeTurma }}</td>
                         <td>{{ $turma->turnoTurma }}</td>
                         <td>{{ $turma->anoLetivoTurma }}</td>
@@ -81,9 +94,14 @@
 
         <!-- Rodapé com informações adicionais -->
         <div class="footer">
-            <p>Data de Geração: <span class="generation-time">{{ now()->format('d/m/Y H:i') }}</span></p>
+            <p>Data de Geração: <span class="generation-time">{{ now()->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i') }}</span></p>
         </div>
     </div>
+
+    <!-- Adicione a ligação para o Bootstrap JavaScript e jQuery para funcionalidades adicionais, se necessário -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

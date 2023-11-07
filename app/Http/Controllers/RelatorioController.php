@@ -1,96 +1,120 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Disciplina;
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Turma;
+use App\Models\Disciplina;
 use App\Models\Pessoa;
+
 
 class RelatorioController extends Controller
 {
     public function gerarRelatorioTurmas(Request $request)
     {
-        // Inicialize a query
         $query = Turma::query();
 
-        // Verifique se o filtro foi aplicado
-        if ($request->has('filterBy') && $request->has('filterValue')) {
-            $filterBy = $request->input('filterBy');
-            $filterValue = $request->input('filterValue');
+        $filterBy = $request->input('filterBy');
+        $filterValue = $request->input('filterValue');
 
-            // Aplica o filtro à query
-            if (!empty($filterBy) && !empty($filterValue)) {
-                // Adapte esta parte para corresponder aos nomes das colunas e lógica de negócio
-                if ($filterBy == 'nomeTurma') {
-                    $query->where('nomeTurma', 'like', "%{$filterValue}%");
-                }
-                if ($filterBy == 'turnoTurma') {
-                    $query->where('turnoTurma', $filterValue);
-                }
-                if ($filterBy == 'anoLetivoTurma') {
-                    $query->where('anoLetivoTurma', $filterValue);
-                }
-                // Adicione mais condições `elseif` conforme necessário
-            }
+        if (!empty($filterBy) && !empty($filterValue)) {
+            $query->where($filterBy, 'like', "%{$filterValue}%");
         }
 
-        // Execute a query com os filtros aplicados
         $turmas = $query->get();
 
-        // Carregue a visualização do PDF com os dados filtrados
-        $pdf = PDF::loadView('pdf.turmas', ['turmas' => $turmas]);
+        $pdf = PDF::loadView('pdf.turmas', compact('turmas'));
 
-        // Faça o download do PDF
         return $pdf->download('relatorio_turmas.pdf');
     }
 
     public function gerarRelatorioDisciplinas(Request $request)
     {
-        // Inicialize a query
         $query = Disciplina::query();
 
-        // Verifique se os parâmetros de filtro foram fornecidos
-        if ($request->has('filterBy') && $request->has('filterValue')) {
-            $filterBy = $request->input('filterBy');
-            $filterValue = $request->input('filterValue');
+        $filterBy = $request->input('filterBy');
+        $filterValue = $request->input('filterValue');
 
-            // Aplica o filtro à query
-            if (!empty($filterBy) && !empty($filterValue)) {
-                // Adapte esta parte para corresponder aos nomes das colunas e lógica de negócio
-                if ($filterBy == 'nomeDisciplina') {
-                    $query->where('nomeDisciplina', 'like', "%{$filterValue}%");
-                }
-                if ($filterBy == 'codigoDisciplina') {
-                    $query->where('codigoDisciplina', 'like', "%{$filterValue}%");
-                }
-                if ($filterBy == 'cargaHorariaDisciplina') {
-                    $query->where('cargaHorariaDisciplina', $filterValue);
-                }
-                // Adicione mais condições `elseif` conforme necessário
-            }
+        if (!empty($filterBy) && !empty($filterValue)) {
+            $query->where($filterBy, 'like', "%{$filterValue}%");
         }
 
-        // Execute a query com os filtros aplicados
         $disciplinas = $query->get();
 
-        // Carregue a visualização do PDF com os dados filtrados
-        $pdf = PDF::loadView('pdf.disciplinas', ['disciplinas' => $disciplinas]);
+        $pdf = PDF::loadView('pdf.disciplinas', compact('disciplinas'));
 
-        // Faça o download do PDF
         return $pdf->download('relatorio_disciplinas.pdf');
     }
 
-    public function gerarRelatorioAlunos()
+    public function gerarRelatorioAlunos(Request $request)
+{
+    $filtroNome = $request->input('filtroNome');
+
+    $query = Pessoa::where('tipoUsuario', '1');
+
+    if (!empty($filtroNome)) {
+        $query->where('nomePessoa', 'like', "%{$filtroNome}%");
+    }
+
+    $alunos = $query->get();
+
+    $pdf = PDF::loadView('pdf.alunos', compact('alunos'));
+
+    return $pdf->download('relatorio_alunos.pdf');
+}
+
+    public function gerarBoletimAluno(Request $request)
     {
-        $alunos = Pessoa::where('tipoUsuario', 'A')
-            ->get(['nomePessoa', 'tipoPessoa', 'cpfPessoa', 'dataNascimentoPessoa', 'generoPessoa', 'telefonePessoa']);
 
-        // Carregue a visualização do PDF com os dados dos alunos
-        $pdf = PDF::loadView('pdf.alunos', ['alunos' => $alunos]);
+        // Validação dos parâmetros
+        $request->validate([
+            'nomeAluno' => 'required|string',
+            'anoLetivo' => 'required|integer'
+        ]);
 
-        // Faça o download do PDF
-        return $pdf->download('relatorio_alunos.pdf');
+        $nomeAluno = $request->query('nomeAluno');
+        $anoLetivo = $request->query('anoLetivo');
+
+        // Consulta ao banco de dados usando Query Builder
+        $boletins = DB::table('notas')
+            ->join('pessoas', 'notas.idPessoa', '=', 'pessoas.idPessoa')
+            ->join('disciplinas', 'notas.idDisciplina', '=', 'disciplinas.idDisciplina')
+            ->join('turmas', 'notas.idTurma', '=', 'turmas.idTurma')
+            ->select(
+                'disciplinas.nomeDisciplina',
+                DB::raw("
+                    GREATEST(IFNULL(primeiraNota, 0), IFNULL(primeiraRecuperacao, 0)) as FinalNota1,
+                    GREATEST(IFNULL(segundaNota, 0), IFNULL(segundaRecuperacao, 0)) as FinalNota2,
+                    GREATEST(IFNULL(terceiraNota, 0), IFNULL(terceiraRecuperacao, 0)) as FinalNota3,
+                    GREATEST(IFNULL(quartaNota, 0), IFNULL(quartaRecuperacao, 0)) as FinalNota4
+                ")
+            )
+            ->where('pessoas.tipoUsuario', 1)
+            ->where('pessoas.nomePessoa', 'like', '%' . $nomeAluno . '%')
+            ->where('turmas.anoLetivoTurma', $anoLetivo)
+            ->groupBy('disciplinas.nomeDisciplina')
+            ->get();
+
+        // Verifica se a consulta retornou resultados
+        if ($boletins->isEmpty()) {
+            // Retornar alguma resposta de erro ou redirecionar
+            return back()->withErrors(['mensagem' => 'Não foram encontrados boletins para os critérios informados.']);
+        }
+
+        // Cálculo da média e do resultado final
+        foreach ($boletins as &$boletim) {
+            $somaNotas = $boletim->FinalNota1 + $boletim->FinalNota2 + $boletim->FinalNota3 + $boletim->FinalNota4;
+            $boletim->MediaFinal = $somaNotas / 4;
+            $boletim->ResultadoFinal = $somaNotas < 24 ? 'Reprovado' : 'Aprovado';
+        }
+
+        // Carrega a view com os boletins, passando os dados para ela.
+        return view('pdf.boletim', compact('boletins'));
     }
 }
+
+
+
+

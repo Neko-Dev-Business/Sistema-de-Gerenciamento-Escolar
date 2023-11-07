@@ -68,4 +68,11 @@ class TurmaController extends Controller
         return redirect()->route('turmas.index')->with('Sucesso', 'Turma alterada com sucesso!');
 
     }
+
+    public function filterByAnoLetivo(Request $request, $anoLetivo)
+    {
+        $turmas = Turma::where('anoLetivoTurma', $anoLetivo)->get();
+
+        return response()->json($turmas);
+    }
 }

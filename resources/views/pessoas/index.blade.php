@@ -25,8 +25,8 @@
             <a href="{{ route('pessoas.index') }}" class="btn btn-light border btn-lg me-2 rounded">Limpar</a>
             <a href="{{ route('pessoas.create') }}" class="btn btn-primary rounded-circle fs-4"><i class="bi bi-person-plus-fill"></i></a>
         </div>
-        
-        
+
+
     </form>
         <table class="table table-striped">
             <thead class="table-dark">
@@ -54,7 +54,7 @@
                     <td class="align-middle text-center">
                         <a href="{{ route('pessoas.edit', $pessoa->idPessoa) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $pessoa->idPessoa }}"><i class="bi bi-trash"></i></a>
-                        
+
                         @include('pessoas.delete')
                     </td>
                 </tr>
@@ -80,6 +80,6 @@
                     </li>
                 @endif
             </ul>
-        </nav>       
+        </nav>
     @endsection
 

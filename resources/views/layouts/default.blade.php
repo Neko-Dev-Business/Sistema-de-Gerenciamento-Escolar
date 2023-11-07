@@ -40,6 +40,9 @@
                 <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                 </a>
+                <a href="{{ route('escola.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Config. Escola</span>
+                </a>
                 <a href="{{ route('pessoas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Usuários</span>
                 </a>
@@ -51,6 +54,9 @@
                 </a>
                 <a href="{{ route('disciplinas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadast. de Disciplinas</span>
+                </a>
+                <a href="{{ route('aluno_turma.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                    <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Associar Aluno a Turma</span>
                 </a>
                 <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                     <i class="fas fa-lock fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>
@@ -89,19 +95,19 @@
         $(document).ready(function () {
             // Aplicando máscara de CPF
             $('.cpf-mask').inputmask('999.999.999-99');
-    
+
             // Aplicando máscara de CNPJ
             $('.cnpj-mask').inputmask('99.999.999/9999-99');
-    
+
             // Aplicando máscara de telefone
             $('.telefone-mask').inputmask({
                 mask: ['(99) 9999-9999', '(99) 99999-9999'],
                 keepStatic: true,
                 clearIncomplete: true
             });
-    
+
         });
     </script>
-    
+
 </body>
 </html>

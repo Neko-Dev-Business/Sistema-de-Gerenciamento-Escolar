@@ -9,8 +9,11 @@ class Aluno_Turma extends Model
 {
     use HasFactory;
 
+    // Defina o nome da tabela explicitamente
+    protected $table = 'alunos_turmas';
+
     protected $primaryKey = 'idPessoa';
-    
+
     protected $fillable = [
         'idPessoa',
         'idTurma',
