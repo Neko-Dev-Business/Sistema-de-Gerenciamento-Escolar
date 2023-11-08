@@ -38,7 +38,7 @@ body {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px; /* Inicialmente, oculte o menu lateral */
+    left: 0; /* Altere para 0 para que a sidebar seja visível por padrão */
     width: 250px;
     height: 100%;
     background: #333;
@@ -46,22 +46,18 @@ body {
 }
 
 .sidebar.active {
-    left: 0; /* Quando ativo, mostre o menu lateral */
+    left: -250px; /* Quando ativo, oculte o menu lateral */
 }
 
 .content {
-    margin-left: 0; /* Adicione margem à direita para acomodar o menu lateral visível */
+    margin-left: 250px; /* Adicione margem à direita para acomodar o menu lateral visível por padrão */
     transition: margin 0.3s;
 }
 
 .content.active {
-    margin-left: 250px; /* Quando ativo, ajuste a margem para exibir o menu lateral */
+    margin-left: 0; /* Quando ativo, ajuste a margem para exibir o menu lateral */
 }
 
-.sidebar .active {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
 
 .sidebar-sticky {
     position: relative;
