@@ -30,8 +30,7 @@ class PessoaController extends Controller
 
     public function create()
     {
-        $UFs = DB::table('ufs')->get();
-        return view('pessoas.create', compact('UFs'));
+        return view('pessoas.create');
     }
 
 
