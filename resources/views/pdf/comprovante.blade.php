@@ -69,7 +69,7 @@
         </div>
         <div class="content">
             <p>Eu, <strong>{{ $diretoraEscola }}</strong>, Diretora da <strong>{{ $nomeEscola }}</strong>, atesto que
-                <strong>{{ $nomePessoa }}</strong>, CPF nº <strong>{{ $cpfPessoa }}</strong>, nascido(a) em <strong>{{ $dataNascimentoAluno }}</strong>,
+                <strong>{{ $nomePessoa }}</strong>, CPF nº <strong>{{ $cpfPessoa }}</strong>,
                 filho(a) de <strong>{{ $nomeMae }}</strong>, encontra-se devidamente matriculado(a) no Ensino Fundamental II.
             </p>
 
@@ -83,8 +83,6 @@
                 <li><strong>Endereço da Escola:</strong> {{ $enderecoEscola }}</li>
                 <li><strong>Telefone da Escola:</strong> {{ $telefoneEscola }}</li>
                 <li><strong>E-mail da Escola:</strong> {{ $emailEscola }}</li>
-                <li><strong>Período Letivo:</strong> Ano Letivo de {{ $anoLetivo }}</li>
-                <li><strong>Data de Emissão:</strong> {{ $dataEmissao }}</li>
             </ul>
 
             <p>Este documento é válido a partir da data de emissão até o final do ano letivo. Qualquer dúvida ou necessidade
@@ -92,12 +90,13 @@
         </div>
         <div class="signature">
             <p>Atenciosamente,</p>
-            <img src="{{ public_path('images/familia.jpg') }}" alt="Assinatura da Diretora" style="width: 150px; height: auto;">
+            <img src="{{ public_path('images/layout/assinatura.jpg') }}" alt="Assinatura da Diretora" style="width: 150px; height: auto;">
             <p><strong>{{ $diretoraEscola }}</strong></p>
             <p>Diretora da <strong>{{ $nomeEscola }}</strong></p>
             <p>CNPJ da Escola: {{ $cnpjEscola }}</p>
         </div>
     </div>
+
     <div class="footer">
         <p>Data de Geração: <span class="generation-time">{{ now()->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i') }}</span></p>
     </div>

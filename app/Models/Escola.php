@@ -16,6 +16,8 @@ class Escola extends Model
         'secretariaEscola',
         'diretoraEscola',
         'enderecoEscola',
+        'emailEscola',
+        'telefoneEscola',
         'assinaturaDiretoraEscola',
         'cnpjEscola',
     ];

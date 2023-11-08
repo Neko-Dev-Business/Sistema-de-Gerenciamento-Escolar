@@ -15,6 +15,8 @@ class CreateEscolasTable extends Migration
             $table->string('diretoraEscola');
             $table->text('enderecoEscola');
             $table->string('assinaturaDiretoraEscola');
+            $table->string('telefoneEscola');
+            $table->string('emailEscola');
             $table->string('cnpjEscola')->unique();
             $table->timestamps();
         });

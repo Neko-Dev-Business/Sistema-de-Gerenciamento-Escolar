@@ -6,7 +6,7 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-lg-12">
-            <h5>Relatórios</h5>
+            <h2>Relatórios</h2>
             <hr>
             <div class="form-group">
                 <label for="reportType">Selecione o tipo de relatório:</label>
@@ -72,7 +72,7 @@ function showFilterOptions() {
                 break;
             case 'comprovanteMatricula':
                 optionsHtml = `
-                    <option value="aluno_id">Aluno</option>
+                    <option value="nomePessoa">Nome Aluno</option>
                 `;
                 break;
         }

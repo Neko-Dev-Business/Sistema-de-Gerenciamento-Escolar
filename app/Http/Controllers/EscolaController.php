@@ -26,6 +26,8 @@ class EscolaController extends Controller
             'secretariaEscola' => 'required|string|max:255',
             'diretoraEscola' => 'required|string|max:255',
             'enderecoEscola' => 'required|string',
+            'telefoneEscola' => 'required|string',
+            'emailEscola' => 'required|string',
             'assinaturaDiretoraEscola' => 'required|string',
             'cnpjEscola' => 'required|string|max:18|unique:escolas',
         ]);
@@ -48,6 +50,8 @@ class EscolaController extends Controller
             'secretariaEscola' => 'required|string|max:255',
             'diretoraEscola' => 'required|string|max:255',
             'enderecoEscola' => 'required|string',
+            'telefoneEscola' => 'required|string',
+            'emailEscola' => 'required|string',
             'assinaturaDiretoraEscola' => 'required|string',
             'cnpjEscola' => 'required|string|max:18|unique:escolas,cnpjEscola,' . $id,
         ]);
