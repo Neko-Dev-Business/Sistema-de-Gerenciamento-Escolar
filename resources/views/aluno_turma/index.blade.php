@@ -27,13 +27,62 @@
                                     <td>{{ $aluno->idPessoa }}</td>
                                     <td>{{ $aluno->nomePessoa }}</td>
                                     <td>
-                                        <a href="{{ route('aluno_turma.create') }}" class="btn btn-success">
+                                        <a href="{{ route('aluno_turma.create', ['id' => $aluno->idPessoa]) }}" class="btn btn-success">
                                             <i class="bi bi-arrow-right-square"></i> Associar a Turma
                                         </a>
+
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#turmasModal_{{ $aluno->idPessoa }}">
+                                            <i class="bi bi-search"></i> Turmas Vinculadas
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="turmasModal_{{ $aluno->idPessoa }}" tabindex="-1" role="dialog" aria-labelledby="turmasModalLabel_{{ $aluno->idPessoa }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="turmasModalLabel_{{ $aluno->idPessoa }}">Turmas Vinculadas a {{ $aluno->nomePessoa }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @php
+                                                            $alunoTurma = \App\Models\Aluno_Turma::where('idPessoa', $aluno->idPessoa)->get();
+                                                        @endphp
+                                                        @if ($alunoTurma->isNotEmpty())
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Nome da Turma</th>
+                                                                        <th>Ano Letivo</th>
+                                                                        <!-- Adicione mais colunas conforme necessário -->
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($alunoTurma as $aluno)
+                                                                        <tr>
+                                                                            <td>{{ $aluno->turma->nomeTurma }}</td>
+                                                                            <td>{{ $aluno->turma->anoLetivoTurma }}</td>
+                                                                            <!-- Preencha com mais dados se necessário -->
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        @else
+                                                            <p>Sem turmas vinculadas a este aluno.</p>
+                                                        @endif
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endif
                         @endforeach
+
                     </tbody>
                 </table>
             </div>

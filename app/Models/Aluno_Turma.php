@@ -9,10 +9,9 @@ class Aluno_Turma extends Model
 {
     use HasFactory;
 
-    // Defina o nome da tabela explicitamente
     protected $table = 'alunos_turmas';
-
-    protected $primaryKey = 'idPessoa';
+    protected $primaryKey = ['idPessoa', 'idTurma'];
+    public $incrementing = false;
 
     protected $fillable = [
         'idPessoa',
@@ -21,11 +20,12 @@ class Aluno_Turma extends Model
 
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class, 'idPessoa');
+        return $this->belongsTo(Pessoa::class, 'idPessoa', 'idPessoa');
     }
 
     public function turma()
     {
-        return $this->belongsTo(Turma::class, 'idTurma');
+        return $this->belongsTo(Turma::class, 'idTurma', 'idTurma');
     }
 }
+
