@@ -53,13 +53,8 @@
                             <input type="text" class="form-control" id="cidadeEndereco" name="cidadeEndereco" required>
                         </div>
                         <div class="form-group">
-                            <label for="ufEndereco">Estado:</label>
-                            <select class="form-select form-select-lg bg-light" id="ufEndereco" name="ufEndereco" required>
-                                <option value=""></option>
-                                @foreach ($UFs as $uf)
-                                    <option value=" {{ $uf->ufSigla }} "> {{ $uf->ufDescricao }} </option>
-                                @endforeach
-                            </select>
+                            <label for="ufEndereco">Estado (Sigla): </label>
+                            <input type="text" class="form-control" id="ufEndereco" name="ufEndereco" required>
                         </div>
                     </div>
                 </div>
