@@ -42,7 +42,7 @@ class UsuariosTableSeeder extends Seeder
                 'telefonePessoa' => '75988497771',
                 'emailPessoa' => 'gabriel@sysedu.com',
                 'usuarioPessoa' => 'gabrieloliveira',
-                'tipoUsuario' => '5',
+                'tipoUsuario' => '1',
                 'foto' => 'http://localhost/images/usuarios/perfil.png',
                 'password' => $password,
                 'remember_token' => Str::random(10),
