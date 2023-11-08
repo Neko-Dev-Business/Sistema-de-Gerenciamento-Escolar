@@ -148,6 +148,7 @@
                                 <option value="1">Aluno</option>
                                 <option value="2">Professor</option>
                                 <option value="3">Responsável</option>
+                                <option value="4">Funcionário</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -171,6 +172,8 @@
             <a href="{{ route('pessoas.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
         </div>
     </form>
+
+
     <script src="/js/jquery-3.7.1.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/template.js"></script>
@@ -208,4 +211,50 @@
         const nameInput = document.getElementById('nomePessoa');
         nameInput.addEventListener('input', generateEmail);
     </script>
+
+    <!-- Seção para exibir mensagens de erro -->
+    @if(session('Erro'))
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-circle text-danger mr-2"></i>Erro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{ session('Erro') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script>
+            var myModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            myModal.show();
+        </script>
+    @endif
+
+    <!-- Seção para exibir mensagens de sucesso -->
+    @if(session('Sucesso'))
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sucesso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ session('Sucesso') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    @endif
+
 @endsection

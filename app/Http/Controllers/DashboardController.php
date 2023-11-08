@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
         $totalAlunos = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalAlunos'))->where(DB::raw('tipoUsuario'), '=', DB::raw('1'))->first();
 
-        $totalFuncionarios = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalFuncionarios'))->where(DB::raw('tipoUsuario'), '=', DB::raw('5'))->first();
+        $totalFuncionarios = Pessoa::select(DB::raw('(count(tipoUsuario)) as totalFuncionarios'))->where(DB::raw('tipoUsuario'), '=', DB::raw('4'))->first();
 
         return view('dashboard.index', compact('totalProfessores', 'totalAlunos', 'totalFuncionarios'));
     }

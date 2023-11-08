@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id('idPessoa');
             $table->string('nomePessoa');
             $table->char('tipoPessoa', 1);
-            $table->char('cpfPessoa', 11)->nullable();
+            $table->char('cpfPessoa', 14)->nullable();
             $table->char('dataNascimentoPessoa', 10)->nullable();
             $table->char('rgPessoa', 11)->nullable();
-            $table->char('cnpjPessoa', 14)->nullable();
+            $table->char('cnpjPessoa', 18)->nullable();
             $table->char('generoPessoa', 1);
             $table->string('nacionalidadePessoa', 30)->nullable();
             $table->string('nomeMaePessoa')->nullable();

@@ -50,7 +50,7 @@
                     <td class="align-middle text-center">@if ($pessoa->tipoPessoa == "F") Física @elseif ($pessoa->tipoPessoa == "J") Jurídica @endif</td>
                     <td class="align-middle text-center">@if ($pessoa->tipoPessoa == "F")<span class="cpf-mask">{{ $pessoa->cpfPessoa }}</span>@elseif ($pessoa->tipoPessoa == "J") <span class="cnpj-mask">{{ $pessoa->cnpjPessoa }}</span>@endif</td>
                     <td class="align-middle text-center">{{ $pessoa->logradouroEndereco }}, {{ $pessoa->numeroEndereco }}</td>
-                    <td class="align-middle text-center">@if ($pessoa->tipoUsuario == "1") Aluno @elseif ($pessoa->tipoUsuario == "2") Professor @elseif ($pessoa->tipoUsuario == "3") Responsável @elseif ($pessoa->tipoUsuario == "4") Empresa Parceira @elseif ($pessoa->tipoUsuario == "5") Funcionário @endif</td>
+                    <td class="align-middle text-center">@if ($pessoa->tipoUsuario == "1") Aluno @elseif ($pessoa->tipoUsuario == "2") Professor @elseif ($pessoa->tipoUsuario == "3") Responsável @elseif ($pessoa->tipoUsuario == "4") Funcionário @endif</td>
                     <td class="align-middle text-center">
                         <a href="{{ route('pessoas.edit', $pessoa->idPessoa) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $pessoa->idPessoa }}"><i class="bi bi-trash"></i></a>

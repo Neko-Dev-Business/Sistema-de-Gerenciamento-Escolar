@@ -169,13 +169,12 @@
                                 value="{{ $pessoas->usuarioPessoa }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="user_type">Tipo de Usuário:</label>
-                            <select class="form-select" id="user_type" name="user_type" required>
-                                <option value="A" {{ $pessoas->tipoUsuario == 'A' ? 'selected' : '' }}>Aluno</option>
-                                <option value="P" {{ $pessoas->tipoUsuario == 'P' ? 'selected' : '' }}>Professor
-                                </option>
-                                <option value="R" {{ $pessoas->tipoUsuario == 'R' ? 'selected' : '' }}>Responsável
-                                </option>
+                            <label for="tipoUsuario">Tipo de Usuário:</label>
+                            <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
+                                <option value="1" {{ $pessoas->tipoUsuario == '1' ? 'selected' : '' }}>Aluno</option>
+                                <option value="2" {{ $pessoas->tipoUsuario == '2' ? 'selected' : '' }}>Professor</option>
+                                <option value="3" {{ $pessoas->tipoUsuario == '3' ? 'selected' : '' }}>Responsável</option>
+                                <option value="4" {{ $pessoas->tipoUsuario == '4' ? 'selected' : '' }}>Responsável</option>
                             </select>
                         </div>
                         <div class="form-group">

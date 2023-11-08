@@ -36,21 +36,56 @@ class PessoaController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->toArray();
+        dd($request->all()); // Verifique todos os dados recebidos do formulário
 
-        $input = str_replace(".","", $input);
-        $input = str_replace("-","", $input);
-        $input = str_replace("/","", $input);
+        // Validação dos campos obrigatórios do endereço na outra aba
+        $enderecoCamposObrigatorios = [
+            'cepEndereco', 'logradouroEndereco', 'numeroEndereco', 'bairroEndereco', 'cidadeEndereco', 'ufEndereco'
+        ];
 
-        $idPessoa = Pessoa::create($input);
+        foreach ($enderecoCamposObrigatorios as $campo) {
+            if (empty($request[$campo])) {
+                return redirect()->back()->with('Erro', 'Por favor, preencha todos os campos obrigatórios do endereço.');
+            }
+        }
 
-        $input['idPessoa'] = $idPessoa;
-        $input['idPessoa'] = $idPessoa->idPessoa;
+        // Verifica se CPF ou CNPJ já existem na base de dados
+        $cpfExistente = null;
+        $cnpjExistente = null;
 
-        Endereco::create($input);
+        if ($request->cpfPessoa) {
+            $cpfExistente = Pessoa::where('cpfPessoa', $request->cpfPessoa)->first();
+        }
 
-        return redirect()->route('pessoas.index')->with('Sucesso', 'Pessoa cadastrada com sucesso!');
+        if ($request->cnpjPessoa) {
+            $cnpjExistente = Pessoa::where('cnpjPessoa', $request->cnpjPessoa)->first();
+        }
+
+        if ($cpfExistente || $cnpjExistente) {
+            return redirect()->back()->with('Erro', 'CPF ou CNPJ já cadastrado. Não é possível criar uma pessoa com um CPF/CNPJ que já existe.');
+        }
+
+        try {
+            // Se a validação foi bem-sucedida, crie e salve a pessoa no banco de dados
+            $novaPessoa = new Pessoa();
+            $novaPessoa->campo1 = $request->campo1;
+            // Defina outros campos
+            $novaPessoa->save();
+
+            // Redirecione para a rota 'pessoas.index' com a mensagem de sucesso
+            return redirect()->route('pessoas.index')->with('Sucesso', 'Pessoa cadastrada com sucesso!');
+        } catch (\Exception $e) {
+            // Em caso de erro durante o processo de salvamento, retorne à view de criação com uma mensagem de erro
+            return redirect()->back()->with('Erro', 'Houve um problema ao cadastrar a pessoa.');
+        }
     }
+
+    
+    
+    
+
+
+
 
     public function destroy($idPessoa)
     {
