@@ -37,22 +37,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($turmas as $turma)
-                <tr>
-                    <td class="align-middle text-center">{{ $turma->idTurma }}</td>
-                    <td class="align-middle text-center">{{ $turma->nomeTurma }}</td>
-                    <td class="align-middle text-center">{{ $turma->turnoTurma }}</td>
-                    <td class="align-middle text-center">{{ $turma->anoLetivoTurma }}</td>
-                    <td class="align-middle text-center">{{ $turma->salaTurma }}</td>
-                    <td class="align-middle text-center">                               
+          @foreach ($turmas as $turma)
+            <tr>
+                <td class="align-middle text-center">{{ $turma->idTurma }}</td>
+                <td class="align-middle text-center">{{ $turma->nomeTurma }}</td>
+                <td class="align-middle text-center">{{ $turma->turnoTurma }}</td>
+                <td class="align-middle text-center">{{ $turma->anoLetivoTurma }}</td>
+                <td class="align-middle text-center">{{ $turma->salaTurma }}</td>
+                    <td class="align-middle text-center">
+                        @include('turmas.disciplina_modal')
                         <a href="{{ route('turmas.edit', $turma->idTurma) }}" class="btn btn-primary" title="Editar"><i class="bi bi-pen"></i></a>
                         <a href="" class="btn btn-danger" title="Excluir" data-bs-toggle="modal" data-bs-target="#modal-deletar-{{ $turma->idTurma }}"><i class="bi bi-trash"></i></a>
                         @include('turmas.delete')
-                        <!-- Botão para exibir disciplinas -->
-                        <a href="" class="btn btn-success" title="Adicionar" data-bs-toggle="modal" data-bs-target="#modalTurmaDisciplinas_{{ $turma->idTurma }}"><i class="bi bi-plus"></i></a>
-                    </td>
-                </tr>
-            @endforeach
+                </td>
+            </tr>
+           @endforeach
         </tbody>
     </table>
     <!-- Exibir os botões de navegação das páginas -->
@@ -65,7 +64,6 @@
                     </a>
                 </li>
             @endif
-    
             @if($turmas->nextPageUrl())
                 <li class="page-item">
                     <a class="page-link" href="{{ $turmas->nextPageUrl() }}" aria-label="Next">
@@ -76,25 +74,7 @@
         </ul>
     </nav>
 </div>
-
-@foreach ($turmas as $turma)
-    @include('turmas.turmas_disciplinas.disciplina_modal', ['turma' => $turma])
-@endforeach
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('.open-discipline-modal').on('click', function() {
-            // Esconda todos os modais
-            $('.modal').modal('hide');
-
-            var turmaId = $(this).data('turma');
-            $('#modalTurmaDisciplinas_' + turmaId).modal('show');
-        });
-    });
-</script>
-
 @endsection
-

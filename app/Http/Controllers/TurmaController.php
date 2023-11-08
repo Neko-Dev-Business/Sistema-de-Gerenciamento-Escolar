@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Turma;
 use Illuminate\Support\Facades\DB;
+use App\Models\Disciplina;
 
 class TurmaController extends Controller
 {
@@ -25,7 +26,9 @@ class TurmaController extends Controller
 
         $totalTurmas = Turma::count();
 
-        return view('turmas.index', compact('turmas', 'totalTurmas'));
+        $disciplinas = Disciplina::all();
+
+        return view('turmas.index', compact('turmas', 'totalTurmas', 'disciplinas'));
     }
 
 
@@ -76,11 +79,22 @@ class TurmaController extends Controller
         return response()->json($turmas);
     }
 
-    public function showTurmaDisciplinas($idTurma)
+    public function adicionarDisciplinas(Request $request, $idTurma)
     {
-        $turma = Turma::with('disciplinas')->find($idTurma);
+        $turma = Turma::findOrFail($idTurma);
 
-        return view('turmas.turmas_disciplinas.disciplina_modal', compact('turma'));
+        // Validar os IDs das disciplinas selecionadas
+        $request->validate([
+            'disciplinas' => 'required|array',
+            'disciplinas.*' => 'exists:disciplinas,idDisciplina',
+        ]);
+
+        // Vincular as disciplinas à turma
+        $turma->disciplinas()->sync($request->input('disciplinas'));
+
+        return redirect()->route('turmas.index')->with('success', 'Disciplinas adicionadas à turma com sucesso!');
     }
+
+
 
 }

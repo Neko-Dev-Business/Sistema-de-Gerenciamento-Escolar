@@ -154,3 +154,4 @@ Route::put('/escola/{id}', [EscolaController::class, 'update'])->name('escola.up
 
 
 Route::get('/turmas/{idTurma}/disciplinas', [TurmaController::class, 'showDisciplinas'])->name('turmas.showDisciplinas');
+Route::post('turmas/{idTurma}/adicionar-disciplinas', [TurmaController::class,'adicionarDisciplinas'])->name('turmas.adicionarDisciplinas');
