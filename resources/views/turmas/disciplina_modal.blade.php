@@ -1,10 +1,10 @@
 <!-- Modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDisciplina">
-    <i class="bi bi-plus" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDisciplina-{{ $turma->idTurma }}">
+    <i class="bi bi-plus" data-toggle="tooltip" data-placement="top" title="Adicionar Disciplinas"></i>
 </button>
 
 <!-- Modal de adicionar disciplinas -->
-<div class="modal fade" id="modalDisciplina" tabindex="-1" aria-labelledby="modalDisciplinaLabel" aria-hidden="true">
+<div class="modal fade" id="modalDisciplina-{{ $turma->idTurma }}" tabindex="-1" aria-labelledby="modalDisciplinaLabel-{{ $turma->idTurma }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
