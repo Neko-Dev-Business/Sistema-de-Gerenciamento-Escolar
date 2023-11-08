@@ -50,8 +50,8 @@
                                                             $alunoTurma = \App\Models\Aluno_Turma::where('idPessoa', $aluno->idPessoa)->get();
                                                         @endphp
                                                         @if ($alunoTurma->isNotEmpty())
-                                                            <table class="table">
-                                                                <thead>
+                                                            <table class="table table-striped">
+                                                                <thead class="table-dark">
                                                                     <tr>
                                                                         <th>Nome da Turma</th>
                                                                         <th>Ano Letivo</th>
