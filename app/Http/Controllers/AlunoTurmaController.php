@@ -11,36 +11,39 @@ class AlunoTurmaController extends Controller
 {
     public function index()
     {
-        // Busca todas as pessoas que são alunos
-        $pessoas = Pessoa::where('tipoUsuario', '1')->get();
-        return view('aluno_turma.index', compact('pessoas'));
+        $alunos = Pessoa::where('tipoUsuario', '1')->get();
+        $turmas = Turma::all();
+        return view('aluno_turma.index', compact('alunos', 'turmas'));
     }
 
     public function create()
     {
-        $pessoas = Pessoa::where('tipoUsuario', '1')->get();
+        $aluno = Pessoa::where('tipoUsuario', '1')->first(); // ou lógica para obter um aluno específico
         $turmas = Turma::all();
-        $anosLetivos = Turma::select('anoLetivoTurma')->distinct()->pluck('anoLetivoTurma');
-        return view('aluno_turma.create', compact('pessoas', 'turmas', 'anosLetivos'));
+    
+        return view('aluno_turma.create', compact('aluno', 'turmas'));
     }
-
-
-
+    
+    
     public function store(Request $request)
     {
-        // Validação dos dados
         $validatedData = $request->validate([
             'idPessoa' => 'required|exists:pessoas,idPessoa',
             'idTurma' => 'required|exists:turmas,idTurma',
         ]);
 
+        $alunoTurmaExists = Aluno_Turma::where('idPessoa', $validatedData['idPessoa'])
+                                        ->where('idTurma', $validatedData['idTurma'])
+                                        ->exists();
 
-        $alunoTurma = new Aluno_Turma($validatedData);
-        $alunoTurma->save();
+        if ($alunoTurmaExists) {
+            return back()->with('error', 'O aluno já faz ou fez parte dessa turma anteriormente!');
+        }
 
+        Aluno_Turma::create($validatedData);
 
         return redirect()->route('aluno_turma.index')->with('success', 'Aluno associado à turma com sucesso!');
     }
 
-
+    
 }
