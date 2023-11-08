@@ -21,17 +21,12 @@
         .page-header img {
             width: 100%;
             max-width: 1000px;
-            height: auto;
+            height: 30%;
         }
 
         .page-header h1 {
             font-family: Verdana, sans-serif;
             font-size: 24px;
-            margin-top: 20px;
-        }
-
-        .table-container {
-            margin-top: 20px;
         }
 
         table {
@@ -74,14 +69,16 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Data de Nasc.</th>
+                        <th>Telefone</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($alunos as $aluno)
                     <tr>
                         <td>{{ $aluno->nomePessoa }}</td>
-                        <td>{{ $aluno->cpfPessoa }}</td>
-                        <td>{{ $aluno->dataNascimentoPessoa}}</td>
+                        <td>{{ substr($aluno->cpfPessoa, 0, 3) . '.' . substr($aluno->cpfPessoa, 3, 3) . '.' . substr($aluno->cpfPessoa, 6, 3) . '-' . substr($aluno->cpfPessoa, 9, 2) }}</td>
+                        <td>{{ \Carbon\Carbon::parse($aluno->dataNascimentoPessoa)->format('d/m/Y') }}</td>
+                        <td>{{ '('.substr($aluno->telefonePessoa, 0, 2) . ') ' . substr($aluno->telefonePessoa, 2, 4) . '-' . substr($aluno->telefonePessoa, 6) }}</td>
                     </tr>
                     @endforeach
                 </tbody>

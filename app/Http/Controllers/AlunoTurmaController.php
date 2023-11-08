@@ -9,12 +9,18 @@ use App\Models\Aluno_Turma;
 
 class AlunoTurmaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $alunos = Pessoa::where('tipoUsuario', '1')->get();
+
+        $busca = $request->input('busca', '');
+        $alunos = Pessoa::where('tipoUsuario', '1')
+                        ->where('nomePessoa', 'like', '%' . $busca . '%')
+                        ->get();
         $turmas = Turma::all();
+
         return view('aluno_turma.index', compact('alunos', 'turmas'));
     }
+
 
     public function create($idPessoa)
     {
@@ -38,48 +44,48 @@ class AlunoTurmaController extends Controller
 
         return view('aluno_turma.create', compact('aluno', 'anosLetivos', 'turmasPorAno', 'turmas'));
     }
-    
-    
+
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'idPessoa' => 'required|exists:pessoas,idPessoa',
             'idTurma' => 'required|exists:turmas,idTurma',
         ]);
-    
+
         $aluno = Pessoa::find($validatedData['idPessoa']);
         $turma = Turma::find($validatedData['idTurma']);
-    
+
         $alunoTurmaExists = Aluno_Turma::where('idPessoa', $validatedData['idPessoa'])
                                         ->where('idTurma', $validatedData['idTurma'])
                                         ->exists();
-    
+
         if ($alunoTurmaExists) {
             return back()->with('error', 'O aluno já faz ou fez parte dessa turma anteriormente!');
         }
-    
+
         $anoLetivo = $turma->anoLetivoTurma;
-    
+
         $alunoTurmasNoAno = Aluno_Turma::where('idPessoa', $validatedData['idPessoa'])
                                         ->whereHas('turma', function ($query) use ($anoLetivo) {
                                             $query->where('anoLetivoTurma', $anoLetivo);
                                         })
                                         ->exists();
-    
+
         if ($alunoTurmasNoAno) {
             return back()->with('error', 'O aluno já foi cadastrado em uma turma nesse ano!');
         }
-    
+
         Aluno_Turma::create($validatedData);
-    
+
         return redirect()->route('aluno_turma.create', ['id' => $validatedData['idPessoa']])->with('success', 'Aluno associado à turma com sucesso!');
     }
-    
 
 
-    
-    
-    public function turmasVinculadas($idPessoa) 
+
+
+
+    public function turmasVinculadas($idPessoa)
     {
         $aluno = Pessoa::find($idPessoa);
 
@@ -93,7 +99,7 @@ class AlunoTurmaController extends Controller
         return view('aluno_turma.turmas_vinculadas', compact('aluno', 'turmasVinculadas'));
     }
 
-    
 
-    
+
+
 }

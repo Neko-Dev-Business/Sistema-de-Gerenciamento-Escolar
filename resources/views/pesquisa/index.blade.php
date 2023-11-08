@@ -3,7 +3,7 @@
 @section('title', 'Pesquisa de Alunos')
 
 @section('conteudo')
-<div class="container mt-4">
+<div class="container">
     <h1>Pesquisa de Alunos</h1>
 
     <div class="input-group mb-3">

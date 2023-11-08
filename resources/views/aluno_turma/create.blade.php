@@ -6,14 +6,15 @@
             @csrf
             <div class="form-group">
                 <h2>Associar Aluno a Turma</h2>
-                <label for="idPessoa">ID do Aluno:</label>
-                <input type="text" name="idPessoa" class="form-control" value="{{ $aluno->idPessoa }}" readonly>
+                <label for="idPessoa">Nome do Aluno:</label>
+                <input type="text" class="form-control" value="{{ $aluno->nomePessoa }}" readonly>
+                <input type="hidden" name="idPessoa" value="{{ $aluno->idPessoa }}">
             </div>
             <div class="form-group">
                 <label for="anoLetivo">Ano Letivo:</label>
-                <select name="anoLetivo" id="anoLetivo" class="form-control">
+                <select name="anoLetivo" id="anoLetivo" class="form-control" >
                     <option value="">Selecione um Ano Letivo</option>
-                    @foreach($anosLetivos as $ano)
+                    @foreach ($anosLetivos as $ano)
                         <option value="{{ $ano }}">{{ $ano }}</option>
                     @endforeach
                 </select>
@@ -24,7 +25,10 @@
                     <option value="">Selecione uma Turma</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Associar</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="submit" class="btn btn-primary mt-3 w-6">Associar</button>
+              </div>
+
         </form>
 
         <!-- Modais de erro -->
@@ -74,7 +78,8 @@
                             <p>{{ session('success') }}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='{{ route('aluno_turma.index') }}'">Fechar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick="window.location.href='{{ route('aluno_turma.index') }}'">Fechar</button>
                         </div>
                     </div>
                 </div>

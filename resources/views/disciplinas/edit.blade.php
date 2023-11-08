@@ -29,4 +29,5 @@
             <a href="{{ route('disciplinas.index') }}" class="btn btn-danger btn-lg"> Cancelar</a>
         </div>
     </form>
+</div>
 @endsection

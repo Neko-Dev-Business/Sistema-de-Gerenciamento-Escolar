@@ -3,7 +3,6 @@
 @section('title', 'Dados da Escola')
 
 @section('conteudo')
-<div class="container mt-4">
     <div class="row">
         <div class="col-lg-12">
             <h1>Dados da Escola</h1>
@@ -46,6 +45,6 @@
                 </a>
             @endif
         </div>
-    </div>
 </div>
+
 @endsection

@@ -50,20 +50,21 @@ class RelatorioController extends Controller
 
     public function gerarRelatorioAlunos(Request $request)
 {
-    $filtroNome = $request->input('filtroNome');
+    $filtro = $request->input('filterBy'); // Nome do campo para filtrar
+    $valorFiltro = $request->input('filterValue'); // Valor para buscar
 
     $query = Pessoa::where('tipoUsuario', '1');
 
-    if (!empty($filtroNome)) {
-        $query->where('nomePessoa', 'like', "%{$filtroNome}%");
+    if (!empty($filtro) && !empty($valorFiltro)) {
+        $query->where($filtro, 'like', "%{$valorFiltro}%");
     }
 
     $alunos = $query->get();
 
-    $pdf = PDF::loadView('pdf.alunos', compact('alunos'));
-
+    $pdf = PDF::loadView('pdf.alunos', compact('alunos'))->setPaper('a4', 'landscape');
     return $pdf->download('relatorio_alunos.pdf');
 }
+
 
     public function gerarBoletimAluno(Request $request)
     {

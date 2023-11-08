@@ -103,6 +103,25 @@ body {
     background-color: var(--bg-alt);
   }
 
+/* CSS para a Sidebar */
+#sidebarMenu .list-group-item-action.active {
+    background-color: #ffffff; /* Cor de fundo para o item ativo */
+    color: #000000; /* Cor do texto para o item ativo */
+    border-left: 4px solid #007bff; /* Barra lateral para indicar o item ativo */
+}
+
+#sidebarMenu .list-group-item-action {
+    transition: all 0.3s; /* Transição suave para efeitos de hover e active */
+}
+
+/* Efeito hover para os itens do menu */
+#sidebarMenu .list-group-item-action:hover {
+    background-color: #f8f9fa; /* Cor de fundo ao passar o mouse */
+    color: #000000; /* Cor do texto ao passar o mouse */
+}
+
+
+
   /* .template-copy {
     color: var(--bg);
   } */

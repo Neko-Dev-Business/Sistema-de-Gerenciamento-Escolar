@@ -45,59 +45,44 @@
     <div>
         <nav id="sidebarMenu" class="bg-dark sidebar">
             <div class="position-sticky">
-
+                <!-- Outros elementos aqui... -->
                 <div class="list-group list-group-flush mx-3 mt-5">
-                    <a href="{{ route('dashboard.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-tachometer-alt fa-fw me-3 text-white"></i><span
-                            class="text-white">Dashboard</span>
+                    <a href="{{ route('dashboard.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-home fa-fw me-3 text-white"></i><span class="text-white">Dashboard</span>
                     </a>
-                    <a href="{{ route('escola.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Config.
-                            Escola</span>
+                    <a href="{{ route('escola.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-school fa-fw me-3 text-white"></i> <span class="text-white">Config. Escola</span>
                     </a>
-                    <a href="{{ route('pessoas.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de
-                            Usuários</span>
+                    <a href="{{ route('pessoas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-user-edit fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Usuários</span>
                     </a>
-                    <a href="{{ route('notas.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de
-                            Notas</span>
+                    <a href="{{ route('notas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-star fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Notas</span>
                     </a>
-                    <a href="{{ route('turmas.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de
-                            Turmas</span>
+                    <a href="{{ route('turmas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-users-class fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Turmas</span>
                     </a>
-                    <a href="{{ route('disciplinas.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Cadast. de
-                            Disciplinas</span>
+                    <a href="{{ route('disciplinas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-book-open fa-fw me-3 text-white"></i> <span class="text-white">Cadast. de Disciplinas</span>
                     </a>
-                    <a href="{{ route('aluno_turma.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-area fa-fw me-3 text-white"></i> <span class="text-white">Associar Aluno
-                            a Turma</span>
+                    <a href="{{ route('aluno_turma.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-user-graduate fa-fw me-3 text-white"></i> <span class="text-white">Associar Aluno a Turma</span>
                     </a>
-                    <a href="{{ route('relatorios.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-lock fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>
+                    <a href="{{ route('relatorios.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-chart-pie fa-fw me-3 text-white"></i><span class="text-white">Relatórios</span>
                     </a>
-                    <a href="{{ route('pesquisa.index') }}"
-                        class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-chart-line fa-fw me-3 text-white"></i><span class="text-white">Acadêmico</span>
+                    <a href="{{ route('pesquisa.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+                        <i class="fas fa-search fa-fw me-3 text-white"></i><span class="text-white">Pesquisa</span>
                     </a>
                     @can('acessar-usuarios')
                         <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                            <i class="fas fa-users fa-fw me-3 text-white"></i><span class="text-white">Usuários</span>
+                            <i class="fas fa-user-shield fa-fw me-3 text-white"></i><span class="text-white">Usuários</span>
                         </a>
                     @endcan
                 </div>
             </div>
         </nav>
+
     </div>
 
     <main class="ml-1">
@@ -116,6 +101,20 @@
             document.querySelector('.sidebar').classList.toggle('active');
             document.querySelector('.content').classList.toggle('active');
         });
+        document.addEventListener('DOMContentLoaded', function() {
+    var sidebarNavItems = document.querySelectorAll('#sidebarMenu .list-group-item-action');
+    sidebarNavItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Remove a classe 'active' de todos os itens
+            sidebarNavItems.forEach(function(navItem) {
+                navItem.classList.remove('active');
+            });
+            // Adiciona a classe 'active' ao item clicado
+            this.classList.add('active');
+        });
+    });
+});
+
     </script>
     <script>
         $(document).ready(function() {

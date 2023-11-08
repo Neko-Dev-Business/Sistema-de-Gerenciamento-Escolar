@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+    <div class="container">
     <div class="container-fluid">
         <h1 class="mb-3 text-center">Dashboard<i class="bi bi-house bi-2x card-icon text-white"></i></h1>
         <div class="row justify-content-center">
@@ -64,7 +65,7 @@
         <div id='calendar' class="container"></div>
         <div style='clear:both'></div>
     </div>
-
+    </div>
     <!-- Inclua os arquivos JS da biblioteca FullCalendar e seu próprio código JavaScript para inicializar o calendário. -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>

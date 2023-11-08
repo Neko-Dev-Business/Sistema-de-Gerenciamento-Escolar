@@ -3,7 +3,7 @@
 @section('title', 'Editar Turmas')
 
 @section('conteudo')
-<div class="container">
+<div class="container" style="margin-top: 2%;">
 <h1>  </h1>
     <form class="row g-4" method="POST" action="{{ route('turmas.update', $turmas->idTurma) }}">
         @csrf
@@ -11,7 +11,7 @@
         <div class="row mt-3">
             <!-- Coluna das informações da turma -->
             <div class="col-md-6 mt-54">
-                <h2>Editar Turmas</h2>
+                <h1>Editar Turmas</h1>
                 <div class="form-group">
                     <label for="nomeTurma">Nome da Turma:</label>
                     <input type="text" class="form-control" id="nomeTurma" name="nomeTurma"
@@ -43,7 +43,7 @@
 
             <!-- Coluna da lista de disciplinas da turma -->
             <div class="col-md-6">
-                <h3>Disciplinas da Turma</h3>
+                <h1>Disciplinas da Turma</h1>
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
