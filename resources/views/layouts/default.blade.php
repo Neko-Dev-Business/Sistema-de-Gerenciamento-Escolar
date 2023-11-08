@@ -24,7 +24,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand mx-auto" href="#">
-                <img src="/images/layout/logo3.png" alt="Logo" style="height: 50px;">
+                <img src="/images/layout/logobranca2.png" alt="Logo" style="height: 50px;">
             </a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
