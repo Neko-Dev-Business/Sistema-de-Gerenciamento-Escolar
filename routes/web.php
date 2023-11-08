@@ -121,9 +121,10 @@ Route::post('/turmas', [TurmaController::class, 'store'])->name('turmas.store');
 
 //ROTA ALUNO_TURMA
 Route::get('/aluno_turma', [AlunoTurmaController::class, 'index'])->name('aluno_turma.index');
-Route::get('/aluno_turma/create', [AlunoTurmaController::class, 'create'])->name('aluno_turma.create');
+Route::get('/aluno_turma/create/{id}', [AlunoTurmaController::class, 'create'])->name('aluno_turma.create');
 Route::post('/aluno_turma', [AlunoTurmaController::class, 'store'])->name('aluno_turma.store');
 Route::get('/api/turmas/{anoLetivo}/filter', [TurmaController::class, 'filterByAnoLetivo']);
+
 
 //ROTA TURMA_DISCIPLINAS
 
