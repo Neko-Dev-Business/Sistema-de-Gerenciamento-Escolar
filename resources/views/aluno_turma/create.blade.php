@@ -7,7 +7,7 @@
             <div class="form-group">
                 <h2>Associar Aluno a Turma</h2>
                 <label for="idPessoa">ID do Aluno:</label>
-                <input type="text" name="idPessoa" class="form-control" value="{{ $aluno->idPessoa }}" readonly>
+                <input type="text" name="idPessoa" class="form-control" value="{{ $aluno->idPessoa }} - {{ $aluno->nomePessoa }}" readonly>
             </div>
             <div class="form-group">
                 <label for="idTurma">Turma:</label>
