@@ -8,8 +8,8 @@ use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Turma;
 use App\Models\Disciplina;
 use App\Models\Pessoa;
-
-
+use App\Models\Escola;
+use App\Models\Aluno_Turma;
 class RelatorioController extends Controller
 {
     public function gerarRelatorioTurmas(Request $request)
@@ -113,6 +113,54 @@ class RelatorioController extends Controller
         // Carrega a view com os boletins, passando os dados para ela.
         return view('pdf.boletim', compact('boletins'));
     }
+
+    public function gerarComprovanteMatricula(Request $request)
+    {
+        // Obtenha os valores do filtro do formulário
+        $nomeAluno = $request->input('filterValue');
+
+        // Valide os campos obrigatórios
+        $request->validate([
+            'filterBy' => 'required',
+            'filterValue' => 'required',
+        ]);
+
+        $aluno = Pessoa::where('nomePessoa', 'like', '%' . $nomeAluno . '%')
+        ->where('tipoPessoa', 1)
+        ->first();
+
+        if (!$aluno) {
+            return back()->with('error', 'Aluno não encontrado.');
+        }
+
+        // Carregue os dados necessários para o comprovante de matrícula
+        $escola = Escola::first(); // Você precisa ter um registro de escola no banco de dados
+        $turmaDoAluno = Aluno_Turma::where('idPessoa', $aluno->idPessoa)->first();
+
+        // Verifique se a turma do aluno foi encontrada
+        if (!$turmaDoAluno) {
+            return back()->with('error', 'Turma do aluno não encontrada.');
+        }
+
+        // Montar os dados para o comprovante de matrícula
+        $data = [
+            'diretoraEscola' => $escola->diretoraEscola,
+            'nomeEscola' => $escola->nomeEscola,
+            'nomePessoa' => $aluno->nomePessoa,
+            'cpfPessoa' => $aluno->cpfPessoa,
+            'dataNascimentoAluno' => $aluno->dataNascimentoPessoa,
+            'nomeMae' => $aluno->nomeMaePessoa,
+            'enderecoEscola' => $escola->enderecoEscola,
+            'telefoneEscola' => $escola->telefoneEscola,
+            'emailEscola' => $escola->emailEscola,
+            'anoLetivo' => date('Y'),
+            'dataEmissao' => date('d/m/Y'),
+        ];
+
+        $pdf = PDF::loadView('pdf_comprovante', $data);
+
+    }
+
 }
 
 

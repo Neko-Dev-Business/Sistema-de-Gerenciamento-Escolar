@@ -10,21 +10,22 @@
             <hr>
             <div class="form-group">
                 <label for="reportType">Selecione o tipo de relatório:</label>
-                <select class="form-control  mt-3" id="reportType" onchange="showFilterOptions()">
+                <select class="form-control mt-3" id="reportType" onchange="showFilterOptions()">
                     <option value="">-- Selecione --</option>
                     <option value="turmas">Relatório de Turmas</option>
                     <option value="disciplinas">Relatório de Disciplinas</option>
                     <option value="alunos">Relatório de Alunos</option>
+                    <option value="comprovanteMatricula">Comprovante de Matrícula</option>
                 </select>
             </div>
             <div id="filterOptions" style="display: none;">
-                <div class="form-group  mt-3">
+                <div class="form-group mt-3">
                     <label for="filterBy">Filtrar por:</label>
                     <select class="form-control" id="filterBy">
                         <!-- As opções de filtro serão inseridas aqui pelo JavaScript -->
                     </select>
                 </div>
-                <div id="filterInput" class="form-group  mt-3" style="display: none;">
+                <div id="filterInput" class="form-group mt-3" style="display: none;">
                     <label for="filterValue">Valor do Filtro:</label>
                     <input type="text" class="form-control" id="filterValue" placeholder="Digite o valor do filtro">
                 </div>
@@ -69,6 +70,11 @@ function showFilterOptions() {
                     <option value="cpfPessoa">CPF do Aluno</option>
                 `;
                 break;
+            case 'comprovanteMatricula':
+                optionsHtml = `
+                    <option value="aluno_id">Aluno</option>
+                `;
+                break;
         }
         filterBy.innerHTML = optionsHtml;
         toggleFilterInput(); // Chama a função para exibir o campo de filtro
@@ -102,6 +108,9 @@ function generateReport() {
             break;
         case 'alunos':
             url = "{{ route('gerarRelatorioAlunos') }}";
+            break;
+        case 'comprovanteMatricula':
+            url = "{{ route('gerarComprovanteMatricula') }}";
             break;
     }
 

@@ -20,8 +20,9 @@
     </style>
 </head>
 <body>
-    <h1 class="mb-3">Dashboard<i class="bi bi-house bi-2x card-icon text-white"></i></h1>
-    <div class="row">
+    <div class="container-fluid">
+        <h1 class="mb-3 text-center">Dashboard<i class="bi bi-house bi-2x card-icon text-white"></i></h1>
+        <div class="row justify-content-center">
         <!-- Cards Superiores -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary text-white shadow h-100 py-2 fade-in bg-primary">
@@ -58,6 +59,7 @@
         </div>
     </div>
 
+    </div>
     <div id='wrap' >
         <div id='calendar' class="container"></div>
         <div style='clear:both'></div>
@@ -155,52 +157,98 @@
                     }
                 },
                 events: [
-                    {
-                        title: 'All Day Event',
-                        start: new Date(y, m, 1)
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d - 3, 16, 0),
-                        allDay: false,
-                        className: 'info'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d + 4, 16, 0),
-                        allDay: false,
-                        className: 'info'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                        className: 'important'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false,
-                        className: 'important'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        allDay: false,
-                    },
-                    {
-                        title: 'Click for Google',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        url: 'https://ccp.cloudaccess.net/aff.php?aff=5188',
-                        className: 'success'
-                    }
-                ],
+    {
+        title: 'Matrículas Novas',
+        start: new Date(y, m, 2) // Segundo dia do mês
+    },
+    {
+        id: 101,
+        title: 'Reunião de Pais e Mestres',
+        start: new Date(y, m, d + 7, 18, 0), // Uma semana após o dia atual, às 18h
+        allDay: false,
+        className: 'info'
+    },
+    {
+        id: 102,
+        title: 'Conselho de Classe',
+        start: new Date(y, m, d + 14, 17, 0), // Duas semanas após o dia atual, às 17h
+        allDay: false,
+        className: 'info'
+    },
+    {
+        title: 'Planejamento Escolar',
+        start: new Date(y, m, d + 21, 8, 30), // Três semanas após o dia atual, às 8h30
+        allDay: false,
+        className: 'important'
+    },
+    {
+        title: 'Formação Continuada dos Professores',
+        start: new Date(y, m, d + 28, 8, 0), // Quatro semanas após o dia atual, às 8h
+        end: new Date(y, m, d + 28, 12, 0), // Quatro semanas após o dia atual, às 12h
+        allDay: false,
+        className: 'important'
+    },
+    {
+        title: 'Festa Junina da Escola',
+        start: new Date(y, m, d + 35, 19, 0), // Cinco semanas após o dia atual, às 19h
+        end: new Date(y, m, d + 35, 23, 0), // Cinco semanas após o dia atual, às 23h
+        allDay: false,
+    },
+    {
+        title: 'Fechamento do Semestre',
+        start: new Date(y, m, d + 42), // Seis semanas após o dia atual, o dia todo
+        allDay: true,
+        className: 'success'
+    },
+    {
+        title: 'Início das Aulas',
+        start: new Date(y, m, 3), // Terça-feira, se 1 for Domingo
+        allDay: true,
+        className: 'success'
+    },
+    {
+        id: 101,
+        title: 'Reunião Pedagógica',
+        start: new Date(y, m, 5, 13, 0), // Quinta-feira às 14h
+        allDay: false,
+        className: 'info'
+    },
+    {
+        id: 102,
+        title: 'Workshop de Educação Inclusiva',
+        start: new Date(y, m, 9, 9, 0), // Segunda-feira da semana seguinte às 9h
+        end: new Date(y, m, 9, 12, 0),
+        allDay: false,
+        className: 'warning'
+    },
+    {
+        title: 'Assembleia Geral',
+        start: new Date(y, m, 12), // Quinta-feira
+        allDay: true,
+        className: 'danger'
+    },
+    {
+        title: 'Feira de Ciências',
+        start: new Date(y, m, 16, 8, 0), // Segunda-feira da semana subsequente, o dia todo
+        allDay: true,
+        className: 'info'
+    },
+    {
+        title: 'Dia da Família na Escola',
+        start: new Date(y, m, 19), // Quinta-feira
+        allDay: true,
+        className: 'success'
+    },
+    {
+        title: 'Entrega de Boletins',
+        start: new Date(y, m, 23, 18, 0), // Segunda-feira da semana seguinte, às 18h
+        allDay: false,
+        className: 'important'
+    }
+],
+
             });
+
         });
     </script>
 </body>

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprovante de Matrícula</title>
+    <title>Comprovante de Matricula</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,18 +61,17 @@
         </style>
 
 </head>
-
 <body>
     <div class="container">
-        <div class="header">
-            <img src="{{ public_path('images/banner2.png') }}" alt="Logo da Escola">
-            <h2>COMPROVANTE DE MATRÍCULA</h2>
+        <div class="page-header">
+            <img src="{{ public_path("/images/layout/banner2.png") }}" alt="">
+            <h1>Comprovante de Matricula</h1>
         </div>
         <div class="content">
             <p>Eu, <strong>{{ $diretoraEscola }}</strong>, Diretora da <strong>{{ $nomeEscola }}</strong>, atesto que
-                <strong>{{ $nomeAluno }}</strong>, CPF nº <strong>{{ $cpfPessoa }}</strong>, nascido(a) em <strong>{{ $dataNascimentoAluno }}</strong>,
-                filho(a) de <strong>{{ $nomeMae }}</strong>, encontra-se devidamente matriculado(a) no <strong>{{ $nomeCursoSerie }}</strong>
-                para o ano letivo de <strong>{{ $anoLetivo }}</strong>.</p>
+                <strong>{{ $nomePessoa }}</strong>, CPF nº <strong>{{ $cpfPessoa }}</strong>, nascido(a) em <strong>{{ $dataNascimentoAluno }}</strong>,
+                filho(a) de <strong>{{ $nomeMae }}</strong>, encontra-se devidamente matriculado(a) no Ensino Fundamental II.
+            </p>
 
             <p>Este documento tem a finalidade de comprovar a matrícula do aluno e suas informações pessoais, garantindo seu acesso
                 às atividades e serviços escolares durante o período letivo. O aluno está autorizado a participar de todas as
@@ -88,7 +84,6 @@
                 <li><strong>Telefone da Escola:</strong> {{ $telefoneEscola }}</li>
                 <li><strong>E-mail da Escola:</strong> {{ $emailEscola }}</li>
                 <li><strong>Período Letivo:</strong> Ano Letivo de {{ $anoLetivo }}</li>
-                <li><strong>Curso ou Série Matriculada:</strong> {{ $nomeCursoSerie }}</li>
                 <li><strong>Data de Emissão:</strong> {{ $dataEmissao }}</li>
             </ul>
 
@@ -103,7 +98,12 @@
             <p>CNPJ da Escola: {{ $cnpjEscola }}</p>
         </div>
     </div>
+    <div class="footer">
+        <p>Data de Geração: <span class="generation-time">{{ now()->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i') }}</span></p>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
-

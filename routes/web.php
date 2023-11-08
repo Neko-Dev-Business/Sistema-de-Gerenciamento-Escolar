@@ -17,7 +17,7 @@ use App\Http\Controllers\TurmaDisciplinaController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\AlunoTurmaController;
 use App\Http\Controllers\EscolaController;
-
+use App\Http\Controllers\EventController;
 // ...
 
 
@@ -142,7 +142,9 @@ Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'turma'])->name
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');
 Route::get('/gerar-relatorio-disciplinas', [RelatorioController::class, 'gerarRelatorioDisciplinas'])->name('gerarRelatorioDisciplinas');
 Route::get('/gerar-relatorio-alunos', [RelatorioController::class, 'gerarRelatorioAlunos'])->name('gerarRelatorioAlunos');
-Route::get('/relatorio/boletim', [RelatorioController::class, 'gerarBoletimAluno'])->name('gerarBoletimAluno');
+Route::get('/gerar-relatorio-boletim', [RelatorioController::class, 'gerarBoletimAluno'])->name('gerarBoletimAluno');
+Route::get('gerar-relatorio-comprovante', [RelatorioController::class, 'gerarComprovanteMatricula'])->name('gerarComprovanteMatricula');
+
 
 //ROTA DA ESCOLA
 
