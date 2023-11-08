@@ -28,7 +28,7 @@ class PessoaFactory extends Factory
             'telefonePessoa' => $faker->phoneNumber,
             'emailPessoa' => $faker->unique()->safeEmail,
             'usuarioPessoa' => $faker->userName,
-            'tipoUsuario' => $faker->randomElement(['1', '2', '3', '5']),
+            'tipoUsuario' => $faker->randomElement(['1', '2', '3', '4']),
             'foto' => $faker->imageUrl(200, 200, 'people'),
             'password' => bcrypt('password'),
             'remember_token' => Str::random(10),

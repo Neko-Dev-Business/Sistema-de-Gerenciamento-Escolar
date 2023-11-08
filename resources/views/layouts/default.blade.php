@@ -15,6 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
                         <i class="fas fa-star fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Notas</span>
                     </a>
                     <a href="{{ route('turmas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
-                        <i class="fas fa-users-class fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Turmas</span>
+                        <i class="bi bi-pencil-square fa-fw me-3 text-white"></i> <span class="text-white">Cadastro de Turmas</span>
                     </a>
                     <a href="{{ route('disciplinas.index') }}" class="list-group-item list-group-item-action py-2 ripple bg-dark">
                         <i class="fas fa-book-open fa-fw me-3 text-white"></i> <span class="text-white">Cadast. de Disciplinas</span>
