@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Helpers\Qs;
 use Illuminate\Support\Str;
 
-class EscolaSeeder extends Seeder
+class EscolaTableSeeder extends Seeder
 {
 
     /**
@@ -30,11 +30,11 @@ class EscolaSeeder extends Seeder
             [   'nomeEscola' => 'ESCOLA MUNICIPAL DE CARAVELA DO SUL',
                 'secretariaEscola' => 'JUCILEIDE MARIA DA SILVA',
                 'diretoraEscola' => 'CARLOS JOSE DE ANDRADE',
-		'enderecoEscola' => 'RUA DAS CARAVELAS N° 15, CENTRO',
-		'assinaturaDiretoraEscola' => 'carlos jose',
-		'telefoneEscola' => '(75)98835-8406',
-		'emailEscola' => 'CARAVELA@ESCOLA.COM',
-		'cnpjEscola' => '90.782.217/0001-93',
+		        'enderecoEscola' => 'RUA DAS CARAVELAS N° 15, CENTRO',
+		        'assinaturaDiretoraEscola' => 'carlos jose',
+		        'telefoneEscola' => '(75)98835-8406',
+		        'emailEscola' => 'CARAVELA@ESCOLA.COM',
+		        'cnpjEscola' => '90.782.217/0001-93',
             ],
         ];
         DB::table('escolas')->insert($d);
