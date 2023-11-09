@@ -54,4 +54,19 @@ class Pessoa extends Model
     {
         return Aluno_Turma::where('idPessoa', $this->idPessoa)->with('turma')->get();
     }
+
+    public function disciplina()
+    {
+        return $this->belongsTo(Disciplina::class, 'idDisciplina');
+    }
+
+    public function notas()
+    {
+        return $this->hasMany(Nota::class, 'idPessoa');
+    }
+
+    public function alunoTurma()
+    {
+        return $this->belongsToMany(Turma::class, 'alunos_turmas', 'idPessoa', 'idTurma');
+    }
 }
