@@ -61,15 +61,8 @@
                         </div>
                         <div class="form-group">
                             <label for="ufEndereco">Estado:</label>
-                            <select class="form-select form-select-lg bg-light" id="ufEndereco" name="ufEndereco" required>
-                                <option value="">Selecione</option>
-                                @foreach ($UFs as $uf)
-                                    <option value="{{ $uf->ufSigla }}"
-                                        {{ $uf->ufSigla == $enderecos->ufEndereco ? 'selected' : '' }}>
-                                        {{ $uf->ufDescricao }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" id="ufEndereco" name="ufEndereco"
+                                value="{{ $enderecos->ufEndereco }}" required>
                         </div>
                     </div>
                 </div>
