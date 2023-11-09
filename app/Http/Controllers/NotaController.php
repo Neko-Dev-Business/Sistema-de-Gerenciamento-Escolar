@@ -118,4 +118,25 @@ class NotaController extends Controller
             return redirect()->route('notas.edit', $idPessoa)->with('error', 'Erro ao atualizar as notas!');
         }
     }
+
+    public function notasPorTurmaEAluno($idPessoa, $idTurma)
+    {
+        $pessoa = Pessoa::with(['notas' => function ($query) use ($idTurma) {
+            $query->where('idTurma', $idTurma);
+        }, 'notas.disciplina'])->find($idPessoa);
+
+        $turma = Turma::find($idTurma);
+
+        if ($pessoa && $turma) {
+            // Carregar as disciplinas vinculadas à turma
+            $disciplinas = $turma->disciplinas;
+
+            return view('notas.notas', compact('pessoa', 'turma', 'disciplinas'));
+        } else {
+            return "Pessoa ou Turma não encontrada.";
+        }
+    }
+
+
+
 }

@@ -137,7 +137,8 @@ Route::get('/notas/edit/{idNota}', [NotaController::class, 'edit'])->name('notas
 Route::put('/notas/{idNota}', [NotaController::class, 'update'])->name('notas.update');
 Route::post('/notas', [NotaController::class, 'store'])->name('notas.store');
 Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'disciplina'])->name('notas.disciplina');
-Route::get('/notas/disciplina/{idNota}', [NotaController::class, 'turma'])->name('notas.turma');
+Route::get('/notas/disciplina/{idTurma}', [NotaController::class, 'turma'])->name('notas.turma');
+Route::get('notas/turma/{idPessoa}/{idTurma}', [NotaController::class, 'notasPorTurmaEAluno'])->name('notas.turma.aluno');
 
 //ROTA DE RELATORIO
 Route::get('/gerar-relatorio-turmas', [RelatorioController::class, 'gerarRelatorioTurmas'])->name('gerarRelatorioTurmas');

@@ -28,4 +28,11 @@ class Nota extends Model
     {
         return $this->belongsTo(Pessoa::class, 'idPessoa');
     }
+
+
+    public function disciplina()
+    {
+        return $this->belongsTo(Disciplina::class, 'idDisciplina', 'idDisciplina');
+    }
+
 }

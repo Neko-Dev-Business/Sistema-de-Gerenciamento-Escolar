@@ -13,7 +13,7 @@ class PessoaFactory extends Factory
 
     public function definition()
     {
-        $faker = \Faker\Factory::create();
+        $faker = \Faker\Factory::create('pt_BR');
 
         return [
             'nomePessoa' => $faker->firstName(),
