@@ -1,30 +1,42 @@
 <?php
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use App\Helpers\Qs;
+use Illuminate\Support\Str;
 
 class EscolaSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        DB::table('escolas')->insert([
-            'nomeEscola' => 'ESCOLA MUNICIPAL DE CARAVELA DO SUL',
-            'secretariaEscola' => 'JUCILEIDE MARIA DA SILVA',
-            'diretoraEscola' => 'CARLOS JOSE DE ANDRADE',
-            'enderecoEscola' => 'RUA DAS CARAVELAS N° 15, CENTRO, CARAVELA DO SUL, BAHIA',
-            'assinaturaDiretoraEscola' => 'carlos jose',
-            'telefoneEscola' => '(75)98835-8406',
-            'emailEscola' => 'CARAVELA@ESCOLA.COM',
-            'cnpjEscola' => '90.782.217/0001-93',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        DB::table('escolas')->delete();
+
+        $this->createNewUsers();
+    }
+
+    protected function createNewUsers()
+    {
+
+        $d = [
+
+            [   'nomeEscola' => 'ESCOLA MUNICIPAL DE CARAVELA DO SUL',
+                'secretariaEscola' => 'JUCILEIDE MARIA DA SILVA',
+                'diretoraEscola' => 'CARLOS JOSE DE ANDRADE',
+		'enderecoEscola' => 'RUA DAS CARAVELAS N° 15, CENTRO',
+		'assinaturaDiretoraEscola' => 'carlos jose',
+		'telefoneEscola' => '(75)98835-8406',
+		'emailEscola' => 'CARAVELA@ESCOLA.COM',
+		'cnpjEscola' => '90.782.217/0001-93',
+            ],
+        ];
+        DB::table('escolas')->insert($d);
     }
 }
