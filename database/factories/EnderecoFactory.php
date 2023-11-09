@@ -15,7 +15,7 @@ class EnderecoFactory extends Factory
 
     public function definition()
     {
-        $faker = \Faker\Factory::create();
+        $faker = \Faker\Factory::create('pt_BR');
 
         if (empty($this->uniqueNumbers)) {
             $this->uniqueNumbers = range(2, 26); // Cria um array de números de 2 a 26

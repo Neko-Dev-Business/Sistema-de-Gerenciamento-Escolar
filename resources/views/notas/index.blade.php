@@ -37,8 +37,8 @@
                         <td class="align-middle text-center">{{ $pessoa->nomePessoa }}</td>
                         <td class="align-middle text-center"><span class="cpf-mask">{{ $pessoa->cpfPessoa }}</span></td>
                         <td class="align-middle text-center">
-                            <a href="" class="btn btn-danger" title="Turma" data-bs-toggle="modal"
-                                data-bs-target="#modal-turma-{{ $pessoa->idPessoa }}"><i class="bi bi-trash"></i></a>
+                            <a href="" class="btn btn-primary" title="Turma" data-bs-toggle="modal"
+                                data-bs-target="#modal-turma-{{ $pessoa->idPessoa }}"><i class="bi bi-search"></i></a>
 
                             @include('notas.turma')
                         </td>
