@@ -34,7 +34,7 @@ class EnderecoFactory extends Factory
             'bairroEndereco' => $faker->citySuffix,
             'cidadeEndereco' => $faker->city,
             'numeroEndereco' => $faker->buildingNumber,
-            'ufEndereco' => $faker->randomElement($this->ufOptions), // Seleciona uma UF aleatória das opções disponíveis na tabela UF
+            'ufEndereco' => 'BA'
         ];
     }
 }
