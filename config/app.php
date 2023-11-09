@@ -194,7 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+      //  Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -207,6 +207,12 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+
+     // 'aliases' => [
+
+     //  'PDF' => Barryvdh\DomPDF\Facade::class,
+
+   //   ]
 
 ];
 

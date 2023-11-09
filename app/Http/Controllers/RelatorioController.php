@@ -50,14 +50,10 @@ class RelatorioController extends Controller
 
     public function gerarRelatorioAlunos(Request $request)
 {
-    $filtro = $request->input('filterBy'); // Nome do campo para filtrar
     $valorFiltro = $request->input('filterValue'); // Valor para buscar
 
-    $query = Pessoa::where('tipoUsuario', '1');
-
-    if (!empty($filtro) && !empty($valorFiltro)) {
-        $query->where($filtro, 'like', "%{$valorFiltro}%");
-    }
+    $query = Pessoa::where('tipoUsuario', '1')
+                    ->where('nomePessoa', 'like', "%{$valorFiltro}%");
 
     $alunos = $query->get();
 
@@ -117,50 +113,29 @@ class RelatorioController extends Controller
 
     public function gerarComprovanteMatricula(Request $request)
     {
-        // Obtenha os valores do filtro do formulário
-        $nomeAluno = $request->input('filterValue');
+        $filtroNome = $request->input('nomePessoa');
 
-        // Valide os campos obrigatórios
-        $request->validate([
-            'filterBy' => 'required',
-            'filterValue' => 'required',
-        ]);
+        $aluno = Pessoa::where('nomePessoa', 'like', '%' . $filtroNome . '%')
+                        ->where('tipoUsuario', '1')
+                        ->firstOrFail();
 
-        $aluno = Pessoa::where('nomePessoa', 'like', '%' . $nomeAluno . '%')
-        ->where('tipoPessoa', 1)
-        ->first();
+        $escola = Escola::firstOrFail();
 
-        if (!$aluno) {
-            return back()->with('error', 'Aluno não encontrado.');
-        }
-
-        // Carregue os dados necessários para o comprovante de matrícula
-        $escola = Escola::first(); // Você precisa ter um registro de escola no banco de dados
-        $turmaDoAluno = Aluno_Turma::where('idPessoa', $aluno->idPessoa)->first();
-
-        // Verifique se a turma do aluno foi encontrada
-        if (!$turmaDoAluno) {
-            return back()->with('error', 'Turma do aluno não encontrada.');
-        }
-
-        // Montar os dados para o comprovante de matrícula
-        $data = [
+        $pdf = PDF::loadView('pdf.comprovante', [
             'diretoraEscola' => $escola->diretoraEscola,
             'nomeEscola' => $escola->nomeEscola,
             'nomePessoa' => $aluno->nomePessoa,
             'cpfPessoa' => $aluno->cpfPessoa,
-            'dataNascimentoAluno' => $aluno->dataNascimentoPessoa,
-            'nomeMae' => $aluno->nomeMaePessoa,
+            'cnpjEscola' => $escola->cnpjEscola,
+            'nomeMae' => $aluno->nomeMae,
             'enderecoEscola' => $escola->enderecoEscola,
             'telefoneEscola' => $escola->telefoneEscola,
             'emailEscola' => $escola->emailEscola,
-            'anoLetivo' => date('Y'),
-            'dataEmissao' => date('d/m/Y'),
-        ];
+        ]);
 
-        $pdf = PDF::loadView('pdf_comprovante', $data);
-
+        return $pdf->download('comprovante_matricula.pdf');
     }
+
 
 }
 
