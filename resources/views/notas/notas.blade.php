@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pessoa->notas as $nota)
+                @foreach ($notas as $nota)
                     <tr>
                         <td class="text-center">
                             @if ($nota->disciplina)

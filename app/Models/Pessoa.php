@@ -65,8 +65,10 @@ class Pessoa extends Model
         return $this->hasMany(Nota::class, 'idPessoa');
     }
 
+    // Modelo Pessoa
     public function alunoTurma()
     {
-        return $this->belongsToMany(Turma::class, 'alunos_turmas', 'idPessoa', 'idTurma');
+        return $this->hasMany(Aluno_Turma::class, 'idPessoa', 'idPessoa');
     }
+
 }

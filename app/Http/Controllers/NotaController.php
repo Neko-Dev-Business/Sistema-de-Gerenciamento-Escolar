@@ -6,6 +6,7 @@ use App\Models\Nota;
 use App\Models\Pessoa;
 use App\Models\Disciplina;
 use App\Models\Turma;
+use App\Models\Aluno_Turma;
 use Illuminate\Http\Request;
 
 class NotaController extends Controller
@@ -55,22 +56,14 @@ class NotaController extends Controller
     
     public function turma($idPessoa)
     {
-        $pessoa = Pessoa::find($idPessoa);
+        $alunoTurma = Aluno_Turma::with('turma')->where('idPessoa', $idPessoa)->get();
     
-        if ($pessoa) {
-            $turmas = $pessoa->turmas()->get();
-    
-            if ($turmas->isNotEmpty()) {
-                return view('notas.turma', compact('pessoa', 'turmas'));
-            } else {
-                // Se não houver turmas associadas à pessoa
-                return "Não há turmas associadas a esta pessoa.";
-            }
+        if ($alunoTurma->isNotEmpty()) {
+            return view('notas.turma', compact('alunoTurma'));
         } else {
-            // Se a pessoa não for encontrada
-            return "Pessoa não encontrada.";
+            return "Não há turmas associadas a este aluno.";
         }
-    } 
+    }
     
     public function create()
     {

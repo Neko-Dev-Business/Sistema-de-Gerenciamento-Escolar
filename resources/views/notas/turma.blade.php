@@ -39,6 +39,7 @@
     </div>
 </div>
 
+
 <script>
     document.getElementById('visualizarNotas').addEventListener('click', function() {
         var turmaSelecionada = document.getElementById('nomeTurma').value;
