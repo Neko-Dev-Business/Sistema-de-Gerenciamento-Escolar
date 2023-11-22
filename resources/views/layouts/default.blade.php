@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#" title="Alterar Dados, Senha, Foto de Perfil"><i class="bi bi-gear"></i> Configurações</a></li>
                         <li><a class="dropdown-item" href="#" title="Ajuda e Suporte"><i class="bi bi-question-circle"></i> Ajuda e Suporte</a></li>
-                        <li><a class="dropdown-item" href="#" title="Sair da aplicação"><i class="bi bi-box-arrow-in-right"></i> Sair</a></li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}" title="Sair da aplicação"><i class="bi bi-box-arrow-in-right"></i> Sair</a></li>
                     </ul>
                 </li>
 

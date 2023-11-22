@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Session;
+@endphp
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,8 +19,7 @@
         <div class="col-xl-3 bg-white p-5 rounded-3 shadow position-absolute top-50 start-50 translate-middle form-container ">
             <img src="/images/layout/Logo.png" alt="sysedu" height="150" class="d-block mx-auto mb-4">
 
-            {{-- ERRO NA SESSION! --}}
-           {{-- @if (Session::get('erro'))
+           @if (Session::get('erro'))
             <div class="alert alert-danger text-center p-2">{{ Session::get('erro') }}</div>
             @endif
 
@@ -24,7 +27,7 @@
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-warning text-center p-2">{{ $error }}</div>
                 @endforeach
-            @endif --}}
+            @endif
 
             <form class="row g-4 mb-3" action="{{ route('login.auth') }}" method="POST">
                 @csrf

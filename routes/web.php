@@ -39,6 +39,9 @@ Route::get('login/logout', [LoginController::class, 'logout'])->name('login.logo
 Route::get('login/landing', [LoginController::class, 'landing'])->name('login.landing');
 Route::get('login/index', [LoginController::class, 'index'])->name('login.index');
 
+//ROTA DE LOGOUT
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 //ROTA DO DASHBOARD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
