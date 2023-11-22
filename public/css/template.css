@@ -215,7 +215,7 @@ td.fc-today {
 
 .fc-first th{
 	font-family: 'Roboto', sans-serif;
-    background:#9675ce !important;
+    background:#212529 !important;
 	color:#FFF;
 	font-size:14px !important;
 	font-weight:500 !important;
@@ -293,11 +293,11 @@ html .fc,
 }
 	span.fc-button {
     font-family: 'Roboto', sans-serif;
-    border-color: #9675ce;
-	color: #9675ce;
+    border-color: #212529;
+	color: #212529;
 }
 .fc-state-down, .fc-state-active {
-    background-color: #9675ce !important;
+    background-color: #212529 !important;
 	color: #FFF !important;
 }
 .fc .fc-header-space {
