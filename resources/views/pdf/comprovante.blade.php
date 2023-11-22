@@ -68,7 +68,7 @@
             <h1>Comprovante de Matricula</h1>
         </div>
         <div class="content">
-            <p>Eu, <strong>{{ $diretoraEscola }}</strong>, Diretora da <strong>{{ $nomeEscola }}</strong>, atesto que
+            <p>Eu, <strong>{{ $diretoraEscola }}</strong>, Diretor(a) da <strong>{{ $nomeEscola }}</strong>, atesto que
                 <strong>{{ $nomePessoa }}</strong>, CPF nº <strong>{{ $cpfPessoa }}</strong>,
                 filho(a) de <strong>{{ $nomeMae }}</strong>, encontra-se devidamente matriculado(a) no Ensino Fundamental II.
             </p>

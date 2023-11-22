@@ -127,7 +127,7 @@ class RelatorioController extends Controller
             'nomePessoa' => $aluno->nomePessoa,
             'cpfPessoa' => $aluno->cpfPessoa,
             'cnpjEscola' => $escola->cnpjEscola,
-            'nomeMae' => $aluno->nomeMae,
+            'nomeMae' => $aluno->nomeMaePessoa,
             'enderecoEscola' => $escola->enderecoEscola,
             'telefoneEscola' => $escola->telefoneEscola,
             'emailEscola' => $escola->emailEscola,
